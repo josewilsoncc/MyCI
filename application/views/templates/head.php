@@ -4,7 +4,7 @@
     if (isset($title))
       echo $title;
     else
-      echo 'Titulo Proyecto';
+      echo PROJECT_TITLE;
     ?>
   </title>
   <meta charset="UTF-8"/>
