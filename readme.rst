@@ -23,7 +23,7 @@ Este proyecto inicio en github el 19/12/2014
 Características actuales
 **************************
 
-My CI esta integrado y usa tecnologías como:
+My CI esta integrado por y usa tecnologías como:
 
 *CodeIniter
 
