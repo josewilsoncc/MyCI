@@ -16,19 +16,18 @@ if (!function_exists('js_tag')) {
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 16/11/2014
    */
-  
   function js_tag($route, $params = '') {
     $url_variant = isset($params['url_variant']) ? $params['url_variant'] : false;
     $only_return = isset($params['only_return']) ? $params['only_return'] : false;
-    
+
     $html = '<script type="text/javascript" src="';
     if ($url_variant)
       $html .= base_url() . $route;
     else
       $html .= base_url() . 'assets/js/' . $route . '.js';
     $html .= '"></script>';
-    
-    if($only_return)
+
+    if ($only_return)
       return $html;
     else
       echo $html;
@@ -95,19 +94,18 @@ if (!function_exists('css_tag')) {
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 16/11/2014
    */
-  
   function css_tag($route, $params = '') {
     $url_variant = isset($params['url_variant']) ? $params['url_variant'] : false;
     $only_return = isset($params['only_return']) ? $params['only_return'] : false;
-    
+
     $html = '<link href="';
     if ($url_variant)
-      $html .= base_url() . $route. '.css';
+      $html .= base_url() . $route . '.css';
     else
       $html .= base_url() . 'assets/css/' . $route . '.css';
     $html .= '" rel="stylesheet" type="text/css">';
-    
-    if($only_return)
+
+    if ($only_return)
       return $html;
     else
       echo $html;
@@ -128,19 +126,18 @@ if (!function_exists('less_tag')) {
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 16/11/2014
    */
-  
   function less_tag($route, $params = '') {
     $url_variant = isset($params['url_variant']) ? $params['url_variant'] : false;
     $only_return = isset($params['only_return']) ? $params['only_return'] : false;
-    
+
     $html = '<link href="';
     if ($url_variant)
-      $html .= base_url() . $route. '.less';
+      $html .= base_url() . $route . '.less';
     else
       $html .= base_url() . 'assets/less/' . $route . '.less';
     $html .= '" rel="stylesheet" type="text/less">';
-    
-    if($only_return)
+
+    if ($only_return)
       return $html;
     else
       echo $html;
@@ -149,7 +146,30 @@ if (!function_exists('less_tag')) {
 }
 
 if (!function_exists('load_assets')) {
-  function load_assets($assets){
+
+  /**
+   * Incluye todos los assets (css, less, js) indicados en un arreglo.
+   * 
+   * @param $assets Es el arreglo de los assets a incluir con el siguiente
+   * formato:
+   * 
+   * load_assets([<br>
+   *  'css' => [<br>
+   *    'algun_css',<br>
+   *    'otro',<br>
+   *    'etc'<br>
+   *  ],<br>
+   *    'less' => [<br>
+   *    'algun_less',<br>
+   *    '<i>etc...</i>'<br>
+   *  ],<br>
+   *  'js' => [<br>
+   *    'algun_js',<br>
+   *    '<i>etc...</i>'<br>
+   *  ]<br>
+   * ]);
+   */
+  function load_assets($assets) {
     foreach ($assets['css'] as $value)
       css_tag($value);
     foreach ($assets['less'] as $value)
@@ -157,6 +177,7 @@ if (!function_exists('load_assets')) {
     foreach ($assets['js'] as $value)
       js_tag($value);
   }
+
 }
 
 if (!function_exists('reload_page')) {
@@ -170,7 +191,7 @@ if (!function_exists('reload_page')) {
    * @date 12/12/2014
    */
   function reload_page() {
-    return '<script type="text/javascript">location.reload(true);</script>';
+    echo '<script type="text/javascript">location.reload(true);</script>';
   }
 
 }
@@ -365,9 +386,9 @@ if (!function_exists('caruosel')) {
       <div id="<?php echo $id; ?>" class="carousel slide" data-interval="<?php echo $interval; ?>" data-ride="carousel">
         <!-- Carousel indicators -->
         <ol class="carousel-indicators alpha_hover_10">
-          <?php
-          for ($i = 0; $i < count($elements); $i++) {
-            ?>
+    <?php
+    for ($i = 0; $i < count($elements); $i++) {
+      ?>
             <li data-target="#<?php echo $id; ?>" data-slide-to="<?php echo $i; ?>" class="<?php echo $selected == $i ? 'active' : ''; ?>"></li>
             <?php
           }
@@ -375,26 +396,26 @@ if (!function_exists('caruosel')) {
         </ol>  
         <!-- Carousel items -->
         <div class="carousel-inner">
-          <?php
-          $i = 0;
-          switch ($type) {
-            case 'images':
-            case 'hiden_images':
-              foreach ($elements as $key => $value) {
-                ?>
+    <?php
+    $i = 0;
+    switch ($type) {
+      case 'images':
+      case 'hiden_images':
+        foreach ($elements as $key => $value) {
+          ?>
                 <div class="<?php
                 echo $class_slide . ' ';
                 echo $i == $selected ? 'active' : '';
                 ?> item">
                   <center><img  class="img-rounded <?php echo $class_images; ?>" src="<?php echo base_url(); ?>assets/images/<?php echo $value; ?>"></center>
                 </div>
-                <?php
-                $i++;
-              }
-              break;
-            case 'basic':
-              foreach ($elements as $key => $value) {
-                ?>
+                     <?php
+                     $i++;
+                   }
+                   break;
+                 case 'basic':
+                   foreach ($elements as $key => $value) {
+                     ?>
                 <div class="<?php
                 echo $class_slide . ' ';
                 echo $i == $selected ? 'active' : '';
@@ -405,12 +426,12 @@ if (!function_exists('caruosel')) {
                     <p><?php echo $value['text']; ?></p>
                   </div>
                 </div>
-                <?php
-                $i++;
-              }
-              break;
-          }
-          ?>
+          <?php
+          $i++;
+        }
+        break;
+    }
+    ?>
           <!-- Carousel nav -->
           <a class="carousel-control left" href="#<?php echo $id; ?>" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>

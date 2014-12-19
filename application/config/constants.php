@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-define('PROJECT_TITLE', 'Titulo del proyecto');
+define('PROJECT_TITLE', 'Título del proyecto');
 define('IP_DATABASE_FABRICA', '192.168.100.70');
 
 /*
