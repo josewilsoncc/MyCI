@@ -48,15 +48,20 @@ if (!function_exists('js_controller')) {
 
   /**
    * Incluye un archivo javascritp de un controlador, debe
-   * llamarse con un echo asi:
-   * echo js_controller("mi_controlador", "archivo_opcional");
+   * llamarse asi: js_controller("mi_controlador");
    * 
    * @param string $controller Es el controlador del que se requiere
    * el JavaScript.
    * 
-   * @param string $file Es el nombre del archivo JavaScript sin la
+   * @param array $params Son los parametros opcionales como:
+   * 
+   * string <b>$file</b> Es el nombre del archivo JavaScript sin la
    * extensión del controlador que se incluira, general (general.js)
    * por defecto.
+   * 
+   * boolean <b>$only_return</b> si es true el resultado sera
+   * retornado en lugar de ser impreso con un echo de manera
+   * automatica.
    * 
    * @return string/html código html para cumplir la funcion.
    * 
@@ -64,7 +69,7 @@ if (!function_exists('js_controller')) {
    * @date 16/11/2014
    */
   
-  function js_controller($controller, $params) {
+  function js_controller($controller, $params='') {
     $file = isset($params['file']) ? $params['file'] : 'general';
     $only_return = isset($params['only_return']) ? $params['only_return'] : false;
     $uri_segment = explode('/', $controller);
