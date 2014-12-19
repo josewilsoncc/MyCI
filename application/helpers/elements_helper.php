@@ -24,6 +24,7 @@ if (!function_exists('js_tag')) {
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 16/11/2014
+   * @update 19/12/1014
    */
   function js_tag($route, $params = '') {
     $url_variant = isset($params['url_variant']) ? $params['url_variant'] : false;
@@ -67,6 +68,7 @@ if (!function_exists('js_controller')) {
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 16/11/2014
+   * @update 19/12/1014
    */
   
   function js_controller($controller, $params='') {
@@ -95,6 +97,7 @@ if (!function_exists('base_url_js')) {
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 18/11/2014
+   * @update 19/12/1014
    */
   function base_url_js($incluirIndex = true) {
     echo $incluirIndex ? "<script type='text/javascript'>function base_url(){return '" . base_url() . "index.php/';}</script>" : "<script>function base_url(){return '" . base_url() . "';}</script>";
@@ -124,6 +127,7 @@ if (!function_exists('css_tag')) {
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 16/11/2014
+   * @update 19/12/1014
    */
   function css_tag($route, $params = '') {
     $url_variant = isset($params['url_variant']) ? $params['url_variant'] : false;
@@ -166,6 +170,7 @@ if (!function_exists('less_tag')) {
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 16/11/2014
+   * @update 19/12/1014
    */
   function less_tag($route, $params = '') {
     $url_variant = isset($params['url_variant']) ? $params['url_variant'] : false;
@@ -209,6 +214,9 @@ if (!function_exists('load_assets')) {
    *    '<i>etc...</i>'<br>
    *  ]<br>
    * ]);
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 19/12/2014
    */
   function load_assets($assets) {
     foreach ($assets['css'] as $value)
@@ -388,11 +396,11 @@ if (!function_exists('caruosel')) {
    * string <b>$class_div</b> Son las clases aplicadas a las imagenes
    * de un carrusel de tipo 'images' o 'hiden_images' separadas por espacio.<br>
    * 
-   * string <b>$hidden_images_title</b> Es el titulo mostrado en un carrusel
+   * string <b>$hidden_images_title</b> Es el título mostrado en un carrusel
    * de tipo 'hiden_images'.<br>
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
-   * @date 20/11/2014
+   * @date 18/12/2014
    */
   function caruosel($elements, $params = '') {
     $type = isset($params['type']) ? $params['type'] : 'images';
