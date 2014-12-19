@@ -8,8 +8,17 @@ if (!function_exists('js_tag')) {
    * extensión partiendo de la base URL y si no se presentan
    * varianciones por defecto buscara en el directorio assets/js/.
    * Por ejemplo, para incluir el archivo assets/js/mi_javascript.js
-   * se hace de esta manera: echo js_tag('mi_javascript');
+   * se hace de esta manera: js_tag('mi_javascript');
    * sin importar desde que archivo o ruta se llame.
+   * 
+   * @param array $params Son los parametros opcionales como:
+   * 
+   * boolean <b>$url_variant</b> debe ponerse en true si la url
+   * varia del directorio assets/js
+   * 
+   * boolean <b>$only_return</b> si es true el resultado sera
+   * retornado en lugar de ser impreso con un echo de manera
+   * automatica.
    * 
    * @return string/html código html para cumplir la funcion.
    * 
@@ -89,6 +98,16 @@ if (!function_exists('css_tag')) {
    * 
    * @param string $route Es la ruta del archivo css sin extensión
    * partiendo de la base URL.
+   * 
+   * @param array $params Son los parametros opcionales como:
+   * 
+   * boolean <b>$url_variant</b> debe ponerse en true si la url
+   * varia del directorio assets/css
+   * 
+   * boolean <b>$only_return</b> si es true el resultado sera
+   * retornado en lugar de ser impreso con un echo de manera
+   * automatica.
+   * 
    * @return string/html código html para cumplir la función.
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
@@ -121,6 +140,16 @@ if (!function_exists('less_tag')) {
    * 
    * @param string $route Es la ruta del archivo less sin extensión
    * partiendo de la base URL.
+   * 
+   * @param array $params Son los parametros opcionales como:
+   * 
+   * boolean <b>$url_variant</b> debe ponerse en true si la url
+   * varia del directorio assets/less
+   * 
+   * boolean <b>$only_return</b> si es true el resultado sera
+   * retornado en lugar de ser impreso con un echo de manera
+   * automatica.
+   * 
    * @return string/html código html para cumplir la función.
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
@@ -183,7 +212,7 @@ if (!function_exists('load_assets')) {
 if (!function_exists('reload_page')) {
 
   /**
-   * produce una etiqueta javascript en cuya logíca, recarga la pagína
+   * produce una etiqueta javascript en cuya logíca, se recarga la pagína
    * 
    * @return string/html código html para cumplir la funcion.
    * 
