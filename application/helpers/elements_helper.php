@@ -63,10 +63,17 @@ if (!function_exists('js_controller')) {
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 16/11/2014
    */
-  function js_controller($controller, $file = 'general') {
+  
+  function js_controller($controller, $params) {
+    $file = isset($params['file']) ? $params['file'] : 'general';
+    $only_return = isset($params['only_return']) ? $params['only_return'] : false;
     $uri_segment = explode('/', $controller);
     $uri = 'assets/js/' . $uri_segment[0] . '/' . $file . '.js';
-    return file_exists($uri) ? '<script type="text/javascript" src="' . base_url() . $uri . '"></script>' : '';
+    $html = file_exists($uri) ? '<script type="text/javascript" src="' . base_url() . $uri . '"></script>' : '';
+    if($only_return)
+      return $html;
+    else
+      echo $html;
   }
 
 }
