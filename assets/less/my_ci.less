@@ -1,0 +1,125 @@
+/* 
+    Created on : 26/11/2014, 10:43:45 PM
+    Author     : JoseCapera
+*/
+
+@dark_gray: #333;
+@white: #fff;
+
+*{
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .form-standar label{
+    float: left;
+  }
+}
+
+span.icon{
+  padding: 8px 8px 8px 8px;
+}
+
+.alert table tr td p{
+  margin: 10px 0px 10px 10px;
+}
+
+.form-standar input{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 6px 0px 6px 0px;
+}
+
+.form-standar label{
+  float: right;
+  margin: 10px 0px 0px 0px;
+  text-align: right;
+}
+
+.footer{
+  padding-top: 20px;
+}
+
+.border_0{
+  border: 0 !important;
+}
+
+.margin_0{
+  margin: 0 !important;
+}
+
+.padding_0{
+  padding: 0 !important;
+}
+
+.text_center{
+  text-align: center;
+}
+
+.text_white{
+  color: @white;
+}
+
+.bg_dark_gray{
+  background-color: @dark_gray;
+}
+
+.generate_alpha(@n, @i: 0) when (@i =< @n) {
+  .alpha_@{i} {
+    opacity: (@i / 100) !important;
+  }
+  
+  .alpha_hover_@{i} {
+    opacity: (@i / 100) !important;
+  }
+  .alpha_hover_@{i}:hover  {
+    opacity: 1.0 !important;
+  }
+  .generate_alpha(@n, (@i + 10));
+}
+
+.generate_text(@n, @i: 10) when (@i =< @n) {
+  .text_@{i} {
+    font-size: (@i * 1%) !important;
+  }
+  .generate_text(@n, (@i + 10));
+}
+
+.generate_dimentions_px(@n, @i: 25) when (@i =< @n) {
+  .max_width_@{i}_px {
+    max-width: (@i * 1px) !important;
+  }
+  
+  .max_height_@{i}_px {
+    max-height: (@i * 1px) !important;
+  }
+  
+  .height_@{i}_px {
+    height: (@i * 1px) !important;
+  }
+  
+  .width_@{i}_px {
+    width: (@i * 1px) !important;
+  }
+  .generate_dimentions_px(@n, (@i + 25));
+}
+
+.generate_dimentions(@n, @i: 10) when (@i =< @n) {
+  .height_@{i} {
+    height: (@i * 1%) !important;
+  }
+  
+  .width_@{i} {
+    width: (@i * 1%) !important;
+  }
+  .generate_dimentions(@n, (@i + 10));
+}
+
+.generate_dimentions(100);
+.generate_dimentions_px(1000);
+.generate_text(300);
+.generate_alpha(100);
