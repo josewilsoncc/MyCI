@@ -30,9 +30,25 @@ Directorios:
 
 Archivos:
 
+*my_ci/.gitignore
+
+*my_ci/application/helpers/elements_helper.php
+
+*my_ci/application/helpers/essential_helper.php
+
+*my_ci/application/views/templates/head.php
+
+*my_ci/application/views/layout.php
+
+*my_ci/DCO.txt
+
+*my_ci/contributing.md
+
 *my_ci/index.php
 
 *my_ci/license.txt
+
+*my_ci/phpdoc.dist.xml
 
 *my_ci/readme.rst
 
