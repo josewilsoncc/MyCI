@@ -58,39 +58,25 @@ internos):
 
 Directorios::
 
-    *my_ci/assets/ccs/default/
-
-    *my_ci/assets/icons/logotipo.ico
-
-    *my_ci/assets/js/default/
-
-    *my_ci/assets/less/default/
-
-    *my_ci/system/
+    my_ci/assets/ccs/default/
+    my_ci/assets/icons/logotipo.ico
+    my_ci/assets/js/default/
+    my_ci/assets/less/default/
+    my_ci/system/
 
 Archivos::
 
-    *my_ci/.gitignore
-
-    *my_ci/application/helpers/elements_helper.php
-
-    *my_ci/application/helpers/essential_helper.php
-
-    *my_ci/application/views/templates/head.php
-
-    *my_ci/application/views/layout.php
-
-    *my_ci/DCO.txt
-
-    *my_ci/contributing.md
-
-    *my_ci/index.php
-
-    *my_ci/license.txt
-
-    *my_ci/phpdoc.dist.xml
-
-    *my_ci/readme.rst
+    my_ci/.gitignore
+    my_ci/application/helpers/elements_helper.php
+    my_ci/application/helpers/essential_helper.php
+    my_ci/application/views/templates/head.php
+    my_ci/application/views/layout.php
+    my_ci/DCO.txt
+    my_ci/contributing.md
+    my_ci/index.php
+    my_ci/license.txt
+    my_ci/phpdoc.dist.xml
+    my_ci/readme.rst
 
 
 
