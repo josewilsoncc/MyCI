@@ -17,12 +17,18 @@ sus componentes, adicionando nuevas funcionalidades conforme a las necesidades.
 Retrocompatibilidad
 *******************
 
-Para conservar la compatibilidad de los proyectos desarrollados con My CI
-y las nuevas actualizaciones, no deben de moficarsen los siguientes archivos
-o directorios:
+Por derechos de licencia MIT y para conservar la compatibilidad de los
+proyectos desarrollados con My CI y las nuevas actualizaciones, no deben
+de moficarsen los siguientes archivos o directorios:
 
-my_ci/system/*
-my_ci/assets/js/default/*
+Directorios:
+*my_ci/assets/js/default/*
+*my_ci/system/*
+
+Archivos:
+*my_ci/index.php
+*my_ci/license.txt
+*my_ci/readme.rst
 
 
 
