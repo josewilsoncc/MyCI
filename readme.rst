@@ -37,10 +37,10 @@ Configuración
 
     2)  En la línea donde ponga AllowOverride debe de asegurarse que quede así::
 
-        <Directory />
-        AllowOverride All
-        Require all denied
-        </Directory>
+            <Directory />
+              AllowOverride All
+              Require all denied
+            </Directory>
 
 En este caso se ha cambiado “All” detrás de AllowOverride (antes era un None) y
 con esto ya ha funcionado.
