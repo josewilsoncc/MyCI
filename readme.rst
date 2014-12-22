@@ -42,7 +42,7 @@ AllowOverride All
 En este caso se ha cambiado “All” detrás de AllowOverride (antes era un None) y
 con esto ya ha funcionado.
 
-¡Y puff! eso es todo.
+    ¡Y puff! eso es todo.
 
 *******************
 Retrocompatibilidad
@@ -53,41 +53,41 @@ proyectos desarrollados con My CI y las nuevas actualizaciones, no deben
 de moficarsen los siguientes archivos o directorios(con sus archivos
 internos):
 
-Directorios:
+Directorios::
 
-*my_ci/assets/ccs/default/
+    *my_ci/assets/ccs/default/
 
-*my_ci/assets/icons/logotipo.ico
+    *my_ci/assets/icons/logotipo.ico
 
-*my_ci/assets/js/default/
+    *my_ci/assets/js/default/
 
-*my_ci/assets/less/default/
+    *my_ci/assets/less/default/
 
-*my_ci/system/
+    *my_ci/system/
 
-Archivos:
+Archivos::
 
-*my_ci/.gitignore
+    *my_ci/.gitignore
 
-*my_ci/application/helpers/elements_helper.php
+    *my_ci/application/helpers/elements_helper.php
 
-*my_ci/application/helpers/essential_helper.php
+    *my_ci/application/helpers/essential_helper.php
 
-*my_ci/application/views/templates/head.php
+    *my_ci/application/views/templates/head.php
 
-*my_ci/application/views/layout.php
+    *my_ci/application/views/layout.php
 
-*my_ci/DCO.txt
+    *my_ci/DCO.txt
 
-*my_ci/contributing.md
+    *my_ci/contributing.md
 
-*my_ci/index.php
+    *my_ci/index.php
 
-*my_ci/license.txt
+    *my_ci/license.txt
 
-*my_ci/phpdoc.dist.xml
+    *my_ci/phpdoc.dist.xml
 
-*my_ci/readme.rst
+    *my_ci/readme.rst
 
 
 
