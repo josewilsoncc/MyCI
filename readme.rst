@@ -25,6 +25,7 @@ my_ci/system/*
 my_ci/assets/js/default/*
 
 
+
 **************************
 Log de eventos del proyecto
 **************************
