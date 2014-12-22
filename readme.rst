@@ -35,9 +35,9 @@ y edite el archivo httpd.conf de esta forma:
 debe de asegurarse de que no está comentada, es decir, no debe tenga delante el
 símbolo #.
 
-3.2 En la línea donde ponga AllowOverride debe de asegurarse que quede así:
+3.2 En la línea donde ponga AllowOverride debe de asegurarse que quede así::
 
-:: AllowOverride All
+AllowOverride All
 
 En este caso se ha cambiado “All” detrás de AllowOverride (antes era un None) y
 con esto ya ha funcionado.
