@@ -36,6 +36,7 @@ debe de asegurarse de que no está comentada, es decir, no debe tenga delante el
 símbolo #.
 
 3.2 En la línea donde ponga AllowOverride debe de asegurarse que quede así:
+
 ::
 AllowOverride All
 ::
