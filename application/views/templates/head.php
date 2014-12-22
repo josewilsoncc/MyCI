@@ -31,11 +31,11 @@
       'my_ci'
     ],
     'js' => [
-      'jquery.min',
-      'bootstrap.min',
-      'jquery-ui.min',
-      'less.min',
-      'my_ci'
+      'default/jquery.min',
+      'default/bootstrap.min',
+      'default/jquery-ui.min',
+      'default/less.min',
+      'default/my_ci'
     ]
   ]);
 
