@@ -10,8 +10,8 @@ alterar el core del framework.
 Información
 *******************
 
-Este repositorio será constantemente actualizado con la ultima versión de
-sus componentes, adicionando nuevas funcionalidades conforme a las necesidades.
+Este repositorio será constantemente actualizado con la ultima versión de sus
+componentes, adicionando nuevas funcionalidades conforme a las necesidades.
 
 *******************
 Retrocompatibilidad
@@ -25,6 +25,8 @@ internos):
 Directorios:
 
 *my_ci/assets/ccs/default/
+
+*my_ci/assets/icons/logotipo.ico
 
 *my_ci/assets/js/default/
 
