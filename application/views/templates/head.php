@@ -23,9 +23,9 @@
    */
   load_assets([
     'css' => [
-      'bootstrap.min',
-      'bootstrap-theme.min',
-      'icons'
+      'default/bootstrap/bootstrap.min',
+      'default/bootstrap/bootstrap-theme.min',
+      'default/icons'
     ],
     'less' => [
       'my_ci'
