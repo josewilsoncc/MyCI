@@ -36,10 +36,12 @@ debe de asegurarse de que no está comentada, es decir, no debe tenga delante el
 símbolo #.
 
 3.2 En la línea donde ponga AllowOverride debe de asegurarse que quede así:
-..<Directory />
+..
+\<Directory \/\>
  AllowOverride All
  Require all denied
-</Directory>..
+\<\/Directory\>
+..
 
 En este caso se ha cambiado “All” detrás de AllowOverride y con esto ya ha
 funcionado.
