@@ -31,16 +31,16 @@ Configuración
     la carpeta *apache/conf*, en el caso de xampp esta en *C:\xampp\apache\conf*,
     y edite el archivo httpd.conf de esta forma:
 
-3.1)  En la línea donde ponga LoadModule rewrite_module modules/mod_rewrite.so
-    debe de asegurarse de que no está comentada, es decir, no debe tenga delante el
-    símbolo #.
+    1)  En la línea donde ponga LoadModule rewrite_module modules/mod_rewrite.so
+        debe de asegurarse de que no está comentada, es decir, no debe tenga delante el
+        símbolo #.
 
-3.2)  En la línea donde ponga AllowOverride debe de asegurarse que quede así::
+    2)  En la línea donde ponga AllowOverride debe de asegurarse que quede así::
 
-    <Directory />
-      AllowOverride All
-      Require all denied
-    </Directory>
+        <Directory />
+          AllowOverride All
+          Require all denied
+        </Directory>
 
 En este caso se ha cambiado “All” detrás de AllowOverride (antes era un None) y
 con esto ya ha funcionado.
@@ -92,17 +92,17 @@ Características actuales
 
 My CI esta integrado por y usa tecnologías como:
 
-*CodeIniter
+    CodeIniter
 
-*Bootstrap
+    Bootstrap
 
-*Less
+    Less
 
-*Jquery
+    Jquery
 
-*Jquery UI
+    Jquery UI
 
-*Icomoon
+    Icomoon
 
 Todas estas tecnologías estan o serán actualizadas
 a sus últimas versiones.
