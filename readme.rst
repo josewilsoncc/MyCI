@@ -24,7 +24,11 @@ internos):
 
 Directorios:
 
+*my_ci/assets/ccs/default/
+
 *my_ci/assets/js/default/
+
+*my_ci/assets/less/default/
 
 *my_ci/system/
 

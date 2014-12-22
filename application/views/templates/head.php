@@ -28,7 +28,7 @@
       'default/icons'
     ],
     'less' => [
-      'my_ci'
+      'default/my_ci'
     ],
     'js' => [
       'default/jquery.min',
