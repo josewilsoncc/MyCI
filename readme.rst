@@ -3,8 +3,8 @@ Que es My CI?
 ###################
 
 My CI es CodeIgniter en su ultima versión (3.0) con una serie de helpers,
-librerias, assets, configuraciones y otros elementos, todo esto sin
-alterar el core del framework.
+librerias, assets, configuraciones y otros elementos, todo esto sin alterar
+el núcleo del framework.
 
 *******************
 Información
@@ -17,7 +17,7 @@ componentes, adicionando nuevas funcionalidades conforme a las necesidades.
 Retrocompatibilidad
 *******************
 
-Por derechos de licencia MIT y para conservar la compatibilidad de los
+Por derechos de la licencia MIT y para conservar la compatibilidad de los
 proyectos desarrollados con My CI y las nuevas actualizaciones, no deben
 de moficarsen los siguientes archivos o directorios(con sus archivos
 internos):
