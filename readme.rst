@@ -17,25 +17,25 @@ componentes, adicionando nuevas funcionalidades conforme a las necesidades.
 Configuración
 *******************
 
-1 Cambie el nombre de la carpeta my_ci por un nombre logíco para su proyecto.
+1)  Cambie el nombre de la carpeta my_ci por un nombre logíco para su proyecto.
 
-2 En el archivo .htaccess modifique la linea
-RewriteRule ^(.*)$ /my_ci/index.php/$1 [L]
-donde dice my_ci ponga el nombre del paso 1.
+2)  En el archivo .htaccess modifique la linea
+    RewriteRule ^(.*)$ /my_ci/index.php/$1 [L]
+    donde dice my_ci ponga el nombre del paso 1.
 
-3 Si es su primera vez con CodeIgniter o My CI, y esta en un entorno Windows,
-recuerde que en ocasiones en necesario hacer la siguiente modificación para el
-correcto funcionamiento local:
+3)  Si es su primera vez con CodeIgniter o My CI, y esta en un entorno Windows,
+    recuerde que en ocasiones en necesario hacer la siguiente modificación para
+    el correcto funcionamiento local:
 
-En la carpeta de su servidor local (Wamp, Xampp, AppServ, entro otros) hubique
-la carpeta *apache/conf*, en el caso de xampp esta en *C:\xampp\apache\conf*,
-y edite el archivo httpd.conf de esta forma:
+    En la carpeta de su servidor local (Wamp, Xampp, AppServ, entro otros) hubique
+    la carpeta *apache/conf*, en el caso de xampp esta en *C:\xampp\apache\conf*,
+    y edite el archivo httpd.conf de esta forma:
 
-3.1 En la línea donde ponga LoadModule rewrite_module modules/mod_rewrite.so
-debe de asegurarse de que no está comentada, es decir, no debe tenga delante el
-símbolo #.
+3.1)  En la línea donde ponga LoadModule rewrite_module modules/mod_rewrite.so
+    debe de asegurarse de que no está comentada, es decir, no debe tenga delante el
+    símbolo #.
 
-3.2 En la línea donde ponga AllowOverride debe de asegurarse que quede así::
+3.2)  En la línea donde ponga AllowOverride debe de asegurarse que quede así::
 
     <Directory />
       AllowOverride All
@@ -71,8 +71,8 @@ Archivos::
     my_ci/application/helpers/essential_helper.php
     my_ci/application/views/templates/head.php
     my_ci/application/views/layout.php
-    my_ci/DCO.txt
     my_ci/contributing.md
+    my_ci/DCO.txt
     my_ci/index.php
     my_ci/license.txt
     my_ci/phpdoc.dist.xml
