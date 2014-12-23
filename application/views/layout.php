@@ -7,6 +7,7 @@
     $this->load->view($content);
     $this->load->view('templates/footer');
     js_controller($content, array('and_method'=>true));
+    css_controller($content, array('and_method'=>true));
     ?>
   </body>
 </html>
