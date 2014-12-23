@@ -28,12 +28,12 @@
       'default/icons'
     ),
     'less' => array(
-      'default/my_ci'
+      'default/basic'
     ),
     'js' => array(
-      'default/jquery.min',
+      'default/jquery/jquery.min',
+      'default/jquery/jquery-ui.min',
       'default/bootstrap.min',
-      'default/jquery-ui.min',
       'default/less.min',
       'default/my_ci'
     )
