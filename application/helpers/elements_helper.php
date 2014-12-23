@@ -199,21 +199,21 @@ if (!function_exists('load_assets')) {
    * @param $assets Es el arreglo de los assets a incluir con el siguiente
    * formato:
    * 
-   * load_assets([<br>
-   *  'css' => [<br>
+   * load_assets(array(<br>
+   *  'css' => array(<br>
    *    'algun_css',<br>
    *    'otro',<br>
    *    'etc'<br>
-   *  ],<br>
-   *    'less' => [<br>
+   *  ),<br>
+   *    'less' => array(<br>
    *    'algun_less',<br>
    *    '<i>etc...</i>'<br>
-   *  ],<br>
-   *  'js' => [<br>
+   *  ),<br>
+   *  'js' => array(<br>
    *    'algun_js',<br>
    *    '<i>etc...</i>'<br>
-   *  ]<br>
-   * ]);
+   *  )<br>
+   * ));
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 19/12/2014

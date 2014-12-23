@@ -21,23 +21,23 @@
   /*
    * Cargar assets del proyecto
    */
-  load_assets([
-    'css' => [
+  load_assets(array(
+    'css' => array(
       'default/bootstrap/bootstrap.min',
       'default/bootstrap/bootstrap-theme.min',
       'default/icons'
-    ],
-    'less' => [
+    ),
+    'less' => array(
       'default/my_ci'
-    ],
-    'js' => [
+    ),
+    'js' => array(
       'default/jquery.min',
       'default/bootstrap.min',
       'default/jquery-ui.min',
       'default/less.min',
       'default/my_ci'
-    ]
-  ]);
+    )
+  ));
 
   $this->load->view('templates/_assets');
   ?>

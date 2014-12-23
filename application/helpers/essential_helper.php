@@ -89,4 +89,25 @@ if (!function_exists('unserialized')) {
   }
 
 }
+
+if (!function_exists('is_login')) {
+  function is_login(){
+    $ci =& get_instance();
+    return $ci->session->userdata('is_logued_in');
+  }
+}
+
+if (!function_exists('is_admin')) {
+  function is_admin(){
+    $ci =& get_instance();
+    return $ci->session->userdata('admin');
+  }
+}
+
+if (!function_exists('only_admin')) {
+  function only_admin(){
+    if (!is_admin())
+      redirect(base_url());
+  }
+}
 ?>

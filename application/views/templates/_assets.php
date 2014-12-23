@@ -2,14 +2,14 @@
 /*
  * Assets generales cargados por defecto
  */
-load_assets([
-  'css' => [
-    'general'
-  ],
-  'less' => [
-    'general'
-  ],
-  'js' => [
-    'general'
-  ]
-]);
+load_assets(array(
+    'css' => array(
+      'general'
+    ),
+    'less' => array(
+      'general'
+    ),
+    'js' => array(
+      'general'
+    )
+  ));
