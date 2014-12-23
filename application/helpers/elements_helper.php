@@ -143,6 +143,54 @@ if (!function_exists('css_controller')) {
 
 }
 
+if (!function_exists('less_controller')) {
+
+  /**
+   * Incluye un archivo less de un controlador, debe
+   * llamarse asi: less_controller("mi_controlador");
+   * 
+   * @param string $controller Es el controlador del que se requiere
+   * el LESS.
+   * 
+   * @param array $params Son los parametros opcionales como:
+   * 
+   * string <b>$file</b> Es el nombre del archivo LESS (sin la
+   * extensión) del controlador que se incluira, general (general.less)
+   * por defecto.
+   * 
+   * string <b>$and_method</b> Indica si debe incluir el LESS
+   * estandar para la vista. Por ejemplo si la URI es <i>my_ci/home/help</i>
+   * el archivo a incluir de manera automatica es:
+   * <i>my_ci/assets/less/home/help.less</i>
+   * 
+   * boolean <b>$only_return</b> si es true el resultado sera
+   * retornado en lugar de ser impreso con un echo de manera
+   * automatica.
+   * 
+   * @return string/html código html para cumplir la funcion.
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 2014/12/23
+   */
+  function less_controller($controller, $params = '') {
+    $file = isset($params['file']) ? $params['file'] : 'general';
+    $only_return = isset($params['only_return']) ? $params['only_return'] : false;
+    $and_method = isset($params['and_method']) ? $params['and_method'] : false;
+    $uri_segment = explode('/', $controller);
+    $uri_controller = 'assets/less/' . $uri_segment[0] . '/' . $file . '.less';
+    $html = file_exists($uri_controller) ? '<link href="' . base_url() . $uri_controller . '" rel="stylesheet" type="text/less">' : '';
+    if ($and_method) {
+      $uri_method = 'assets/less/' . $uri_segment[0] . '/' . $uri_segment[1] . '.less';
+      $html .= file_exists($uri_method) ? '<link href="' . base_url() . $uri_method . '" rel="stylesheet" type="text/less">' : '';
+    }
+    if ($only_return)
+      return $html;
+    else
+      echo $html;
+  }
+
+}
+
 if (!function_exists('base_url_js')) {
 
   /**
