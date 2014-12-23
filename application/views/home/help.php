@@ -9,10 +9,6 @@
 
 <?php
 
-//js_controller('home', 'help');
-
-js_tag('home/help');
-
 $elements_images = array(
   'slider/5.jpg',
   'slider/6.jpg',

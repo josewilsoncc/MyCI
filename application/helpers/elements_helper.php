@@ -74,15 +74,47 @@ if (!function_exists('js_controller')) {
   function js_controller($controller, $params='') {
     $file = isset($params['file']) ? $params['file'] : 'general';
     $only_return = isset($params['only_return']) ? $params['only_return'] : false;
+    $and_method = isset($params['and_method']) ? $params['and_method'] : false;
     $uri_segment = explode('/', $controller);
-    $uri = 'assets/js/' . $uri_segment[0] . '/' . $file . '.js';
-    $html = file_exists($uri) ? '<script type="text/javascript" src="' . base_url() . $uri . '"></script>' : '';
+    $uri_controller = 'assets/js/' . $uri_segment[0] . '/' . $file . '.js';
+    $html = file_exists($uri_controller) ? '<script type="text/javascript" src="' . base_url() . $uri_controller . '"></script>' : '';
+    if($and_method){
+      $uri_method = 'assets/js/' . $uri_segment[1] . '/' . $file . '.js';
+      $html = file_exists($uri_method) ? '<script type="text/javascript" src="' . base_url() . $uri_method . '"></script>' : '';
+    }
     if($only_return)
       return $html;
     else
       echo $html;
   }
 
+}
+
+if (!function_exists('js_view')) {
+
+  /**
+   * Incluye un archivo javascritp de un controlador, debe
+   * llamarse asi: js_controller("mi_controlador");
+   * 
+   * @param string $controller Es el controlador del que se requiere
+   * el JavaScript.
+   * 
+   * @param array $params Son los parametros opcionales como:
+   * 
+   * string <b>$file</b> Es el nombre del archivo JavaScript sin la
+   * extensión del controlador que se incluira, general (general.js)
+   * por defecto.
+   * 
+   * boolean <b>$only_return</b> si es true el resultado sera
+   * retornado en lugar de ser impreso con un echo de manera
+   * automatica.
+   * 
+   * @return string/html código html para cumplir la funcion.
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 16/11/2014
+   * @update 19/12/1014
+   */
 }
 
 if (!function_exists('base_url_js')) {

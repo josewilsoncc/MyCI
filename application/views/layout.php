@@ -6,7 +6,7 @@
     $this->load->view('templates/header');
     $this->load->view($content);
     $this->load->view('templates/footer');
-    echo js_controller($content);
+    js_controller($content, array('and_method'=>true));
     ?>
   </body>
 </html>
