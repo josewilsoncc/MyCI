@@ -14,7 +14,7 @@ class Home extends CI_Controller {
    */
 
   public function index() {
-    if (!is_login())
+    if (is_login())
       $this->load->view('layout', array(
         'content' => 'home/welcome'
       ));

@@ -25,7 +25,10 @@
     'css' => array(
       'default/bootstrap/bootstrap.min',
       'default/bootstrap/bootstrap-theme.min',
-      'default/icons'
+      'default/icons',
+      'default/alertify/alertify.core',
+      'default/alertify/alertify.default',
+      'default/alertify/custom'
     ),
     'less' => array(
       'default/basic'
@@ -35,6 +38,7 @@
       'default/jquery/jquery-ui.min',
       'default/bootstrap.min',
       'default/less.min',
+      'default/alertify',
       'default/my_ci'
     )
   ));
