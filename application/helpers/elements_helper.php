@@ -70,19 +70,18 @@ if (!function_exists('js_controller')) {
    * @date 16/11/2014
    * @update 19/12/1014
    */
-  
-  function js_controller($controller, $params='') {
+  function js_controller($controller, $params = '') {
     $file = isset($params['file']) ? $params['file'] : 'general';
     $only_return = isset($params['only_return']) ? $params['only_return'] : false;
     $and_method = isset($params['and_method']) ? $params['and_method'] : false;
     $uri_segment = explode('/', $controller);
     $uri_controller = 'assets/js/' . $uri_segment[0] . '/' . $file . '.js';
     $html = file_exists($uri_controller) ? '<script type="text/javascript" src="' . base_url() . $uri_controller . '"></script>' : '';
-    if($and_method){
-      $uri_method = 'assets/js/' . $uri_segment[1] . '/' . $file . '.js';
-      $html = file_exists($uri_method) ? '<script type="text/javascript" src="' . base_url() . $uri_method . '"></script>' : '';
+    if ($and_method) {
+      $uri_method = 'assets/js/' . $uri_segment[0] . '/' . $uri_segment[1] . '.js';
+      $html .= file_exists($uri_method) ? '<script type="text/javascript" src="' . base_url() . $uri_method . '"></script>' : '';
     }
-    if($only_return)
+    if ($only_return)
       return $html;
     else
       echo $html;
@@ -467,9 +466,9 @@ if (!function_exists('caruosel')) {
       <div id="<?php echo $id; ?>" class="carousel slide" data-interval="<?php echo $interval; ?>" data-ride="carousel">
         <!-- Carousel indicators -->
         <ol class="carousel-indicators alpha_hover_10">
-    <?php
-    for ($i = 0; $i < count($elements); $i++) {
-      ?>
+          <?php
+          for ($i = 0; $i < count($elements); $i++) {
+            ?>
             <li data-target="#<?php echo $id; ?>" data-slide-to="<?php echo $i; ?>" class="<?php echo $selected == $i ? 'active' : ''; ?>"></li>
             <?php
           }
@@ -477,29 +476,29 @@ if (!function_exists('caruosel')) {
         </ol>  
         <!-- Carousel items -->
         <div class="carousel-inner">
-    <?php
-    $i = 0;
-    switch ($type) {
-      case 'images':
-      case 'hiden_images':
-        foreach ($elements as $key => $value) {
-          ?>
+          <?php
+          $i = 0;
+          switch ($type) {
+            case 'images':
+            case 'hiden_images':
+              foreach ($elements as $key => $value) {
+                ?>
                 <div class="<?php
-                echo $class_slide . ' ';
-                echo $i == $selected ? 'active' : '';
+          echo $class_slide . ' ';
+          echo $i == $selected ? 'active' : '';
                 ?> item">
                   <center><img  class="img-rounded <?php echo $class_images; ?>" src="<?php echo base_url(); ?>assets/images/<?php echo $value; ?>"></center>
                 </div>
-                     <?php
-                     $i++;
-                   }
-                   break;
-                 case 'basic':
-                   foreach ($elements as $key => $value) {
-                     ?>
+                <?php
+                $i++;
+              }
+              break;
+            case 'basic':
+              foreach ($elements as $key => $value) {
+                ?>
                 <div class="<?php
-                echo $class_slide . ' ';
-                echo $i == $selected ? 'active' : '';
+          echo $class_slide . ' ';
+          echo $i == $selected ? 'active' : '';
                 ?> item">
                   <h2 class="<?php echo $class_basic_title; ?>"><?php echo $key; ?></h2>
                   <div class="carousel-caption">
@@ -507,12 +506,12 @@ if (!function_exists('caruosel')) {
                     <p><?php echo $value['text']; ?></p>
                   </div>
                 </div>
-          <?php
-          $i++;
-        }
-        break;
-    }
-    ?>
+                <?php
+                $i++;
+              }
+              break;
+          }
+          ?>
           <!-- Carousel nav -->
           <a class="carousel-control left" href="#<?php echo $id; ?>" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
