@@ -14,24 +14,34 @@ class Auth_model extends CI_Model {
   }
 
   /**
-   * Esta funcion sirve para iniciar sesión en el sistema, verficicando
-   * a traves de la base de datos si el usuario existe
+   * Esta función sirve para iniciar sesión en el sistema, verificicando
+   * a traves de la base de datos si se cumplen las condiciones.
    * 
-   * @param $username Es el usuario con el que se inicia sesión
-   * @param $password Es el password del usuario con el que se
-   * inicia sesión
+   * @param $table Es la tabla contra la que se pretende verificar
+   * el inicio de sesión.
+   * 
+   * @param array $params Son los parametros como:
+   * 
+   * string <b>$select</b> contiene todos los campos de la tabla a
+   * seleccionar separados por coma y espacios.
+   * 
+   * array <b>$where</b> contiene todos las condiciones que se deben
+   * de cumplir para un inicio de sesión exitoso. Ejemplo:
+   * 
+   * array(
+   *  'estado'=>'A',
+   *  'codusu'=>$username
+   *  'contraseña'=>$password
+   * )
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @autor Alvaro Javier Vanegas Ochoa, alvarovanegas18@gmail.com
    * @date 12/12/2014
-   * @note Esta funcion debe de adaptarse al sistema, por ejemplo en la
-   * fabrica el password no esta almacenado en la base de datos de la
-   * manera estandar.
    */
   public function attempt($table, $params) {
-    $select = $params['select']?$params['select']:'*';
-    $where = $params['where']?$params['where']:'*';
-    
+    $select = $params['select'] ? $params['select'] : '*';
+    $where = $params['where'] ? $params['where'] : '*';
+
     $this->db->select($select);
     $this->db->from($table);
     $this->db->where($where);

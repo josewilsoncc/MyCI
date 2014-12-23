@@ -6,37 +6,43 @@ class Auth extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
-    //$this->load->library('encryption');
   }
 
   /*
    * [view]
    * Muestra la vista de inicio de sesión, si el usuario ya esta logeado
-   * lo redirecciona al menú.
+   * lo redirecciona al home.
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    */
   public function index() {
     if (!is_login())
       $this->load->view('layout', array('content' => 'auth/form_login'));
     else
-      redirect('home/index', 'refresh');
+      redirect('home/index');
   }
 
   /*
    * [method]
    * Realiza un logeo y redirecciona a la vista pertinente de ser
    * exitoso o fallido.
+   * 
+   * @date 2014/12/23
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    */
   public function log_in() {
     $this->load->model('auth_model');
 
-    //[cambiar]Reglas de validacion de datos
+    /*
+     * Reglas de validación por defecto, pueden ser modificadas a su gusto
+     */
     $this->form_validation->set_rules('username', 'Usuario', 'required|alpha_numeric|min_length[2]|max_length[150]|xss_clean');
     $this->form_validation->set_rules('password', 'Contraseña', 'required|alpha_numeric_spaces|min_length[5]|max_length[20]|xss_clean');
 
     //Verificando si las reglas no se cumplen
     if (!$this->form_validation->run()) {
       $this->session->set_flashdata('error', validation_errors());
-      redirect('auth/index', 'refresh');
+      redirect('auth/index');
     } else {
       $username = $this->input->post('username');
       $password = $this->input->post('password');
@@ -71,14 +77,24 @@ class Auth extends CI_Controller {
           'admin' => trim($check_user->codusu)==='ibg'
         );
         $this->session->set_userdata($data);
-        redirect('home/index', 'refresh');
+        redirect('home/index');
       } else {
         $this->session->set_flashdata('error', 'Error en los datos ingresados');
-        redirect('auth/index', 'refresh');
+        redirect('auth/index');
       }
     }
   }
   
+  /*
+   * Verifica si el usuario y password son correctos, se usa para sistemas
+   * de base de datos como informix.
+   * 
+   * @return true si es exitoso, false de los contrario.
+   * 
+   * @date 2014/12/23
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @autor Alvaro Javier Vanegas Ochoa, alvarovanegas18@gmail.com
+   */
   private function ftp_attempt($ip, $username, $password){
       return @ftp_login(@ftp_connect($ip), $username, $password);
   }
@@ -86,10 +102,13 @@ class Auth extends CI_Controller {
   /*
    * [method]
    * Cierra la sesión y redirecciona al index
+   * 
+   * @date 2014/12/23
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    */
   public function close_session() {
     $this->session->sess_destroy();
-    redirect('home/index', 'refresh');
+    redirect('home/index');
   }
 
 }
