@@ -60,6 +60,11 @@ if (!function_exists('js_controller')) {
    * extensión del controlador que se incluira, general (general.js)
    * por defecto.
    * 
+   * string <b>$and_method</b> Indica si debe incluir el JavaScript
+   * estandar para la vista. Por ejemplo si la URI es <i>my_ci/home/help</i>
+   * el archivo a incluir de manera automatica es:
+   * <i>my_ci/assets/js/home/help.js</i>
+   * 
    * boolean <b>$only_return</b> si es true el resultado sera
    * retornado en lugar de ser impreso con un echo de manera
    * automatica.
@@ -87,33 +92,6 @@ if (!function_exists('js_controller')) {
       echo $html;
   }
 
-}
-
-if (!function_exists('js_view')) {
-
-  /**
-   * Incluye un archivo javascritp de un controlador, debe
-   * llamarse asi: js_controller("mi_controlador");
-   * 
-   * @param string $controller Es el controlador del que se requiere
-   * el JavaScript.
-   * 
-   * @param array $params Son los parametros opcionales como:
-   * 
-   * string <b>$file</b> Es el nombre del archivo JavaScript sin la
-   * extensión del controlador que se incluira, general (general.js)
-   * por defecto.
-   * 
-   * boolean <b>$only_return</b> si es true el resultado sera
-   * retornado en lugar de ser impreso con un echo de manera
-   * automatica.
-   * 
-   * @return string/html código html para cumplir la funcion.
-   * 
-   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
-   * @date 16/11/2014
-   * @update 19/12/1014
-   */
 }
 
 if (!function_exists('base_url_js')) {
