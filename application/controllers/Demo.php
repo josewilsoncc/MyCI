@@ -35,4 +35,8 @@ class Demo extends CI_Controller{
   public function carousel_basic(){
     $this->load->view('layout', array('content' => 'demo/carousel_basic'));
   }
+  
+  public function toastr() {
+    $this->load->view('layout', array('content' => 'demo/toastr'));
+  }
 }

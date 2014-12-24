@@ -7,7 +7,7 @@
       </a>
       <a href="<?php echo base_url(); ?>demo/show_message" class="list-group-item">Bootstrap</a>
       <a href="<?php echo base_url(); ?>demo/alertify" class="list-group-item">Alertify</a>
-      <a href="#" class="list-group-item">Toastr (Muy prónto)</a>
+      <a href="<?php echo base_url(); ?>demo/toastr" class="list-group-item">Toastr</a>
     </div>
   </div>
   <div class="col-lg-4">

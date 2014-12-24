@@ -27,7 +27,8 @@
       'default/bootstrap/bootstrap-theme.min',
       'default/icons',
       'default/alertify/alertify.core',
-      'default/alertify/alertify.bootstrap'
+      'default/alertify/alertify.bootstrap',
+      'default/toastr.min'
     ),
     'less' => array(
       'default/basic',
@@ -38,6 +39,7 @@
       'default/bootstrap.min',
       'default/less.min',
       'default/alertify.min',
+      'default/toastr.min',
       'default/my_ci'
     )
   ));
