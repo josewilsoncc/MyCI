@@ -1,5 +1,7 @@
 <?php
+
 if (!function_exists('validate_date')) {
+
   /**
    * Verifica si una fecha coincide con un formato dado
    * @param string $date fecha a verificar.
@@ -38,7 +40,6 @@ if (!function_exists('validate_date')) {
    * @date 2014/11/26
    * @note Requiere los CSS bootstrap y text_style.
    */
-
   function validate_date($date, $format = 'Y-m-d') {
     $d = DateTime::createFromFormat($format, $date);
     return $d && $d->format($format) == $date;
@@ -47,6 +48,7 @@ if (!function_exists('validate_date')) {
 }
 
 if (!function_exists('generate_random_string')) {
+
   /**
    * Genera una String aleatoria con el tamaña y los caracteres espeficicados
    * 
@@ -57,7 +59,6 @@ if (!function_exists('generate_random_string')) {
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 2014/11/26
    */
-  
   function generate_random_string($length = 10, $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {
     $randomString = '';
     for ($i = 0; $i < $length; $i++)
@@ -68,6 +69,7 @@ if (!function_exists('generate_random_string')) {
 }
 
 if (!function_exists('unserialized')) {
+
   /**
    * Obtiene el valor del elemento indicado de un form serializado enviado
    * por ajax usando Jquery.
@@ -80,10 +82,9 @@ if (!function_exists('unserialized')) {
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 2014/12/10
    */
-
   function unserialized($data, $searched_key) {
-    for($i=0; $i<count($data);$i++)
-      if($data[$i]['name']==$searched_key)
+    for ($i = 0; $i < count($data); $i++)
+      if ($data[$i]['name'] == $searched_key)
         return $data[$i]['value'];
     return false;
   }
@@ -91,23 +92,53 @@ if (!function_exists('unserialized')) {
 }
 
 if (!function_exists('is_login')) {
-  function is_login(){
-    $ci =& get_instance();
+
+  function is_login() {
+    $ci = & get_instance();
     return $ci->session->userdata('is_logued_in');
   }
+
 }
 
 if (!function_exists('is_admin')) {
-  function is_admin(){
-    $ci =& get_instance();
+
+  function is_admin() {
+    $ci = & get_instance();
     return $ci->session->userdata('admin');
   }
+
 }
 
 if (!function_exists('only_admin')) {
-  function only_admin(){
+
+  function only_admin() {
     if (!is_admin())
       redirect(base_url());
+  }
+
+}
+
+/**
+ * Cierra sesión y redirecciona segun los parametros
+ * 
+ * @param array $params Es un arreglo de parametros opcionales como:
+ * 
+ * boolean <b>$redirect</b> Indica si se redirecciona o no, TRUE por defecto.
+ * 
+ * string <b>$url_redirect</b> Es la url a redireccionar, base_url por defecto.
+ * 
+ * @autor Alvaro Javier Vanegas Ochoa, alvarovanegas18@gmail.com
+ * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+ * @date 2014/12/24
+ */
+if (!function_exists('close_session')) {
+  function close_session($params = '') {
+    $redirect = $params['redirect'] ? $params['redirect'] : true;
+    $url_redirect = $params['url_redirect'] ? base_url() . $params['url_redirect'] : base_url();
+    $ci = & get_instance();
+    $ci->session->sess_destroy();
+    if ($redirect)
+      redirect($url_redirect);
   }
 }
 ?>
