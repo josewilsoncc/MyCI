@@ -80,9 +80,10 @@ if (!function_exists('js_controller')) {
     $only_return = isset($params['only_return']) ? $params['only_return'] : false;
     $and_method = isset($params['and_method']) ? $params['and_method'] : false;
     $uri_segment = explode('/', $controller);
-    $uri_controller = 'assets/js/' . $uri_segment[0] . '/' . $file . '.js';
+    if(count($uri_segment)>=1)
+      $uri_controller = 'assets/js/' . $uri_segment[0] . '/' . $file . '.js';
     $html = file_exists($uri_controller) ? '<script type="text/javascript" src="' . base_url() . $uri_controller . '"></script>' : '';
-    if ($and_method) {
+    if ($and_method && count($uri_segment)>=2) {
       $uri_method = 'assets/js/' . $uri_segment[0] . '/' . $uri_segment[1] . '.js';
       $html .= file_exists($uri_method) ? '<script type="text/javascript" src="' . base_url() . $uri_method . '"></script>' : '';
     }
@@ -129,9 +130,10 @@ if (!function_exists('css_controller')) {
     $only_return = isset($params['only_return']) ? $params['only_return'] : false;
     $and_method = isset($params['and_method']) ? $params['and_method'] : false;
     $uri_segment = explode('/', $controller);
-    $uri_controller = 'assets/css/' . $uri_segment[0] . '/' . $file . '.css';
+    if (count($uri_segment)>=1)
+      $uri_controller = 'assets/css/' . $uri_segment[0] . '/' . $file . '.css';
     $html = file_exists($uri_controller) ? '<link href="' . base_url() . $uri_controller . '" rel="stylesheet" type="text/css">' : '';
-    if ($and_method) {
+    if ($and_method && count($uri_segment)>=2) {
       $uri_method = 'assets/css/' . $uri_segment[0] . '/' . $uri_segment[1] . '.css';
       $html .= file_exists($uri_method) ? '<link href="' . base_url() . $uri_method . '" rel="stylesheet" type="text/css">' : '';
     }
@@ -177,9 +179,10 @@ if (!function_exists('less_controller')) {
     $only_return = isset($params['only_return']) ? $params['only_return'] : false;
     $and_method = isset($params['and_method']) ? $params['and_method'] : false;
     $uri_segment = explode('/', $controller);
-    $uri_controller = 'assets/less/' . $uri_segment[0] . '/' . $file . '.less';
+    if (count($uri_segment)>=1)
+      $uri_controller = 'assets/less/' . $uri_segment[0] . '/' . $file . '.less';
     $html = file_exists($uri_controller) ? '<link href="' . base_url() . $uri_controller . '" rel="stylesheet" type="text/less">' : '';
-    if ($and_method) {
+    if ($and_method && count($uri_segment)>=2) {
       $uri_method = 'assets/less/' . $uri_segment[0] . '/' . $uri_segment[1] . '.less';
       $html .= file_exists($uri_method) ? '<link href="' . base_url() . $uri_method . '" rel="stylesheet" type="text/less">' : '';
     }
