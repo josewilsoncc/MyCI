@@ -1,24 +1,10 @@
 <style type="text/css">
   h2{   
-    color: #666;
-    //padding-top: 90px;
-    //font-size: 52px;
-    //font-family: "trebuchet ms", sans-serif;    
+    color: #666; 
   }
 </style>
 
 <?php
-
-/*
-$elements_images = array(
-  'slider/5.jpg',
-  'slider/6.jpg',
-  'slider/8.jpg',
-  'slider/haceb.jpg'
-);*/
-//caruosel($elements_images, array('id'=>'a', 'type'=>'hiden_images', 'hidden_images_title'=>'¡Ver nuevas promociones!', 'class_images'=>'width_100 max_width_600_px', 'class_slide'=>'bg_dark_gray text_white'));
-
-
 $elements = array(
   '<br>Presentación 1' => array(
     'label' => 'Este es el primer ejemplo',
