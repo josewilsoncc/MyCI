@@ -107,8 +107,7 @@ class Auth extends CI_Controller {
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    */
   public function close_session() {
-    $this->session->sess_destroy();
-    redirect('home/index');
+    close_session(array('redirect'=>'home/index'));
   }
 
 }
