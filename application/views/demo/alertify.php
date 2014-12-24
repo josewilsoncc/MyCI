@@ -1,4 +1,3 @@
-<br>
 <center>
   <h2>Dialogs</h2>
   <a href="#" id="alert">Alert Dialog</a><br>
