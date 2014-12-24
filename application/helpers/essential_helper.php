@@ -133,8 +133,8 @@ if (!function_exists('only_admin')) {
  */
 if (!function_exists('close_session')) {
   function close_session($params = '') {
-    $redirect = $params['redirect'] ? $params['redirect'] : true;
-    $url_redirect = $params['url_redirect'] ? base_url() . $params['url_redirect'] : base_url();
+    $redirect = isset($params['redirect']) ? $params['redirect'] : true;
+    $url_redirect = isset($params['url_redirect']) ? base_url() . $params['url_redirect'] : base_url();
     $ci = & get_instance();
     $ci->session->sess_destroy();
     if ($redirect)
