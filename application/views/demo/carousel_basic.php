@@ -1,9 +1,3 @@
-<style type="text/css">
-  h2{   
-    color: #666; 
-  }
-</style>
-
 <?php
 $elements = array(
   '<br>Presentación 1' => array(
