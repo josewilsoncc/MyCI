@@ -27,18 +27,17 @@
       'default/bootstrap/bootstrap-theme.min',
       'default/icons',
       'default/alertify/alertify.core',
-      'default/alertify/alertify.default',
-      'default/alertify/custom'
+      'default/alertify/alertify.bootstrap'
     ),
     'less' => array(
-      'default/basic'
+      'default/basic',
     ),
     'js' => array(
       'default/jquery/jquery.min',
       'default/jquery/jquery-ui.min',
       'default/bootstrap.min',
       'default/less.min',
-      'default/alertify',
+      'default/alertify.min',
       'default/my_ci'
     )
   ));
