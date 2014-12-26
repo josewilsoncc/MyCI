@@ -327,12 +327,15 @@ if (!function_exists('load_assets')) {
    * @date 19/12/2014
    */
   function load_assets($assets) {
-    foreach ($assets['css'] as $value)
-      css_tag($value);
-    foreach ($assets['less'] as $value)
-      less_tag($value);
-    foreach ($assets['js'] as $value)
-      js_tag($value);
+    if(isset($assets['css']))
+      foreach ($assets['css'] as $value)
+        css_tag($value);
+    if(isset($assets['less']))
+      foreach ($assets['less'] as $value)
+        less_tag($value);
+    if(isset($assets['js']))
+      foreach ($assets['js'] as $value)
+        js_tag($value);
   }
 
 }
