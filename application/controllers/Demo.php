@@ -39,4 +39,8 @@ class Demo extends CI_Controller{
   public function toastr() {
     $this->load->view('layout', array('content' => 'demo/toastr'));
   }
+  
+  public function coverflow() {
+    $this->load->view('layout', array('content' => 'demo/coverflow'));
+  }
 }
