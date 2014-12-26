@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <?php $this->load->view('templates/head'); ?>
-  <body class='bs-docs-home'>
+  <body>
     <?php
     $this->load->view('templates/header');
     $this->load->view($content);
