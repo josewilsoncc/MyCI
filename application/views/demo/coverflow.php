@@ -9,9 +9,9 @@
       'js' => array(
         'default/jquery/jquery.coverflow',
         'default/jquery/jquery.interpolate',
-        'default/jquery/jquery.mousewheel',
+        'default/jquery/jquery.mousewheel.min',
         'default/jquery/jquery.touchSwipe.min',
-        'default/jquery/reflection.js'
+        'default/jquery/reflection'
       )
     ));
     ?>
