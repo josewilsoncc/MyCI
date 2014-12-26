@@ -42,7 +42,6 @@ if (!function_exists('js_tag')) {
     else
       echo $html;
   }
-
 }
 
 if (!function_exists('js_controller')) {
