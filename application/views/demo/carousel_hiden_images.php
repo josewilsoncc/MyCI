@@ -1,9 +1,9 @@
 <?php
 $elements_images = array(
-  'slider/5.jpg',
-  'slider/6.jpg',
-  'slider/8.jpg',
-  'slider/haceb.jpg'
+  'demo/slider/5.jpg',
+  'demo/slider/6.jpg',
+  'demo/slider/8.jpg',
+  'demo/slider/haceb.jpg'
 );
 caruosel($elements_images, array(
   'id' => 'a',
