@@ -9,6 +9,7 @@
  * @date 2014/12/29
  */
 
+//Instancia de CodeIgniter (this)
 $ci = & get_instance();
 
 //Carga de Helpers de CI
