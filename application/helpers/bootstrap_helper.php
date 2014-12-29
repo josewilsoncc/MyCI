@@ -30,6 +30,7 @@ $ci->load->driver(array(
 
 //Carga de Helpers del framework
 $ci->load->helper(array(
+  'assets',
   'essential',
   'elements'
 ));
