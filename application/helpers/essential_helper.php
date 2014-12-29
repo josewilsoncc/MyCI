@@ -1,5 +1,29 @@
 <?php
 
+if (!function_exists('base_url_images')) {
+
+  /**
+   *
+   * Genera la url base de las imagenes siguiendo el estandar
+   * 
+   * @params array $params Son los parametros opcionales como:
+   * 
+   * boolean <b>$only_return</b> si es true el resultado sera
+   * retornado en lugar de ser impreso con un echo de manera
+   * automatica.
+   * 
+   * @return url base para uso de imagenes
+   */
+  function base_url_images($params = '') {
+    $only_return = isset($params['only_return']) ? $params['only_return'] : false;
+    if ($only_return)
+      return base_url() . 'assets/images/';
+    else
+      echo base_url() . 'assets/images/';
+  }
+
+}
+
 if (!function_exists('validate_date')) {
 
   /**
@@ -118,20 +142,21 @@ if (!function_exists('only_admin')) {
 
 }
 
-/**
- * Cierra sesión y redirecciona segun los parametros
- * 
- * @param array $params Es un arreglo de parametros opcionales como:
- * 
- * boolean <b>$redirect</b> Indica si se redirecciona o no, TRUE por defecto.
- * 
- * string <b>$url_redirect</b> Es la url a redireccionar, base_url por defecto.
- * 
- * @autor Alvaro Javier Vanegas Ochoa, alvarovanegas18@gmail.com
- * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
- * @date 2014/12/24
- */
 if (!function_exists('close_session')) {
+
+  /**
+   * Cierra sesión y redirecciona segun los parametros
+   * 
+   * @param array $params Es un arreglo de parametros opcionales como:
+   * 
+   * boolean <b>$redirect</b> Indica si se redirecciona o no, TRUE por defecto.
+   * 
+   * string <b>$url_redirect</b> Es la url a redireccionar, base_url por defecto.
+   * 
+   * @autor Alvaro Javier Vanegas Ochoa, alvarovanegas18@gmail.com
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 2014/12/24
+   */
   function close_session($params = '') {
     $redirect = isset($params['redirect']) ? $params['redirect'] : true;
     $url_redirect = isset($params['url_redirect']) ? base_url() . $params['url_redirect'] : base_url();
@@ -140,5 +165,6 @@ if (!function_exists('close_session')) {
     if ($redirect)
       redirect($url_redirect);
   }
+
 }
 ?>

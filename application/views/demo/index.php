@@ -18,7 +18,7 @@
       <a href="<?php echo base_url(); ?>demo/carousel" class="list-group-item">Carrusel Standar</a>
       <a href="<?php echo base_url(); ?>demo/carousel_hiden_images" class="list-group-item">Carrusel Hiden Images</a>
       <a href="<?php echo base_url(); ?>demo/carousel_basic" class="list-group-item">Carrusel Basic</a>
-      <a href="#" class="list-group-item">Coverflow (Muy pronto)</a>
+      <a href="<?php echo base_url(); ?>demo/coverflow" class="list-group-item">Coverflow</a>
     </div>
   </div>
 </div>
