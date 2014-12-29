@@ -19,7 +19,7 @@ if (!function_exists('js_tag')) {
    * se hace de esta manera: js_tag('mi_javascript');
    * sin importar desde que archivo o ruta se llame.
    * 
-   * @param array $params Son los parametros opcionales como:
+   * @params array $params Son los parametros opcionales como:
    * 
    * boolean <b>$url_variant</b> debe ponerse en true si la url
    * varia del directorio assets/js
@@ -337,14 +337,45 @@ if (!function_exists('load_assets')) {
    */
   function load_assets($assets) {
     if (isset($assets['css']))
-      foreach ($assets['css'] as $value)
+      foreach (string_pattern($assets['css']) as $value)
         css_tag($value);
     if (isset($assets['less']))
-      foreach ($assets['less'] as $value)
+      foreach (string_pattern($assets['less']) as $value)
         less_tag($value);
     if (isset($assets['js']))
-      foreach ($assets['js'] as $value)
+      foreach (string_pattern($assets['js']) as $value)
         js_tag($value);
   }
 
+}
+
+if (!function_exists('string_pattern')) {
+
+  /**
+   * Genera de manera simple un arreglo que cumple un patron en sus rutas.
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 29/12/2014
+   */
+
+  function string_pattern($elements, $route = '', $separator = '/', $start = true) {
+    $return_routes = array();
+    foreach ($elements as $pattern => $routes) {
+      if (isset($routes)) {
+        if (gettype($routes) == "string")
+          if (gettype($pattern) == "string")
+            $return_routes[] = $start ? $route . $pattern . $separator . $routes : $route . $separator . $pattern . $separator . $routes;
+          else
+            $return_routes[] = $start ? $route . $routes : $route . $separator . $routes;
+        if (gettype($routes) == "array") {
+          $temp_route = $start ? $route . $pattern : $route . $separator . $pattern;
+          $temp = string_pattern($routes, $temp_route, $separator, FALSE);
+          foreach ($temp as $value)
+            $return_routes[] = $value;
+        }
+      } else
+        $return_routes[] = $start ? $route . $pattern : $route . $separator . $pattern;
+    }
+    return $return_routes;
+  }
 }

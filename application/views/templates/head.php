@@ -21,26 +21,37 @@
   /*
    * Cargar assets del proyecto
    */
+  
   load_assets(array(
     'css' => array(
-      'default/bootstrap/bootstrap.min',
-      'default/bootstrap/bootstrap-theme.min',
-      'default/icons',
-      'default/alertify/alertify.core',
-      'default/alertify/alertify.bootstrap',
-      'default/toastr.min'
+      'default' => array(
+        'bootstrap' => array(
+          'bootstrap.min',
+          'bootstrap-theme.min'
+        ),
+        'icons',
+        'alertify' => array(
+          'alertify.core',
+          'alertify.bootstrap'
+        ),
+        'toastr.min'
+      )
     ),
     'less' => array(
       'default/basic',
     ),
     'js' => array(
-      'default/jquery/jquery.min',
-      'default/jquery/jquery-ui.min',
-      'default/bootstrap.min',
-      'default/less.min',
-      'default/alertify.min',
-      'default/toastr.min',
-      'default/my_ci'
+      'default'=>array(
+        'jquery'=>array(
+          'jquery.min',
+          'jquery-ui.min'
+        ),
+        'bootstrap.min',
+        'less.min',
+        'alertify.min',
+        'toastr.min',
+        'my_ci'
+      )
     )
   ));
 

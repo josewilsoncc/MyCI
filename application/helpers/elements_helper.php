@@ -223,8 +223,8 @@ if (!function_exists('caruosel')) {
               foreach ($elements as $key => $value) {
                 ?>
                 <div class="<?php
-          echo $class_slide . ' ';
-          echo $i == $selected ? 'active' : '';
+                echo $class_slide . ' ';
+                echo $i == $selected ? 'active' : '';
                 ?> item">
                   <center><img  class="img-rounded <?php echo $class_images; ?>" src="<?php echo base_url(); ?>assets/images/<?php echo $value; ?>"></center>
                 </div>
@@ -236,8 +236,8 @@ if (!function_exists('caruosel')) {
               foreach ($elements as $key => $value) {
                 ?>
                 <div class="<?php
-          echo $class_slide . ' ';
-          echo $i == $selected ? 'active' : '';
+                echo $class_slide . ' ';
+                echo $i == $selected ? 'active' : '';
                 ?> item">
                   <h2 class="<?php echo $class_basic_title; ?>"><?php echo $key; ?></h2>
                   <div class="carousel-caption">
@@ -261,6 +261,97 @@ if (!function_exists('caruosel')) {
         </div>
       </div>
     </div>
+    <?php
+  }
+
+}
+
+if (!function_exists('coverflow')) {
+
+  function coverflow($elements, $params = '') {
+    $elements = string_pattern($elements);
+    $index = isset($params['index']) ? $params['index'] : (int)(count($elements)/2);
+    $density = isset($params['density']) ? $params['density'] : 2;
+    $innerOffset = isset($params['inner_offset']) ? $params['inner_offset'] : 50;
+    $innerScale = isset($params['innerScale']) ? $params['innerScale'] : .5;
+    $on_confirm= isset($params['on_confirm']) ? $params['on_confirm'] : 'coverflow_confirm';
+    
+    load_assets(array('js' => array(
+        'default/jquery' => array(
+          'jquery.coverflow',
+          'jquery.interpolate',
+          'jquery.mousewheel.min',
+          'jquery.touchSwipe.min',
+          'reflection'
+        )
+    )));
+    ?>
+    <center>
+      <div id="view-coverflow">
+        <?php
+        foreach ($elements as $value)
+          echo '<img class="cover" src="' . base_url_images(array('only_return' => true)) . $value . '"/>';
+        ?>
+      </div>
+    </center>
+    <style>
+      #view-coverflow{
+        cursor:		pointer;
+        width:		95%;
+        max-height: 50% !important;
+      }
+
+      .cover {
+        cursor:		pointer;
+        width: 50% !important;
+        max-width: 320px;
+        max-height: 50%;
+      }
+
+      .cover img{
+        width: 100% !important;
+        height: auto;
+      }
+
+      #view-coverflow canvas{
+        width: 100% !important;
+      }
+    </style>
+    <script>
+      $(function () {
+        if ($.fn.reflect) {
+          $('#view-coverflow .cover').reflect();	// only possible in very specific situations
+        }
+
+        $('#view-coverflow').coverflow({
+          index: <?php echo $index; ?>,
+          density: <?php echo $density; ?>,
+          innerOffset: <?php echo $innerOffset; ?>,
+          innerScale: <?php echo $innerScale; ?>,
+          confirm: function (event, cover, index){
+            <?php echo $on_confirm; ?>(event, cover, index);
+          },
+          animateStep: function (event, cover, offset, isVisible, isMiddle, sin, cos) {
+            if (isVisible) {
+              if (isMiddle) {
+                $(cover).css({
+                  'filter': 'none',
+                  '-webkit-filter': 'none'
+                });
+              } else {
+                var brightness = 1 + Math.abs(sin),
+                        contrast = 1 - Math.abs(sin),
+                        filter = 'contrast(' + contrast + ') brightness(' + brightness + ')';
+                $(cover).css({
+                  'filter': filter,
+                  '-webkit-filter': filter
+                });
+              }
+            }
+          }
+        });
+      });
+    </script>
     <?php
   }
 
