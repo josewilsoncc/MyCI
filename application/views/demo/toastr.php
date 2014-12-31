@@ -262,3 +262,4 @@
     })
   </script>
 </div>
+<?php footer('Jose Wilson Capera Castaño - josewilsoncc@hotmail.com'); ?>

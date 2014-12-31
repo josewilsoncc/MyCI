@@ -18,3 +18,5 @@ $elements = array(
   )
 );
 caruosel($elements, array('id'=>'a', 'type'=>'basic', 'class_slide'=>'height_300_px text_center bg_dark_gray text_white', 'class_basic_title'=>'margin_0'));
+
+footer('Jose Wilson Capera Castaño - josewilsoncc@hotmail.com');

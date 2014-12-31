@@ -29,9 +29,16 @@ $ci->load->driver(array(
   'session'
 ));
 
-//Carga de Helpers del framework
+//Carga de Helpers de My CI
 $ci->load->helper(array(
   'assets',
   'essential',
   'elements'
 ));
+
+//Carga de Models de My CI
+$ci->load->model(array(
+  'basic_model'
+));
+
+define('MAXIMUM_NUMBER_OF_ROWS', 5000);
