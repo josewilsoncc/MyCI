@@ -35,3 +35,5 @@ $ci->load->helper(array(
   'essential',
   'elements'
 ));
+
+define('MAXIMUM_NUMBER_OF_ROWS', 5000);

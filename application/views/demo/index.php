@@ -21,4 +21,13 @@
       <a href="<?php echo base_url(); ?>demo/coverflow" class="list-group-item">Coverflow</a>
     </div>
   </div>
+  
+  <div class="col-lg-4">
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        Base de datos
+      </a>
+      <a href="<?php echo base_url(); ?>demo/limit" class="list-group-item">Limit simulado (para informix)</a>
+    </div>
+  </div>
 </div>
