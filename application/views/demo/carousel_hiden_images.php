@@ -12,3 +12,5 @@ caruosel($elements_images, array(
   'class_images' => 'width_100 max_width_600_px',
   'class_slide' => 'bg_dark_gray text_white'
 ));
+
+footer('Jose Wilson Capera Castaño - josewilsoncc@hotmail.com');
