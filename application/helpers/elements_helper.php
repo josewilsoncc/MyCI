@@ -375,6 +375,8 @@ if (!function_exists('paginator')) {
     $config['total_rows'] = $total_rows;
     $config['per_page'] = $per_page;
 
+    $config['full_tag_open'] = '<center><ul class="pagination">';
+    $config['full_tag_close'] = '</ul></center>';
     $config['last_tag_open'] = '<li>';
     $config['last_tag_close'] = '</li>';
     $config['first_tag_open'] = '<li>';

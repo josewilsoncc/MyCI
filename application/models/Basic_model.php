@@ -66,7 +66,7 @@ class Basic_model extends CI_Model {
     $total = $query->row();
     $total = $total->total;
 
-    if ($total < MAXIMUM_NUMBER_OF_ROWS) {
+    if ($total < MC_MNOR) {
       $i = 0;
       $query_return = array();
       
