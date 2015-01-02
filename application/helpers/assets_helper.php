@@ -224,7 +224,7 @@ if (!function_exists('js_controller')) {
     $and_method = isset($params['and_method']) ? $params['and_method'] : false;
     $uri_segment = explode('/', $controller);
     $html='';
-    if (count($uri_segment) >= 1 && file_exists(js_tag($uri_segment[0] . '/' . $file, array('only_return'=>'route'))))
+    if (count($uri_segment) >= 1 && file_exists(js_tag($uri_segment[0] . '/' . $file, array('only_return'=>MCI_RWBU))))
       $html = js_tag($uri_segment[0] . '/' . $file);
     if ($and_method && count($uri_segment) >= 2 && file_exists(js_tag($uri_segment[0] . '/' . $uri_segment[1], array('only_return'=>MCI_RWBU))))
       $html .=js_tag($uri_segment[0] . '/' . $uri_segment[1]);
