@@ -15,6 +15,26 @@ if (!function_exists('reload_page')) {
 
 }
 
+if (!function_exists('base_url_js')) {
+
+  /**
+   * Incluye la funcion 'base_url()' en javascript, debe llamarse asi:
+   * base_url_js();
+   * 
+   * @param boolean $incluirIndex Indica si se incluye o no el index.php
+   * en la URL base.
+   * @return string/html código html para cumplir la funcion.
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 18/11/2014
+   * @update 19/12/1014
+   */
+  function base_url_js($incluirIndex = true) {
+    echo $incluirIndex ? "<script type='text/javascript'>function base_url(){return '" . base_url() . "index.php/';}</script>" : "<script>function base_url(){return '" . base_url() . "';}</script>";
+  }
+
+}
+
 if (!function_exists('show_message')) {
 
   /**

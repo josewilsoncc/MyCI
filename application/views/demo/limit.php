@@ -1,8 +1,4 @@
 <?php
-$query = $this->basic_model->limit('usuarios', $start, $end, 'cedula', array(
-  'select' => 'cencos, fc_desc_sucursal(cencos) descencos, cedula, pro_personal_nombre(cedula) nombre, codusu',
-  'where' => array('estado' => 'A')
-    ));
 show_message("Prueba cambiando la URI por localhost/my_ci/demo/limit/12/21 en tu navegador", array('type'=>'info'));
 ?>
 <center>

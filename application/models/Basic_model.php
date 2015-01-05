@@ -50,6 +50,8 @@ class Basic_model extends CI_Model {
    * @date 2014/12/30
    */
   public function limit($tables, $start, $end, $id, $params) {
+    
+    $end = $end <= $start ? ($start + $end) - 1 : $end - 1;
 
     $select = isset($params['select']) ? $params['select'] : '*';
     $where = isset($params['where']) ? $params['where'] : '*';
