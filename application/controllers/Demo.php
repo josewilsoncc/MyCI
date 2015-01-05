@@ -46,11 +46,14 @@ class Demo extends CI_Controller {
   }
 
   public function limit($start = 0, $end = 5) {
-    $end = $end <= $start ? ($start + $end) : $end;
+    $query = $this->basic_model->limit('usuarios', $start, $end, 'cedula', array(
+      'select' => 'cencos, fc_desc_sucursal(cencos) descencos, cedula, pro_personal_nombre(cedula) nombre, codusu',
+      'where' => array('estado' => 'A')
+    ));
+
     $this->load->view('layout', array(
       'content' => 'demo/limit',
-      'start' => $start,
-      'end' => $end
+      'query' => $query
     ));
   }
 
