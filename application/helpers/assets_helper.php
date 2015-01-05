@@ -65,8 +65,6 @@ if (!function_exists('asset_tag')) {
         $html = '<script type="text/javascript" src="' . $full_route . '"></script>';
         break;
     }
-    
-    //echo 'HTML generate: '.$html;
 
     switch ($only_return) {
       case MCI_RWBU:
