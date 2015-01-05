@@ -50,7 +50,7 @@ class Basic_model extends CI_Model {
    * @date 2014/12/30
    */
   public function limit($tables, $start, $end, $id, $params) {
-    
+
     $end = $end <= $start ? ($start + $end) - 1 : $end - 1;
 
     $select = isset($params['select']) ? $params['select'] : '*';
@@ -71,11 +71,11 @@ class Basic_model extends CI_Model {
     if ($total < MC_MNOR) {
       $i = 0;
       $query_return = array();
-      
+
       $surpassed_half = $start >= ($total / 2);
-      
+
       $end++;
-      
+
       $first = !$surpassed_half ? $end : ($total - $start);
       $this->db->select('first ' . $first . ' ' . $select);
       $this->db->from($tables);
@@ -91,9 +91,9 @@ class Basic_model extends CI_Model {
       }
 
       foreach ($query->result() as $row) {
-        if ($i >= $start){
+        if ($i >= $start) {
           $temp = $row;
-          $temp->index = !$surpassed_half?$i:$total-($i+1);
+          $temp->index = !$surpassed_half ? $i : $total - ($i + 1);
           $query_return[] = $temp;
         }
         $i++;
@@ -102,11 +102,47 @@ class Basic_model extends CI_Model {
       }
 
       if ($surpassed_half)
-        $query_return=array_reverse($query_return);
+        $query_return = array_reverse($query_return);
 
       return $query_return;
     } else
       return false;
+  }
+
+  /**
+   * Permite obtener el total de tuplas bajo un criterio.
+   * 
+   * @param array $params Son los parametros como:
+   * 
+   * array <b>$where</b> contiene todos las condiciones que se deben de cumplir para un inicio de sesión exitoso.
+   * Ejemplo:
+   * 
+   * array(
+   *  'estado'=>'A',
+   *  'codusu'=>$username
+   *  'contraseña'=>$password
+   * )
+   * 
+   * boolean <b>$unique</b> Indica si los calculos deben de realizarse sobre valores unicos, false por defecto.
+   * 
+   * string <b>$database</b> Indica la conexión de la base de datos a utilizar, 'default' por defecto.
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 2015/01/05
+   */
+  public function count($tables, $id, $params) {
+    $where = isset($params['where']) ? $params['where'] : '*';
+    $unique = isset($params['unique']) && $params['unique'] ? 'unique' : '';
+    $database = isset($params['database']) ? $params['database'] : 'default';
+
+    $this->load->database($database);
+
+    $this->db->select('count(' . $unique . ' ' . $id . ') as total');
+    $this->db->from($tables);
+    $this->db->where($where);
+    $query = $this->db->get();
+    $total = $query->row();
+    return $total->total;
   }
 
 }
