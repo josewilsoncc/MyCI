@@ -16,4 +16,6 @@ coverflow(array(
     'solarpower.jpg'
   )
 ));
+
+footer('Jose Wilson Capera Castaño - josewilsoncc@hotmail.com');
 ?>

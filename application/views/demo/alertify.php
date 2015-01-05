@@ -19,3 +19,4 @@
   <a href="#" id="forever">Persistent Log</a>
 </center>
 <br>
+<?php footer('Jose Wilson Capera Castaño - josewilsoncc@hotmail.com<br>Alvaro Javier Vanegas Ocho - alvarovanegas18@gmail.com'); ?>

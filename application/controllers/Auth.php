@@ -15,6 +15,7 @@ class Auth extends CI_Controller {
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    */
+  
   public function index() {
     if (!is_login())
       $this->load->view('layout', array('content' => 'auth/form_login'));
@@ -30,6 +31,7 @@ class Auth extends CI_Controller {
    * @date 2014/12/23
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    */
+
   public function log_in() {
     $this->load->model('auth_model');
 
@@ -48,10 +50,10 @@ class Auth extends CI_Controller {
       $password = $this->input->post('password');
 
       $check_user = $this->auth_model->attempt('usuarios', array(
-        'select'=>'cencos, fc_desc_sucursal(cencos) descencos, cedula, pro_personal_nombre(cedula) nombre, codusu',
-        'where'=> array(
-          'estado'=>'A',
-          'codusu'=>$username
+        'select' => 'cencos, fc_desc_sucursal(cencos) descencos, cedula, pro_personal_nombre(cedula) nombre, codusu',
+        'where' => array(
+          'estado' => 'A',
+          'codusu' => $username
         )
       ));
 
@@ -64,7 +66,7 @@ class Auth extends CI_Controller {
        * quemado en la linea:
        * 'admin' => trim($check_user->codusu)==='ibg'
        */
-      
+
       //Verificando logeo informix y existencia en la base de datos
       if ($check_user && $this->ftp_attempt(IP_DATABASE_FABRICA, $username, $password)) {
         $data = array(
@@ -74,7 +76,7 @@ class Auth extends CI_Controller {
           'nombre' => $check_user->nombre,
           'sucursal_id' => $check_user->cencos,
           'sucursal_nombre' => $check_user->descencos,
-          'admin' => trim($check_user->codusu)==='ibg'
+          'admin' => trim($check_user->codusu) === 'ibg'
         );
         $this->session->set_userdata($data);
         redirect('home/index');
@@ -84,7 +86,7 @@ class Auth extends CI_Controller {
       }
     }
   }
-  
+
   /*
    * Verifica si el usuario y password son correctos, se usa para sistemas
    * de base de datos como informix.
@@ -95,8 +97,9 @@ class Auth extends CI_Controller {
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @autor Alvaro Javier Vanegas Ochoa, alvarovanegas18@gmail.com
    */
-  private function ftp_attempt($ip, $username, $password){
-      return @ftp_login(@ftp_connect($ip), $username, $password);
+
+  private function ftp_attempt($ip, $username, $password) {
+    return @ftp_login(@ftp_connect($ip), $username, $password);
   }
 
   /*
@@ -106,8 +109,9 @@ class Auth extends CI_Controller {
    * @date 2014/12/23
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    */
+
   public function close_session() {
-    close_session(array('url_redirect'=>'home/index'));
+    close_session(array('url_redirect' => 'home/index'));
   }
 
 }

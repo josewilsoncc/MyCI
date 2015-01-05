@@ -39,8 +39,8 @@ class Auth_model extends CI_Model {
    * @date 12/12/2014
    */
   public function attempt($table, $params) {
-    $select = $params['select'] ? $params['select'] : '*';
-    $where = $params['where'] ? $params['where'] : '*';
+    $select = isset($params['select']) ? $params['select'] : '*';
+    $where = isset($params['where']) ? $params['where'] : '*';
 
     $this->db->select($select);
     $this->db->from($table);

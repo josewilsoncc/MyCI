@@ -15,24 +15,44 @@ if (!function_exists('reload_page')) {
 
 }
 
+if (!function_exists('base_url_js')) {
+
+  /**
+   * Incluye la funcion 'base_url()' en javascript, debe llamarse asi:
+   * base_url_js();
+   * 
+   * @param boolean $incluirIndex Indica si se incluye o no el index.php
+   * en la URL base.
+   * @return string/html código html para cumplir la funcion.
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 18/11/2014
+   * @update 19/12/1014
+   */
+  function base_url_js($incluirIndex = true) {
+    echo $incluirIndex ? "<script type='text/javascript'>function base_url(){return '" . base_url() . "index.php/';}</script>" : "<script>function base_url(){return '" . base_url() . "';}</script>";
+  }
+
+}
+
 if (!function_exists('show_message')) {
 
   /**
    * Genera un div con un mensaje si el mensaje no esta vacio
+   * 
    * @param string $message Es el mensaje a mostrar
+   * 
    * @param array $params Son los parametros opcionales como:
    * 
-   * string <b>$type</b> Es el tipo de mensaje, define color estandar
-   * y si no se especifica define el icono. Los posibles tipos
-   * son:
+   * string <b>$type</b> Es el tipo de mensaje, define color estandar y si no se especifica define el icono. Los
+   * posibles tipos son:
    * 
    * <i>danger</i>: Mensaje de error importante.<br>
    * <i>warning</i>: Mensaje de alerta importante.<br>
    * <i>info</i>: Mensaje que informativo aunque no es tan importante.<br>
    * <i>success</i> :Mensaje de accion importante ejecutada correctamente.
    * 
-   * string <b>$icon</b> Es el id de iconmoon del icono a usar, el
-   * cual reemplaza el icono por defecto.
+   * string <b>$icon</b> Es el id de iconmoon del icono a usar, el cual reemplaza el icono por defecto.
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 12/12/2014
@@ -80,13 +100,11 @@ if (!function_exists('create_select')) {
    * @param array $options Son las opciones del select
    * @param array $params Son los parametros opcionales como:
    * 
-   * string <b>$selected</b> Es el indice de la opcion seleccionada
-   * por defecto
+   * string <b>$selected</b> Es el indice de la opcion seleccionada por defecto
    * 
    * string <b>$html</b> Es codigo html (parametros) extra para la etiqueta select.
    * 
-   * string <b>$ucfirst</b> Pone la primer letra cada option en mayuscula
-   * y las demas en minuscula
+   * string <b>$ucfirst</b> Pone la primer letra cada option en mayuscula y las demas en minuscula
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 20/11/2014
@@ -116,9 +134,8 @@ if (!function_exists('caruosel')) {
   /**
    * Genera el codigo html de un carrusel en bootstrap
    * 
-   * @param array $elements Es un arreglo con los elementos a mostrar
-   * en el carrusel, su formato depende del tipo del carrusel a crear,
-   * los formatos segun el tipo son:
+   * @param array $elements Es un arreglo con los elementos a mostrar en el carrusel, su formato depende del tipo del
+   * carrusel a crear, los formatos segun el tipo son:
    * 
    * <b>para <i>'images'</i> e <i>'hiden_images'</i></b>:<br>
    * array(<br>
@@ -142,32 +159,28 @@ if (!function_exists('caruosel')) {
    * 
    * @param array $params Son los parametros opcionales como:
    * 
-   * string <b>$type</b> Define el tipo de carrusel, los tipos existentes
-   * son: 'images', 'hiden_images', 'basic'.<br>
+   * string <b>$type</b> Define el tipo de carrusel, los tipos existentes son: 'images', 'hiden_images', 'basic'.<br>
    * 
    * string <b>$selected</b> Es el indice incial del carrusel.<br>
    * 
-   * string <b>$id</b> Es el id del div del carrusel al cual los botones
-   * de navegación hacen referencia.<br>
+   * string <b>$id</b> Es el id del div del carrusel al cual los botones de navegación hacen referencia.<br>
    * 
-   * string <b>$interval</b> Es el intervalo del tiempo en que el carrusel
-   * cambiara de diapositiva si no tiene el cursor encima.<br>
+   * string <b>$interval</b> Es el intervalo del tiempo en que el carrusel cambiara de diapositiva si no tiene el cursor
+   * encima.<br>
    * 
-   * string <b>$class_slide</b> Son las clases aplicadas a cada dispositiva
-   * separadas por espacio, tambien sera aplicada al div 'show_images' en
-   * el caso del carrusel tipo 'hiden_images'.<br>
+   * string <b>$class_slide</b> Son las clases aplicadas a cada dispositiva separadas por espacio, tambien sera aplicada
+   * al div 'show_images' en el caso del carrusel tipo 'hiden_images'.<br>
    * 
-   * string <b>$class_basic_title</b> Son las clases aplicadas a el titulo
-   * de un carrusel de tipo 'basic' separadas por espacio.<br>
+   * string <b>$class_basic_title</b> Son las clases aplicadas a el titulo de un carrusel de tipo 'basic' separadas por
+   * espacio.<br>
    * 
-   * string <b>$class_images</b> Son las clases aplicadas a las imagenes
-   * de un carrusel de tipo 'images' o 'hiden_images' separadas por espacio.<br>
+   * string <b>$class_images</b> Son las clases aplicadas a las imagenes de un carrusel de tipo 'images' o
+   * 'hiden_images' separadas por espacio.<br>
    * 
-   * string <b>$class_div</b> Son las clases aplicadas a las imagenes
-   * de un carrusel de tipo 'images' o 'hiden_images' separadas por espacio.<br>
+   * string <b>$class_div</b> Son las clases aplicadas a las imagenes de un carrusel de tipo 'images' o 'hiden_images'
+   * separadas por espacio.<br>
    * 
-   * string <b>$hidden_images_title</b> Es el título mostrado en un carrusel
-   * de tipo 'hiden_images'.<br>
+   * string <b>$hidden_images_title</b> Es el título mostrado en un carrusel de tipo 'hiden_images'.<br>
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 18/12/2014
@@ -268,14 +281,20 @@ if (!function_exists('caruosel')) {
 
 if (!function_exists('coverflow')) {
 
+  /**
+   * Genera el codigo html de un coverflow
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 29/12/2014
+   */
   function coverflow($elements, $params = '') {
     $elements = string_pattern($elements);
-    $index = isset($params['index']) ? $params['index'] : (int)(count($elements)/2);
+    $index = isset($params['index']) ? $params['index'] : (int) (count($elements) / 2);
     $density = isset($params['density']) ? $params['density'] : 2;
     $innerOffset = isset($params['inner_offset']) ? $params['inner_offset'] : 50;
-    $innerScale = isset($params['innerScale']) ? $params['innerScale'] : .5;
-    $on_confirm= isset($params['on_confirm']) ? $params['on_confirm'] : 'coverflow_confirm';
-    
+    $innerScale = isset($params['inner_scale']) ? $params['inner_scale'] : .5;
+    $on_confirm = isset($params['on_confirm']) ? $params['on_confirm'] : 'coverflow_confirm';
+
     load_assets(array('js' => array(
         'default/jquery' => array(
           'jquery.coverflow',
@@ -328,8 +347,8 @@ if (!function_exists('coverflow')) {
           density: <?php echo $density; ?>,
           innerOffset: <?php echo $innerOffset; ?>,
           innerScale: <?php echo $innerScale; ?>,
-          confirm: function (event, cover, index){
-            <?php echo $on_confirm; ?>(event, cover, index);
+          confirm: function (event, cover, index) {
+    <?php echo $on_confirm; ?>(event, cover, index);
           },
           animateStep: function (event, cover, offset, isVisible, isMiddle, sin, cos) {
             if (isVisible) {
@@ -352,6 +371,68 @@ if (!function_exists('coverflow')) {
         });
       });
     </script>
+    <?php
+  }
+
+}
+
+if (!function_exists('paginator')) {
+  /**
+   * Produce un paginador de CodeIgniter con los estilos de Bootstrap.
+   * 
+   * @param string $uri Es la uri despues del base_url para la paginación
+   * 
+   * @param int $total_rows Es el numero total de elementos a paginar
+   * 
+   * @param int $per_page Es el numero de elementos por página a mostrar
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 31/12/2014
+   */
+
+  function paginator($uri, $total_rows, $per_page) {
+    $config['base_url'] = base_url() . $uri;
+    $config['total_rows'] = $total_rows;
+    $config['per_page'] = $per_page;
+
+    $config['full_tag_open'] = '<center><ul class="pagination">';
+    $config['full_tag_close'] = '</ul></center>';
+    $config['last_tag_open'] = '<li>';
+    $config['last_tag_close'] = '</li>';
+    $config['first_tag_open'] = '<li>';
+    $config['first_tag_close'] = '</li>';
+    $config['next_tag_open'] = '<li>';
+    $config['next_tag_close'] = '</li>';
+    $config['prev_tag_open'] = '<li>';
+    $config['prev_tag_close'] = '</li>';
+    $config['cur_tag_open'] = '<li class="active"><a href="#">';
+    $config['cur_tag_close'] = '</a></li>';
+    $config['num_tag_open'] = '<li>';
+    $config['num_tag_close'] = '</li>';
+
+    $ci = & get_instance();
+    $ci->load->library('pagination');
+    $ci->pagination->initialize($config);
+    echo $ci->pagination->create_links();
+  }
+
+}
+
+if (!function_exists('footer')) {
+  /**
+   * Produce un footer con base en los parametros
+   * 
+   * @param string/html $html Es el html a mostrar en el footer
+   * 
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @date 31/12/2014
+   */
+
+  function footer($html) {
+    ?>
+    <ul class="footer list-group text-center text-muted">
+      <li class="list-group-item"><?php echo $html; ?></li>
+    </ul>
     <?php
   }
 
