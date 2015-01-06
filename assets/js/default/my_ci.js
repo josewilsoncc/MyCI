@@ -14,7 +14,7 @@ function messages_control() {
 }
 
 /**
- * convierte un porcentaje indicado en pixeles con base en la resolución de la pantalla (ancho, alto).
+ * Convierte un porcentaje indicado en pixeles con base en la resolución de la pantalla (ancho, alto).
  * 
  * @param {int} percent Es el porcentaje que se desea convertir a pixeles.
  * 
