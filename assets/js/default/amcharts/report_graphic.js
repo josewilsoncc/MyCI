@@ -1,5 +1,5 @@
 $(document).on('ready', function() {
-
+  
   $("#btn_columns3d").on("click", function() {
     ejecuta_grafica(columns3d, base_url() + 'report_graphic/columns3d', {titulo_eje_y: 'incidencias 2015', capa_grafica: 'mi_capa'});
   });
@@ -24,13 +24,24 @@ $(document).on('ready', function() {
     ejecuta_grafica(columnSimple, base_url() + 'report_graphic/columnSimple', {capa_grafica: 'mi_capa'});
   });
 
+  $("#btn_pie3D").on("click", function() {
+    ejecuta_grafica(pie3D, base_url() + 'report_graphic/pie3D', {capa_grafica: 'mi_capa'});
+  });
+
+  $("#btn_pieDonut3D").on("click", function() {
+    ejecuta_grafica(pieDonut3D, base_url() + 'report_graphic/pieDonut3D', {titulo: 'problemas en las sucursales', tamano_titulo: 20, capa_grafica: 'mi_capa'});
+  });
+
+  $("#btn_pyramidChart3D").on("click", function() {
+    ejecuta_grafica(pyramidChart3D, base_url() + 'report_graphic/pyramidChart3D', {capa_grafica: 'mi_capa'});
+  });
+
   // la capa contenedora que posee la grafica no es responsiva por eso se usa este metodo, para calcular el tamaño de la ventana cada vez que tenga un cambio.
   $(window).resize(function() {
     var ancho = percentage_dimension(80, true);
     var alto = percentage_dimension(80, false);
     $('#mi_capa').css({'width': ancho, 'height': alto});
   });
-
 });
 
 /**
@@ -53,7 +64,6 @@ function ejecuta_grafica(funcion, url, parametros) {
       var ancho = percentage_dimension(80, true);
       var alto = percentage_dimension(80, false);
       $('#mi_capa').css({'width': ancho, 'height': alto});
-
       funcion(data, parametros);
     },
     error: function(data) {
@@ -72,7 +82,6 @@ function ejecuta_grafica(funcion, url, parametros) {
  * @date 2014/12/23
  */
 function bar3d(chartData, parametros) {
-
   var titulo = parametros['titulo'];
   chart = new AmCharts.AmSerialChart();
   chart.dataProvider = chartData;
@@ -132,21 +141,18 @@ function barClustered(chartData, parametros) {
   chart.plotAreaBorderAlpha = 1;
   // this single line makes the chart a bar chart
   chart.rotate = true;
-
   // AXES
   // Category
   var categoryAxis = chart.categoryAxis;
   categoryAxis.gridPosition = "start";
   categoryAxis.gridAlpha = 0.1;
   categoryAxis.axisAlpha = 0;
-
   // Value
   var valueAxis = new AmCharts.ValueAxis();
   valueAxis.axisAlpha = 0;
   valueAxis.gridAlpha = 0.1;
   valueAxis.position = "top";
   chart.addValueAxis(valueAxis);
-
   // GRAPHS
   // first graph
   var graph1 = new AmCharts.AmGraph();
@@ -158,7 +164,6 @@ function barClustered(chartData, parametros) {
   graph1.fillColors = "#ADD981";
   graph1.fillAlphas = 1;
   chart.addGraph(graph1);
-
   // second graph
   var graph2 = new AmCharts.AmGraph();
   graph2.type = "column";
@@ -169,16 +174,12 @@ function barClustered(chartData, parametros) {
   graph2.fillColors = "#81acd9";
   graph2.fillAlphas = 1;
   chart.addGraph(graph2);
-
   // LEGEND
   var legend = new AmCharts.AmLegend();
   chart.addLegend(legend);
-
   chart.creditsPosition = "top-right";
-
   // WRITE
   chart.write(parametros['capa_grafica']);
-
 }
 
 /**
@@ -199,21 +200,17 @@ function columns3d(chartData, parametros) {
   // the following two lines makes chart 3D
   chart.depth3D = 20;
   chart.angle = 30;
-
   // AXES
   // category
   var categoryAxis = chart.categoryAxis;
   categoryAxis.labelRotation = 90;
   categoryAxis.dashLength = 5;
   categoryAxis.gridPosition = "start";
-
   // value
   var valueAxis = new AmCharts.ValueAxis();
   valueAxis.title = parametros['titulo_eje_y'];
-  ;
   valueAxis.dashLength = 5;
   chart.addValueAxis(valueAxis);
-
   // GRAPH
   var graph = new AmCharts.AmGraph();
   graph.valueField = "valor";
@@ -223,17 +220,13 @@ function columns3d(chartData, parametros) {
   graph.lineAlpha = 0;
   graph.fillAlphas = 1;
   chart.addGraph(graph);
-
   // CURSOR
   var chartCursor = new AmCharts.ChartCursor();
   chartCursor.cursorAlpha = 0;
   chartCursor.zoomable = false;
   chartCursor.categoryBalloonEnabled = false;
   chart.addChartCursor(chartCursor);
-
   chart.creditsPosition = "top-right";
-
-
   // WRITE
   chart.write(parametros['capa_grafica']);
 }
@@ -256,20 +249,16 @@ function columnAndLineMix(chartData, parametros) {
   chart.dataProvider = chartData;
   chart.categoryField = "nombre_eje_x";
   chart.startDuration = 1;
-
   chart.handDrawn = true;
   chart.handDrawnScatter = 3;
-
   // AXES
   // category
   var categoryAxis = chart.categoryAxis;
   categoryAxis.gridPosition = "start";
-
   // value
   var valueAxis = new AmCharts.ValueAxis();
   valueAxis.axisAlpha = 0;
   chart.addValueAxis(valueAxis);
-
   // GRAPHS
   // column graph
   var graph1 = new AmCharts.AmGraph();
@@ -283,7 +272,6 @@ function columnAndLineMix(chartData, parametros) {
   graph1.alphaField = "alpha";
   graph1.balloonText = "<span style='font-size:13px;'>[[title]] in [[category]]:<b>[[value]]</b> [[additional]]</span>";
   chart.addGraph(graph1);
-
   // line
   var graph2 = new AmCharts.AmGraph();
   graph2.type = "line";
@@ -299,16 +287,13 @@ function columnAndLineMix(chartData, parametros) {
   graph2.dashLengthField = "dashLengthLine";
   graph2.balloonText = "<span style='font-size:13px;'>[[title]] in [[category]]:<b>[[value]]</b> [[additional]]</span>";
   chart.addGraph(graph2);
-
   // LEGEND                
   var legend = new AmCharts.AmLegend();
   legend.useGraphSettings = true;
   chart.addLegend(legend);
-
   // WRITE
   chart.write(parametros['capa_grafica']);
 }
-
 
 /**
  * genera una grafica de barras ne forma cilindrica , comparando valor x y valor y 
@@ -328,20 +313,17 @@ function columnCylinders(chartData, parametros) {
   chart.depth3D = 50;
   chart.angle = 30;
   chart.marginRight = -45;
-
   // AXES
   // category
   var categoryAxis = chart.categoryAxis;
   categoryAxis.gridAlpha = 0;
   categoryAxis.axisAlpha = 0;
   categoryAxis.gridPosition = "start";
-
   // value
   var valueAxis = new AmCharts.ValueAxis();
   valueAxis.axisAlpha = 0;
   valueAxis.gridAlpha = 0;
   chart.addValueAxis(valueAxis);
-
   // GRAPH
   var graph = new AmCharts.AmGraph();
   graph.valueField = "valor";
@@ -353,7 +335,6 @@ function columnCylinders(chartData, parametros) {
   graph.topRadius = 1;
   graph.fillAlphas = 0.9;
   chart.addGraph(graph);
-
   // CURSOR
   var chartCursor = new AmCharts.ChartCursor();
   chartCursor.cursorAlpha = 0;
@@ -363,9 +344,7 @@ function columnCylinders(chartData, parametros) {
   chartCursor.valueLineBalloonEnabled = true;
   chartCursor.valueLineAlpha = 1;
   chart.addChartCursor(chartCursor);
-
   chart.creditsPosition = "top-right";
-
   // WRITE
   chart.write(parametros['capa_grafica']);
 }
@@ -390,7 +369,6 @@ function columnSimple(chartData, parametros) {
   var categoryAxis = chart.categoryAxis;
   categoryAxis.labelRotation = 90;
   categoryAxis.gridPosition = "start";
-
   // value
   // in case you don't want to change default settings of value axis,
   // you don't need to create it, as one value axis is created automatically.
@@ -402,7 +380,6 @@ function columnSimple(chartData, parametros) {
   graph.lineAlpha = 0;
   graph.fillAlphas = 0.8;
   chart.addGraph(graph);
-
   // CURSOR
   var chartCursor = new AmCharts.ChartCursor();
   chartCursor.cursorAlpha = 0;
@@ -410,7 +387,94 @@ function columnSimple(chartData, parametros) {
   chartCursor.categoryBalloonEnabled = false;
   chart.addChartCursor(chartCursor);
   chart.creditsPosition = "top-right";
-
   chart.write(parametros['capa_grafica']);
 }
 
+/**
+ * genera una grafica de pastel en 3D
+ * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
+ * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
+ * los indices del arreglo son:
+ * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
+ * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
+ * @date 2015/01/07
+ */
+function pie3D(chartData, parametros) {
+  // PIE CHART
+  chart = new AmCharts.AmPieChart();
+  chart.dataProvider = chartData;
+  chart.titleField = "nombre";
+  chart.valueField = "valor";
+  chart.outlineColor = "#FFFFFF";
+  chart.outlineAlpha = 0.8;
+  chart.outlineThickness = 2;
+  chart.balloonText = "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>";
+  // this makes the chart 3D
+  chart.depth3D = 15;
+  chart.angle = 30;
+  // WRITE
+  chart.write(parametros['capa_grafica']);
+}
+
+/**
+ * genera una grafica de pastel tipo dona, 
+ * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
+ * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
+ * los indices del arreglo son:
+ * parametros['titulo'] =  el titulo o cabezera de la grafica
+ * parametros['tamano_titulo'] =  el tamaño en px de la letra de titulo
+ * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
+ * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
+ * @date 2015/01/08
+ */
+function pieDonut3D(chartData, parametros) {
+// PIE CHART
+  chart = new AmCharts.AmPieChart();
+  // title of the chart
+  chart.addTitle(parametros['titulo'], parametros['tamano_titulo']);
+  chart.dataProvider = chartData;
+  chart.titleField = "nombre";
+  chart.valueField = "valor";
+  chart.sequencedAnimation = true;
+  chart.startEffect = "elastic";
+  chart.innerRadius = "30%";
+  chart.startDuration = 2;
+  chart.labelRadius = 15;
+  chart.balloonText = "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>";
+  // the following two lines makes the chart 3D
+  chart.depth3D = 10;
+  chart.angle = 15;
+  // WRITE                                 
+  chart.write(parametros['capa_grafica']);
+}
+
+
+/**
+ * genera una grafica de piramide en 3D, 
+ * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
+ * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
+ * los indices del arreglo son:
+ * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
+ * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
+ * @date 2015/01/08
+ */
+function  pyramidChart3D(chartData, parametros) {
+  chart = new AmCharts.AmFunnelChart();
+  chart.rotate = true;
+  chart.titleField = "titulo";
+  chart.balloon.fixedPosition = true;
+  chart.marginRight = 210;
+  chart.marginLeft = 15;
+  chart.labelPosition = "right";
+  chart.funnelAlpha = 0.9;
+  chart.valueField = "valor";
+  chart.startX = -500;
+  chart.dataProvider = chartData;
+  chart.startAlpha = 0;
+  chart.depth3D = 100;
+  chart.angle = 30;
+  chart.outlineAlpha = 1;
+  chart.outlineThickness = 2;
+  chart.outlineColor = "#FFFFFF";
+  chart.write(parametros['capa_grafica']);
+}

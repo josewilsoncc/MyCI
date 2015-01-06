@@ -1,7 +1,7 @@
 <?php
 load_assets(array(
  'js' => array(
-  'demo/amcharts' => array(
+  'default/amcharts' => array(
    'amcharts',
    'funnel',
    'gauge',
@@ -9,16 +9,11 @@ load_assets(array(
    'radar',
    'serial',
    'xy',
-   'themes' => array(
-    'black',
-    'chalk',
-    'dark',
-    'light',
-    'patterns'
-   )
+   'report_graphic'
   )
  )
 ));
+
 ?>
 
 <div class = "container">
@@ -31,7 +26,9 @@ load_assets(array(
         <a  id="btn_columnAndLineMix"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> columnAndLineMix</span> </buton></a>
         <a  id="btn_columnCylinders"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> columnCylinders</span> </buton></a>
         <a  id="btn_columnSimple"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> columnSimple</span> </buton></a>
-         
+        <a  id="btn_pie3D"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> pie3D</span> </buton></a>
+        <a  id="btn_pieDonut3D"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> pieDonut3D</span> </buton></a>
+        <a  id="btn_pyramidChart3D"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> pyramidChart3D</span> </buton></a>
       </div>
     </div>
 
@@ -39,7 +36,6 @@ load_assets(array(
     <br>
 
     <div id="mi_capa" class="col-lg-12">
-      
     </div>
   </div>
 </div>

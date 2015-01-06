@@ -14,7 +14,7 @@ class Report_graphic extends CI_Controller {
   }
 
   public function index() {
-    echo "el index";
+    $this->load->view('layout', array('content' => 'demo/report_graphic'));
   }
 
   public function bar3d() {
@@ -39,15 +39,32 @@ class Report_graphic extends CI_Controller {
   }
 
   public function columnCylinders() {
-     $jsondata = array(array('nombre_eje_x' => 'Armenia', 'valor' => 50, 'color' => '#FF0F00'), array('nombre_eje_x' => 'Cali', 'valor' => 100, 'color' => '#FF6600'), array('nombre_eje_x' => 'Medellin', 'valor' => 20, 'color' => '#FF9E01'), array('nombre_eje_x' => 'Bogota', 'valor' => 150, 'color' => '#FCD202'),
+    $jsondata = array(array('nombre_eje_x' => 'Armenia', 'valor' => 50, 'color' => '#FF0F00'), array('nombre_eje_x' => 'Cali', 'valor' => 100, 'color' => '#FF6600'), array('nombre_eje_x' => 'Medellin', 'valor' => 20, 'color' => '#FF9E01'), array('nombre_eje_x' => 'Bogota', 'valor' => 150, 'color' => '#FCD202'),
      array('nombre_eje_x' => 'Yopal', 'valor' => 200, 'color' => '#CD0D74'), array('nombre_eje_x' => 'Manizales', 'valor' => 90, 'color' => '#DDDDDD'), array('sucursal' => 'Yopal', 'valor' => 180, 'color' => '#333333'));
     echo json_encode($jsondata);
   }
-  
+
   public function columnSimple() {
-     $jsondata = array(array('nombre_eje_x' => 'Armenia', 'valor' => 50), array('nombre_eje_x' => 'Cali', 'valor' => 100), array('nombre_eje_x' => 'Medellin', 'valor' => 20), array('nombre_eje_x' => 'Bogota', 'valor' => 150),
+    $jsondata = array(array('nombre_eje_x' => 'Armenia', 'valor' => 50), array('nombre_eje_x' => 'Cali', 'valor' => 100), array('nombre_eje_x' => 'Medellin', 'valor' => 20), array('nombre_eje_x' => 'Bogota', 'valor' => 150),
      array('nombre_eje_x' => 'Yopal', 'valor' => 200), array('nombre_eje_x' => 'Manizales', 'valor' => 90), array('sucursal' => 'Yopal', 'valor' => 180));
-     echo json_encode($jsondata);
+    echo json_encode($jsondata);
   }
 
+  public function pie3D() {
+    $jsondata = array(array('nombre' => 'Armenia', 'valor' => 50), array('nombre' => 'Cali', 'valor' => 100), array('nombre' => 'Medellin', 'valor' => 20), array('nombre' => 'Bogota', 'valor' => 150),
+     array('nombre' => 'Yopal', 'valor' => 200), array('nombre' => 'Manizales', 'valor' => 90), array('nombre' => 'Yopal', 'valor' => 180));
+    echo json_encode($jsondata);
+  }
+
+  public function pieDonut3D() {
+    $jsondata = array(array('nombre' => 'Armenia', 'valor' => 50), array('nombre' => 'Cali', 'valor' => 100), array('nombre' => 'Medellin', 'valor' => 20), array('nombre' => 'Bogota', 'valor' => 150),
+     array('nombre' => 'Yopal', 'valor' => 200), array('nombre' => 'Manizales', 'valor' => 90), array('nombre' => 'Yopal', 'valor' => 180));
+    echo json_encode($jsondata);
+  }
+
+  public function pyramidChart3D() {
+    $jsondata = array(array('titulo' => 'vendedores', 'valor' => 10), array('titulo' => 'auxiliares', 'valor' => 8), array('titulo' => 'asistentes de area', 'valor' => 6), array('titulo' => 'director de area', 'valor' => 4),
+     array('titulo' => 'gerente sucursal', 'valor' => 1));
+    echo json_encode($jsondata);
+  }
 }
