@@ -47,5 +47,16 @@
       </div>
     </div>
   </div>
+  
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="list-group">
+        <a href="#" class="list-group-item active">
+          Reportes Graficos
+        </a>
+        <a href="<?php echo base_url(); ?>demo/report_graphic" class="list-group-item">Report_Graphic</a>
+      </div>
+    </div>
+  </div>
 
 </div>

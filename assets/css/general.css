@@ -1,3 +1,7 @@
 /*
  * Aqui el código CSS general, de la aplicación
  */
+.graficos{
+  width: 80em; 
+  height: 40em;
+}
