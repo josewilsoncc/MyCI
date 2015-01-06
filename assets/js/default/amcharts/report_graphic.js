@@ -1,3 +1,4 @@
+var capa_grafica='';
 $(document).on('ready', function() {
   
   $("#btn_columns3d").on("click", function() {
@@ -36,11 +37,11 @@ $(document).on('ready', function() {
     ejecuta_grafica(pyramidChart3D, base_url() + 'report_graphic/pyramidChart3D', {capa_grafica: 'mi_capa'});
   });
 
-  // la capa contenedora que posee la grafica no es responsiva por eso se usa este metodo, para calcular el tamaño de la ventana cada vez que tenga un cambio.
+  /* la capa contenedora que posee la grafica no es responsiva por eso se usa este metodo, para calcular el tamaño de la ventana cada vez que tenga un cambio.*/
   $(window).resize(function() {
     var ancho = percentage_dimension(80, true);
     var alto = percentage_dimension(80, false);
-    $('#mi_capa').css({'width': ancho, 'height': alto});
+    $(capa_grafica).css({'width': ancho, 'height': alto});
   });
 });
 
@@ -56,6 +57,7 @@ $(document).on('ready', function() {
  * @date 2015/01/05
  */
 function ejecuta_grafica(funcion, url, parametros) {
+  capa_grafica = '#'+parametros['capa_grafica']; // se guarda el nombre de la capa en una variable global para usarla cuando la ventana cambie de resolucion.
   $.ajax({
     url: url,
     type: 'post',
@@ -63,11 +65,11 @@ function ejecuta_grafica(funcion, url, parametros) {
     success: function(data) {
       var ancho = percentage_dimension(80, true);
       var alto = percentage_dimension(80, false);
-      $('#mi_capa').css({'width': ancho, 'height': alto});
+      $('#'+parametros['capa_grafica']).css({'width': ancho, 'height': alto});
       funcion(data, parametros);
     },
     error: function(data) {
-      $("#mi_capa").html('<p class="lead text-danger text-center">Ocurrio un error al generar la grafica, intentelo nuevamente.</p>');
+      $('#'+parametros['capa_grafica']).html('<p class="lead text-danger text-center">Ocurrio un error al generar la grafica, intentelo nuevamente.</p>');
     }
   });
 }

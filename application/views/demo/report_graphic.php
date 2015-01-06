@@ -13,9 +13,7 @@ load_assets(array(
   )
  )
 ));
-
 ?>
-
 <div class = "container">
   <div class = "row">
     <div class = "col-lg-12">
@@ -31,10 +29,8 @@ load_assets(array(
         <a  id="btn_pyramidChart3D"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> pyramidChart3D</span> </buton></a>
       </div>
     </div>
-
     <br>
     <br>
-
     <div id="mi_capa" class="col-lg-12">
     </div>
   </div>
