@@ -3,7 +3,7 @@
 /*
  * Este Helper es el encargado de todo lo referente a assets en el proyecto.
  * 
- * @author Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+ * @author Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
  * @date 2014/12/19
  */
 
@@ -18,14 +18,16 @@ if (!function_exists('asset_tag')) {
    * assets/css/
    * assets/less/
    * Por ejemplo, para incluir el archivo
-   * assets/js/mi_javascript.js se hace de esta manera: asset_tag('mi_javascript', array('type_tag'=>'js')); sin
+   * assets/js/mi_javascript.js se hace de esta manera: asset_tag(MC_JS, 'mi_javascript'); sin
    * importar desde que archivo o ruta se llame.
+   * 
+   * @param string $type_tag indica de que tipo es el asset con los valores MC_CSS, MC_JS y MC_LESS.
    * 
    * @param array $params Son los parametros opcionales como:
    * 
    * boolean <b>$url_variant</b> debe ponerse en true si la url varia del directorio assets/js
    * 
-   * string/boolean <b>$only_return</b> funciona de la siguiente manera:
+   * string/boolean <b>$only_return</b> [developers] Funciona de la siguiente manera:
    * <br><br>+Si es TRUE el resultado sera retornado.
    * <br><br>+Si es FALSE el resultado sera impreso con un echo de manera automatica. (predeterminada)
    * <br><br>+si es MCI_R solamente retornara la ruta de la tag.
@@ -34,18 +36,15 @@ if (!function_exists('asset_tag')) {
    * <br><br>+si es MCI_RWBU_F solamente imprimira la ruta de la tag sin la url base con un echo de manera automatica.
    * <br><br>Es FALSE por defecto.
    * 
-   * string <b>$type_tag</b> indica de que tipo es el asset con los valores 'css', 'js' y 'less'.
-   * 
    * @return string/html código html para cumplir la funcion.
    * 
-   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @author Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 2014/12/19
    * @update 2015/01/02
    */
-  function asset_tag($route, $params = '') {
+  function asset_tag($type_tag, $route, $params = '') {
     $url_variant = isset($params['url_variant']) ? $params['url_variant'] : false;
-    $only_return = isset($params['only_return']) ? $params['only_return'] : false;
-    $type_tag = isset($params['type_tag']) ? $params['type_tag'] : 'js';
+    $only_return = isset($params[MCP_OR]) ? $params[MCP_OR] : false;
 
     $partial_route = 'assets/' . $type_tag . '/' . $route . '.' . $type_tag;
 
@@ -55,13 +54,13 @@ if (!function_exists('asset_tag')) {
       $full_route = base_url() . $partial_route;
 
     switch ($type_tag) {
-      case 'css':
+      case MC_CSS:
         $html = link_tag($full_route);
         break;
-      case 'less':
+      case MC_LESS:
         $html = link_tag($full_route, 'stylesheet', 'text/less');
         break;
-      case 'js':
+      case MC_JS:
         $html = '<script type="text/javascript" src="' . $full_route . '"></script>';
         break;
     }
@@ -111,19 +110,19 @@ if (!function_exists('load_assets')) {
    *  )<br>
    * ));
    * 
-   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @author Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 19/12/2014
    */
   function load_assets($assets) {
-    if (isset($assets['css']))
-      foreach (string_pattern($assets['css']) as $value)
-        asset_tag($value, array('type_tag'=>'css'));
-    if (isset($assets['less']))
-      foreach (string_pattern($assets['less']) as $value)
-        asset_tag($value, array('type_tag'=>'less'));
-    if (isset($assets['js']))
-      foreach (string_pattern($assets['js']) as $value)
-        asset_tag($value, array('type_tag'=>'js'));
+    if (isset($assets[MC_CSS]))
+      foreach (string_pattern($assets[MC_CSS]) as $value)
+        asset_tag(MC_CSS, $value);
+    if (isset($assets[MC_LESS]))
+      foreach (string_pattern($assets[MC_LESS]) as $value)
+        asset_tag(MC_LESS, $value);
+    if (isset($assets[MC_JS]))
+      foreach (string_pattern($assets[MC_JS]) as $value)
+        asset_tag(MC_JS, $value);
   }
 
 }
@@ -151,33 +150,35 @@ if (!function_exists('assets_controller')) {
    * 
    * @return string/html código html para cumplir la funcion.
    * 
-   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @author Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 16/11/2014
    * @update 02/01/2015
    */
   function assets_controller($controller, $params = '') {
     $file = isset($params['file']) ? $params['file'] : 'general';
-    $only_return = isset($params['only_return']) ? $params['only_return'] : false;
+    $only_return = isset($params[MCP_OR]) ? $params[MCP_OR] : false;
     $and_method = isset($params['and_method']) ? $params['and_method'] : false;
-    $uri_segment = explode('/', $controller);
+    $uri_segments = explode('/', $controller);
     $html = '';
 
-    if (count($uri_segment) >= 1) {
-      if (file_exists(asset_tag($uri_segment[0] . '/' . $file, array('only_return' => MCI_RWBU, 'type_tag'=>'js'))))
-        $html .= asset_tag($uri_segment[0] . '/' . $file, array('type_tag'=>'js'));
-      if (file_exists(asset_tag($uri_segment[0] . '/' . $file, array('only_return' => MCI_RWBU, 'type_tag'=>'css'))))
-        $html .= asset_tag($uri_segment[0] . '/' . $file, array('type_tag'=>'css'));
-      if (file_exists(asset_tag($uri_segment[0] . '/' . $file, array('only_return' => MCI_RWBU, 'type_tag'=>'less'))))
-        $html .= asset_tag($uri_segment[0] . '/' . $file, array('type_tag'=>'less'));
+    if (count($uri_segments) >= 1) {
+      $uri_asset = $uri_segments[0] . '/' . $file;
+      if (file_exists(asset_tag(MC_JS, $uri_asset, array(MCP_OR => MCI_RWBU))))
+        $html .= asset_tag(MC_JS, $uri_asset);
+      if (file_exists(asset_tag(MC_CSS, $uri_asset, array(MCP_OR => MCI_RWBU))))
+        $html .= asset_tag(MC_CSS, $uri_asset);
+      if (file_exists(asset_tag(MC_LESS, $uri_asset, array(MCP_OR => MCI_RWBU))))
+        $html .= asset_tag(MC_LESS, $uri_asset);
     }
 
-    if (count($uri_segment) >= 2) {
-      if (file_exists(asset_tag($uri_segment[0] . '/' . $uri_segment[1], array('only_return' => MCI_RWBU, 'type_tag'=>'js'))))
-        $html .= asset_tag($uri_segment[0] . '/' . $uri_segment[1], array('type_tag'=>'js'));
-      if (file_exists(asset_tag($uri_segment[0] . '/' . $uri_segment[1], array('only_return' => MCI_RWBU, 'type_tag'=>'css'))))
-        $html .= asset_tag($uri_segment[0] . '/' . $uri_segment[1], array('type_tag'=>'css'));
-      if (file_exists(asset_tag($uri_segment[0] . '/' . $uri_segment[1], array('only_return' => MCI_RWBU, 'type_tag'=>'less'))))
-        $html .= asset_tag($uri_segment[0] . '/' . $uri_segment[1], array('type_tag'=>'less'));
+    if (count($uri_segments) >= 2) {
+      $uri_asset = $uri_segments[0] . '/' . $uri_segments[1];
+      if (file_exists(asset_tag(MC_JS, $uri_asset, array(MCP_OR => MCI_RWBU))))
+        $html .= asset_tag(MC_JS, $uri_asset);
+      if (file_exists(asset_tag(MC_CSS, $uri_asset, array(MCP_OR => MCI_RWBU))))
+        $html .= asset_tag(MC_CSS, $uri_asset);
+      if (file_exists(asset_tag(MC_LESS, $uri_asset, array(MCP_OR => MCI_RWBU))))
+        $html .= asset_tag(MC_LESS, $uri_asset);
     }
     if ($only_return)
       return $html;
@@ -192,7 +193,7 @@ if (!function_exists('string_pattern')) {
   /**
    * Genera de manera simple un arreglo que cumple un patron en sus rutas.
    * 
-   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @author Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 29/12/2014
    */
   function string_pattern($elements, $route = '', $separator = '/', $start = true) {
