@@ -25,17 +25,22 @@ load_assets(array(
   <div class = "row">
     <div class = "col-lg-12">
       <div class='btn-group well' >
-        <a href="#" id="btn_bar3D"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> bar3D</span> </buton></a>
-        <a href="#" id="btn_barClustered"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> barClustered</span> </buton></a>
-        
+        <a  id="btn_bar3D"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> bar3D</span> </buton></a>
+        <a  id="btn_barClustered"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> barClustered</span> </buton></a>
+        <a  id="btn_columns3d"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> columns3d</span> </buton></a>
+        <a  id="btn_columnAndLineMix"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> columnAndLineMix</span> </buton></a>
+        <a  id="btn_columnCylinders"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> columnCylinders</span> </buton></a>
+        <a  id="btn_columnSimple"><buton type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-stats"> columnSimple</span> </buton></a>
+         
       </div>
     </div>
 
     <br>
     <br>
 
-    <div id="mi_capa" class="col-lg-12 graficos">
+    <div id="mi_capa" class="col-lg-12">
+      
     </div>
-
   </div>
 </div>
+<?php footer('Alvaro Javier Vanegas Ochoa --- alvarovanegas18@gmail.com'); ?>
