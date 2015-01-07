@@ -23,7 +23,7 @@
    */
   
   load_assets(array(
-    'css' => array(
+    MC_CSS => array(
       'default' => array(
         'bootstrap' => array(
           'bootstrap.min',
@@ -37,10 +37,10 @@
         'toastr.min'
       )
     ),
-    'less' => array(
-      'default/basic',
+    MC_LESS => array(
+      'default/basic'
     ),
-    'js' => array(
+    MC_JS => array(
       'default'=>array(
         'jquery'=>array(
           'jquery.min',

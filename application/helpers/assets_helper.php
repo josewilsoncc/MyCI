@@ -91,20 +91,20 @@ if (!function_exists('load_assets')) {
   /**
    * Incluye todos los assets (css, less, js) indicados en un arreglo.
    * 
-   * @param $assets Es el arreglo de los assets a incluir con el siguiente
-   * formato:
+   * @param $assets Es el arreglo de los assets a incluir, cuenta con 3 posibles posiciones fijas (MC_CSS, MC_LESS,
+   * MC_JS) en formato AM, ejemplo:
    * 
    * load_assets(array(<br>
-   *  'css' => array(<br>
+   *  MC_CSS => array(<br>
    *    'algun_css',<br>
    *    'otro',<br>
    *    'etc'<br>
    *  ),<br>
-   *    'less' => array(<br>
+   *  MC_LESS => array(<br>
    *    'algun_less',<br>
    *    '<i>etc...</i>'<br>
    *  ),<br>
-   *  'js' => array(<br>
+   *  MC_JS => array(<br>
    *    'algun_js',<br>
    *    '<i>etc...</i>'<br>
    *  )<br>
@@ -115,13 +115,13 @@ if (!function_exists('load_assets')) {
    */
   function load_assets($assets) {
     if (isset($assets[MC_CSS]))
-      foreach (string_pattern($assets[MC_CSS]) as $value)
+      foreach (am($assets[MC_CSS]) as $value)
         asset_tag(MC_CSS, $value);
     if (isset($assets[MC_LESS]))
-      foreach (string_pattern($assets[MC_LESS]) as $value)
+      foreach (am($assets[MC_LESS]) as $value)
         asset_tag(MC_LESS, $value);
     if (isset($assets[MC_JS]))
-      foreach (string_pattern($assets[MC_JS]) as $value)
+      foreach (am($assets[MC_JS]) as $value)
         asset_tag(MC_JS, $value);
   }
 
@@ -188,31 +188,74 @@ if (!function_exists('assets_controller')) {
 
 }
 
-if (!function_exists('string_pattern')) {
+if (!function_exists('am')) {
 
   /**
+   * AM: Automatic Mode
    * Genera de manera simple un arreglo que cumple un patron en sus rutas.
+   * 
+   * @param array $elements Es un arreglo en formato AM (Automatic Mode) el cual sera transformado en un array de string
+   * siguiendo los patrones con base en su formato. Por ejemplo:
+   * 
+   * array(
+   *   'ruta/comun/para/nuestro/ejemplo' => array(
+   *     'elemento0',
+   *     'elemento1' => array(
+   *       'sub_elemento1_1',
+   *       'sub_elemento1_2'
+   *     ),
+   *     'elemento2',
+   *     'elemento3' => array(
+   *       'sub_elemento3_1',
+   *       'sub_elemento3_2',
+   *       'sub_elemento3_2' => array(
+   *         'sub_elemento_3_1_1',
+   *         'sub_elemento_3_1_2'
+   *       ),
+   *       'sub_elemento3_3'
+   *     )
+   *   )
+   * )
+   * 
+   * Sera transformado en:
+   * 
+   * array(
+   *   'ruta/comun/para/nuestro/ejemplo/elemento1/sub_elemento1_2',
+   *   'ruta/comun/para/nuestro/ejemplo/elemento2',
+   *   'ruta/comun/para/nuestro/ejemplo/elemento3/sub_elemento3_1',
+   *   'ruta/comun/para/nuestro/ejemplo/elemento3/sub_elemento3_2',
+   *   'ruta/comun/para/nuestro/ejemplo/elemento3/sub_elemento3_2/sub_elemento_3_1_1',
+   *   'ruta/comun/para/nuestro/ejemplo/elemento3/sub_elemento3_2/sub_elemento_3_1_2',
+   *   'ruta/comun/para/nuestro/ejemplo/elemento3/sub_elemento3_3'
+   * )
    * 
    * @author Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 29/12/2014
    */
-  function string_pattern($elements, $route = '', $separator = '/', $start = true) {
+  function am($elements, $route = '', $separator = '/', $start = true) {
     $return_routes = array();
     foreach ($elements as $pattern => $routes) {
       if (isset($routes)) {
         if (gettype($routes) == "string")
           if (gettype($pattern) == "string")
-            $return_routes[] = $start ? $route . $pattern . $separator . $routes : $route . $separator . $pattern . $separator . $routes;
-          else
-            $return_routes[] = $start ? $route . $routes : $route . $separator . $routes;
+            $return_routes[] = $start ?
+                $route . $pattern . $separator . $routes :
+                $route . $separator . $pattern . $separator . $routes;
+          else{
+            $return_routes[] = $start ?
+                $route . $routes :
+                $route . $separator . $routes;
+          }
         if (gettype($routes) == "array") {
           $temp_route = $start ? $route . $pattern : $route . $separator . $pattern;
-          $temp = string_pattern($routes, $temp_route, $separator, FALSE);
+          $temp = am($routes, $temp_route, $separator, FALSE);
           foreach ($temp as $value)
             $return_routes[] = $value;
         }
       } else
-        $return_routes[] = $start ? $route . $pattern : $route . $separator . $pattern;
+        $return_routes[] = $start ?
+            $route . $pattern :
+            $route . $separator . $pattern;
     }
     return $return_routes;
   }
