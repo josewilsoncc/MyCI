@@ -10,7 +10,11 @@ if (!function_exists('reload_page')) {
    * @date 12/12/2014
    */
   function reload_page() {
-    echo '<script type="text/javascript">location.reload(true);</script>';
+    ?>
+    <script>
+      location.reload(true);
+    </script>
+    <?php
   }
 
 }
@@ -21,7 +25,7 @@ if (!function_exists('base_url_js')) {
    * Incluye la funcion 'base_url()' en javascript, debe llamarse asi:
    * base_url_js();
    * 
-   * @param boolean $incluirIndex Indica si se incluye o no el index.php
+   * @param boolean $include_index Indica si se incluye o no el index.php
    * en la URL base.
    * @return string/html código html para cumplir la funcion.
    * 
@@ -29,8 +33,14 @@ if (!function_exists('base_url_js')) {
    * @date 18/11/2014
    * @update 19/12/1014
    */
-  function base_url_js($incluirIndex = true) {
-    echo $incluirIndex ? "<script type='text/javascript'>function base_url(){return '" . base_url() . "index.php/';}</script>" : "<script>function base_url(){return '" . base_url() . "';}</script>";
+  function base_url_js($include_index = true) {
+    ?>
+    <script>
+      function base_url() {
+        return '<?php echo $include_index ? base_url() . 'index.php/' : base_url(); ?>';
+      }
+    </script>
+    <?php
   }
 
 }
@@ -44,7 +54,7 @@ if (!function_exists('show_message')) {
    * 
    * @param array $params Son los parametros opcionales como:
    * 
-   * string <b>$type</b> Es el tipo de mensaje, define color estandar y si no se especifica define el icono. Los
+   * string <b>'type'</b> Es el tipo de mensaje, define color estandar y si no se especifica define el icono. Los
    * posibles tipos son:
    * 
    * <i>danger</i>: Mensaje de error importante.<br>
@@ -100,11 +110,11 @@ if (!function_exists('create_select')) {
    * @param array $options Son las opciones del select
    * @param array $params Son los parametros opcionales como:
    * 
-   * string <b>$selected</b> Es el indice de la opcion seleccionada por defecto
+   * string <b>'selected'</b> Es el indice de la opcion seleccionada por defecto
    * 
-   * string <b>$html</b> Es codigo html (parametros) extra para la etiqueta select.
+   * string <b>'html'</b> Es codigo html (parametros) extra para la etiqueta select.
    * 
-   * string <b>$ucfirst</b> Pone la primer letra cada option en mayuscula y las demas en minuscula
+   * string <b>'ucfirst'</b> Pone la primer letra cada option en mayuscula y las demas en minuscula
    * 
    * @autor Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 20/11/2014
@@ -196,22 +206,11 @@ if (!function_exists('caruosel')) {
     $class_div = isset($params['class_div']) ? $params['class_div'] : $type == 'hiden_images' ? 'div_carusel_hiden' : 'div_carusel';
     $hidden_images_title = isset($params['hidden_images_title']) ? $params['hidden_images_title'] : 'Pasa el puntero para ver y ocultar el contenido...';
     ?>
-    <?php if ($type == 'hiden_images') { ?>
-      <script>
-        $(function () {
-          $('.<?php echo $class_div; ?>').hide();
-          $('.show_images').css('cursor', 'pointer');
-          $('.show_images').mouseenter(function () {
-            $('.<?php echo $class_div; ?>:hidden').fadeIn();
-          });
-          $('.show_images').click(function () {
-            $('.<?php echo $class_div; ?>').fadeToggle();
-          });
-          $('.div_carusel_hiden').mouseleave(function () {
-            $('.<?php echo $class_div; ?>').fadeOut();
-          });
-        });
-      </script>
+    <?php
+    if ($type == 'hiden_images') {
+      asset_tag(MC_JS, MCU_HE . 'carousel');
+      script_onready("my_ci_carousel('$class_div');");
+      ?>
       <div class="show_images <?php echo $class_slide; ?>"><br><center><span class="icon icon-info"></span><?php echo $hidden_images_title; ?></center><br></div>
     <?php } ?>
     <div class="<?php echo $class_div; ?>">
@@ -415,10 +414,11 @@ if (!function_exists('script_onready')) {
   function script_onready($script) {
     ?>
     <script>
-      $(function () {<?php echo $script; ?>
+      $(function () {
+    <?php echo $script; ?>
       });
     </script>
     <?php
   }
 
-}
+}  
