@@ -8,14 +8,13 @@ if (!function_exists('base_url_images')) {
    * 
    * @params array $params Son los parametros opcionales como:
    * 
-   * boolean <b>$only_return</b> si es true el resultado sera
-   * retornado en lugar de ser impreso con un echo de manera
+   * boolean <b>$only_return</b> si es true el resultado sera retornado en lugar de ser impreso con un echo de manera
    * automatica.
    * 
    * @return url base para uso de imagenes
    */
   function base_url_images($params = '') {
-    $only_return = isset($params['only_return']) ? $params['only_return'] : false;
+    $only_return = isset($params[MCP_OR]) ? $params[MCP_OR] : false;
     if ($only_return)
       return base_url() . 'assets/images/';
     else
@@ -77,8 +76,9 @@ if (!function_exists('generate_random_string')) {
    * Genera una String aleatoria con el tamaña y los caracteres espeficicados
    * 
    * @param int $length Es el tamaño del string a generar, por defecto es 10
-   * @param string $characters Son los caracteres que puede contener el string
-   * generado, por defecto numeros, letras mayusculas y minusculas.
+   * 
+   * @param string $characters Son los caracteres que puede contener el string generado, por defecto numeros, letras
+   * mayusculas y minusculas.
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 2014/11/26
@@ -95,12 +95,10 @@ if (!function_exists('generate_random_string')) {
 if (!function_exists('unserialized')) {
 
   /**
-   * Obtiene el valor del elemento indicado de un form serializado enviado
-   * por ajax usando Jquery.
+   * Obtiene el valor del elemento indicado de un form serializado enviado por ajax usando Jquery.
    * 
    * @param array $data Es el formulario serializado enviado por ajax.
-   * @param string $searched_key Es el nombre del elemento en el formulario
-   * del que se desea obtener el valor.
+   * @param string $searched_key Es el nombre del elemento en el formulario del que se desea obtener el valor.
    * @return string El valor del elemento indicado, false si este no existe.
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com

@@ -284,11 +284,13 @@ if (!function_exists('coverflow')) {
   /**
    * Genera el codigo html de un coverflow
    * 
+   * @param array $elements Es el arreglo de imagenes en formato AM
+   * 
    * @autor Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 29/12/2014
    */
   function coverflow($elements, $params = '') {
-    $elements = string_pattern($elements);
+    $elements = am($elements);
     $index = isset($params['index']) ? $params['index'] : (int) (count($elements) / 2);
     $density = isset($params['density']) ? $params['density'] : 2;
     $innerOffset = isset($params['inner_offset']) ? $params['inner_offset'] : 50;
@@ -309,7 +311,7 @@ if (!function_exists('coverflow')) {
       <div id="view-coverflow">
         <?php
         foreach ($elements as $value)
-          echo '<img class="cover" src="' . base_url_images(array('only_return' => true)) . $value . '"/>';
+          echo '<img class="cover" src="' . base_url_images(array(MCP_OR => true)) . $value . '"/>';
         ?>
       </div>
     </center>
