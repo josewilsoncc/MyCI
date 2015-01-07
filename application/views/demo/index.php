@@ -46,17 +46,25 @@
         <a href="<?php echo base_url(); ?>demo/simple_demo/toastr" class="list-group-item">Toastr</a>
       </div>
     </div>
-  </div>
-  
-  <div class="row">
+    
     <div class="col-lg-4">
       <div class="list-group">
         <a href="#" class="list-group-item active">
           Reportes Graficos
         </a>
-        <a href="<?php echo base_url(); ?>demo/report_graphic" class="list-group-item">Report_Graphic</a>
+        <a href="<?php echo base_url(); ?>demo/report_graphic/bar3d" class="list-group-item"> bar3d</a>
+        <a href="<?php echo base_url(); ?>demo/report_graphic/barClustered" class="list-group-item"> barClustered</a>
+        <a href="<?php echo base_url(); ?>demo/report_graphic/columns3d" class="list-group-item"> columns3d</a>
+        <a href="<?php echo base_url(); ?>demo/report_graphic/columnAndLineMix" class="list-group-item"> columnAndLineMix</a>
+        <a href="<?php echo base_url(); ?>demo/report_graphic/columnCylinders" class="list-group-item"> columnCylinders</a>
+        <a href="<?php echo base_url(); ?>demo/report_graphic/columnSimple" class="list-group-item"> columnSimple</a>
+        <a href="<?php echo base_url(); ?>demo/report_graphic/pie3D" class="list-group-item"> pie3D</a>
+        <a href="<?php echo base_url(); ?>demo/report_graphic/pieDonut3D" class="list-group-item"> pieDonut3D</a>
+        <a href="<?php echo base_url(); ?>demo/report_graphic/pyramidChart3D" class="list-group-item"> pyramidChart3D</a>
       </div>
     </div>
+    
   </div>
+  
 
 </div>

@@ -1,43 +1,6 @@
-var capa_grafica='';
+var capa_grafica = '';
 $(document).on('ready', function() {
-  
-  $("#btn_columns3d").on("click", function() {
-    ejecuta_grafica(columns3d, base_url() + 'report_graphic/columns3d', {titulo_eje_y: 'incidencias 2015', capa_grafica: 'mi_capa'});
-  });
-
-  $("#btn_bar3D").on("click", function() {
-    ejecuta_grafica(bar3d, base_url() + 'report_graphic/bar3d', {titulo: 'grafica 2015', capa_grafica: 'mi_capa'});
-  });
-
-  $("#btn_barClustered").on("click", function() {
-    ejecuta_grafica(barClustered, base_url() + 'report_graphic/barClustered', {titulo_columna_1: 'ingresos', titulo_columna_2: 'Gastos', capa_grafica: 'mi_capa'});
-  });
-
-  $("#btn_columnAndLineMix").on("click", function() {
-    ejecuta_grafica(columnAndLineMix, base_url() + 'report_graphic/columnAndLineMix', {titulo_valor_1: 'ingresos', titulo_valor_2: 'Gastos', capa_grafica: 'mi_capa'});
-  });
-
-  $("#btn_columnCylinders").on("click", function() {
-    ejecuta_grafica(columnCylinders, base_url() + 'report_graphic/columnCylinders', {capa_grafica: 'mi_capa'});
-  });
-
-  $("#btn_columnSimple").on("click", function() {
-    ejecuta_grafica(columnSimple, base_url() + 'report_graphic/columnSimple', {capa_grafica: 'mi_capa'});
-  });
-
-  $("#btn_pie3D").on("click", function() {
-    ejecuta_grafica(pie3D, base_url() + 'report_graphic/pie3D', {capa_grafica: 'mi_capa'});
-  });
-
-  $("#btn_pieDonut3D").on("click", function() {
-    ejecuta_grafica(pieDonut3D, base_url() + 'report_graphic/pieDonut3D', {titulo: 'problemas en las sucursales', tamano_titulo: 20, capa_grafica: 'mi_capa'});
-  });
-
-  $("#btn_pyramidChart3D").on("click", function() {
-    ejecuta_grafica(pyramidChart3D, base_url() + 'report_graphic/pyramidChart3D', {capa_grafica: 'mi_capa'});
-  });
-
-  /* la capa contenedora que posee la grafica no es responsiva por eso se usa este metodo, para calcular el tamaño de la ventana cada vez que tenga un cambio.*/
+  /* la capa contenedora que posee la grafica no es responsiva por eso se usa este metodo, para calcular el tamaÃ±o de la ventana cada vez que tenga un cambio.*/
   $(window).resize(function() {
     var ancho = percentage_dimension(80, true);
     var alto = percentage_dimension(80, false);
@@ -57,7 +20,7 @@ $(document).on('ready', function() {
  * @date 2015/01/05
  */
 function ejecuta_grafica(funcion, url, parametros) {
-  capa_grafica = '#'+parametros['capa_grafica']; // se guarda el nombre de la capa en una variable global para usarla cuando la ventana cambie de resolucion.
+  capa_grafica = '#' + parametros['capa_grafica']; // se guarda el nombre de la capa en una variable global para usarla cuando la ventana cambie de resolucion.
   $.ajax({
     url: url,
     type: 'post',
@@ -65,11 +28,11 @@ function ejecuta_grafica(funcion, url, parametros) {
     success: function(data) {
       var ancho = percentage_dimension(80, true);
       var alto = percentage_dimension(80, false);
-      $('#'+parametros['capa_grafica']).css({'width': ancho, 'height': alto});
+      $('#' + parametros['capa_grafica']).css({'width': ancho, 'height': alto});
       funcion(data, parametros);
     },
     error: function(data) {
-      $('#'+parametros['capa_grafica']).html('<p class="lead text-danger text-center">Ocurrio un error al generar la grafica, intentelo nuevamente.</p>');
+      $('#' + parametros['capa_grafica']).html('<p class="lead text-danger text-center">Ocurrio un error al generar la grafica, intentelo nuevamente.</p>');
     }
   });
 }
@@ -424,7 +387,7 @@ function pie3D(chartData, parametros) {
  * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
  * los indices del arreglo son:
  * parametros['titulo'] =  el titulo o cabezera de la grafica
- * parametros['tamano_titulo'] =  el tamaño en px de la letra de titulo
+ * parametros['tamano_titulo'] =  el tamaÃ±o en px de la letra de titulo
  * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2015/01/08
@@ -479,4 +442,48 @@ function  pyramidChart3D(chartData, parametros) {
   chart.outlineThickness = 2;
   chart.outlineColor = "#FFFFFF";
   chart.write(parametros['capa_grafica']);
+}
+
+/**
+ * este metodo se creo para simplificar la forma de ver los graficos en el demo a nivel de codigo, no es necesario hacerlo de este modo.
+ * simplemente llamar un metodo X de controlador X y crear su respectivo arreglo JSON.
+ * @param {type} nombre_metodo : el nombre del metodo a pintar
+ */
+function selector_metodo(nombre_metodo) {
+  switch (nombre_metodo) {
+    case 'bar3d':
+      ejecuta_grafica(bar3d, base_url() + 'demo/pintar_grafica/bar3d', {titulo: 'grafica 2015', capa_grafica: 'mi_capa'});
+      break;
+
+    case 'barClustered':
+      ejecuta_grafica(barClustered, base_url() + 'demo/pintar_grafica/barClustered', {titulo_columna_1: 'ingresos', titulo_columna_2: 'Gastos', capa_grafica: 'mi_capa'});
+      break;
+
+    case 'columns3d':
+      ejecuta_grafica(columns3d, base_url() + 'demo/pintar_grafica/columns3d', {titulo_eje_y: 'incidencias 2015', capa_grafica: 'mi_capa'});
+      break;
+
+    case 'columnAndLineMix':
+      ejecuta_grafica(columnAndLineMix, base_url() + 'demo/pintar_grafica/columnAndLineMix', {titulo_valor_1: 'ingresos', titulo_valor_2: 'Gastos', capa_grafica: 'mi_capa'});
+      break;
+    case 'columnCylinders':
+      ejecuta_grafica(columnCylinders, base_url() + 'demo/pintar_grafica/columnCylinders', {capa_grafica: 'mi_capa'});
+      break;
+
+    case 'columnSimple':
+      ejecuta_grafica(columnSimple, base_url() + 'demo/pintar_grafica/columnSimple', {capa_grafica: 'mi_capa'});
+      break;
+
+    case 'pie3D':
+      ejecuta_grafica(pie3D, base_url() + 'demo/pintar_grafica/pie3D', {capa_grafica: 'mi_capa'});
+      break;
+
+    case 'pieDonut3D':
+      ejecuta_grafica(pieDonut3D, base_url() + 'demo/pintar_grafica/pieDonut3D', {titulo: 'problemas en las sucursales', tamano_titulo: 20, capa_grafica: 'mi_capa'});
+      break;
+
+    case 'pyramidChart3D':
+      ejecuta_grafica(pyramidChart3D, base_url() + 'demo/pintar_grafica/pyramidChart3D', {capa_grafica: 'mi_capa'});
+      break;
+  }
 }
