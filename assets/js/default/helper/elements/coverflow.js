@@ -2,9 +2,9 @@
  * Script para el CoverFlow
  * @param {int} index Es el indice de la imagen a mostrar inicialmente.
  * @param {int} density Indica que tantas imagenes seran mostradas a los costados.
- * @param {type} innerOffset Indica la distancia de las imagenes entre si.
+ * @param {int} innerOffset Indica la distancia entre las imagenes.
  * @param {float} innerScale Indica el porcentaje de tamaño que adquieren las imagenes de los costados con respecto a la
- * imagen central
+ * imagen central en porcentaje
  * @param {function} on_confirm Función a llamar cuando se da click a la imagen central.
  * 
  * @author Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>

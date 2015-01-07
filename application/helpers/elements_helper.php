@@ -2,7 +2,7 @@
 if (!function_exists('reload_page')) {
 
   /**
-   * produce una etiqueta javascript en cuya logíca, se recarga la pagína
+   * Produce una etiqueta javascript en cuya logíca, se recarga la pagína
    * 
    * @return string/html código html para cumplir la funcion.
    * 
@@ -10,7 +10,11 @@ if (!function_exists('reload_page')) {
    * @date 12/12/2014
    */
   function reload_page() {
-    echo '<script type="text/javascript">location.reload(true);</script>';
+    ?>
+    <script>
+      location.reload(true);
+    </script>
+    <?php
   }
 
 }
@@ -21,7 +25,7 @@ if (!function_exists('base_url_js')) {
    * Incluye la funcion 'base_url()' en javascript, debe llamarse asi:
    * base_url_js();
    * 
-   * @param boolean $incluirIndex Indica si se incluye o no el index.php
+   * @param boolean $include_index Indica si se incluye o no el index.php
    * en la URL base.
    * @return string/html código html para cumplir la funcion.
    * 
@@ -29,8 +33,14 @@ if (!function_exists('base_url_js')) {
    * @date 18/11/2014
    * @update 19/12/1014
    */
-  function base_url_js($incluirIndex = true) {
-    echo $incluirIndex ? "<script type='text/javascript'>function base_url(){return '" . base_url() . "index.php/';}</script>" : "<script>function base_url(){return '" . base_url() . "';}</script>";
+  function base_url_js($include_index = true) {
+    ?>
+    <script>
+      function base_url() {
+        return '<?php echo $include_index ? base_url() . 'index.php/' : base_url(); ?>';
+      }
+    </script>
+    <?php
   }
 
 }
@@ -44,7 +54,7 @@ if (!function_exists('show_message')) {
    * 
    * @param array $params Son los parametros opcionales como:
    * 
-   * string <b>$type</b> Es el tipo de mensaje, define color estandar y si no se especifica define el icono. Los
+   * string <b>'type'</b> Es el tipo de mensaje, define color estandar y si no se especifica define el icono. Los
    * posibles tipos son:
    * 
    * <i>danger</i>: Mensaje de error importante.<br>
@@ -100,11 +110,11 @@ if (!function_exists('create_select')) {
    * @param array $options Son las opciones del select
    * @param array $params Son los parametros opcionales como:
    * 
-   * string <b>$selected</b> Es el indice de la opcion seleccionada por defecto
+   * string <b>'selected'</b> Es el indice de la opcion seleccionada por defecto
    * 
-   * string <b>$html</b> Es codigo html (parametros) extra para la etiqueta select.
+   * string <b>'html'</b> Es codigo html (parametros) extra para la etiqueta select.
    * 
-   * string <b>$ucfirst</b> Pone la primer letra cada option en mayuscula y las demas en minuscula
+   * string <b>'ucfirst'</b> Pone la primer letra cada option en mayuscula y las demas en minuscula
    * 
    * @autor Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 20/11/2014
@@ -159,35 +169,35 @@ if (!function_exists('caruosel')) {
    * 
    * @param array $params Son los parametros opcionales como:
    * 
-   * string <b>$type</b> Define el tipo de carrusel, los tipos existentes son: 'images', 'hiden_images', 'basic'.<br>
+   * string <b>'type'</b> Define el tipo de carrusel, los tipos existentes son: 'images', 'hiden_images', 'basic'.<br>
    * 
-   * string <b>$selected</b> Es el indice incial del carrusel.<br>
+   * string <b>MCP_I</b> Es el indice incial del carrusel.<br>
    * 
-   * string <b>$id</b> Es el id del div del carrusel al cual los botones de navegación hacen referencia.<br>
+   * string <b>'id'</b> Es el id del div del carrusel al cual los botones de navegación hacen referencia.<br>
    * 
-   * string <b>$interval</b> Es el intervalo del tiempo en que el carrusel cambiara de diapositiva si no tiene el cursor
+   * string <b>'interval'</b> Es el intervalo del tiempo en que el carrusel cambiara de diapositiva si no tiene el cursor
    * encima.<br>
    * 
-   * string <b>$class_slide</b> Son las clases aplicadas a cada dispositiva separadas por espacio, tambien sera aplicada
+   * string <b>'class_slide'</b> Son las clases aplicadas a cada dispositiva separadas por espacio, tambien sera aplicada
    * al div 'show_images' en el caso del carrusel tipo 'hiden_images'.<br>
    * 
-   * string <b>$class_basic_title</b> Son las clases aplicadas a el titulo de un carrusel de tipo 'basic' separadas por
+   * string <b>'class_basic_title'</b> Son las clases aplicadas a el titulo de un carrusel de tipo 'basic' separadas por
    * espacio.<br>
    * 
-   * string <b>$class_images</b> Son las clases aplicadas a las imagenes de un carrusel de tipo 'images' o
+   * string <b>'class_images'</b> Son las clases aplicadas a las imagenes de un carrusel de tipo 'images' o
    * 'hiden_images' separadas por espacio.<br>
    * 
-   * string <b>$class_div</b> Son las clases aplicadas a las imagenes de un carrusel de tipo 'images' o 'hiden_images'
+   * string <b>'class_div'</b> Son las clases aplicadas a las imagenes de un carrusel de tipo 'images' o 'hiden_images'
    * separadas por espacio.<br>
    * 
-   * string <b>$hidden_images_title</b> Es el título mostrado en un carrusel de tipo 'hiden_images'.<br>
+   * string <b>'hidden_images_title'</b> Es el título mostrado en un carrusel de tipo 'hiden_images'.<br>
    * 
    * @autor Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 18/12/2014
    */
   function caruosel($elements, $params = '') {
     $type = isset($params['type']) ? $params['type'] : 'images';
-    $selected = isset($params['selected']) ? $params['selected'] : 0;
+    $index = isset($params[MCP_I]) ? $params[MCP_I] : 0;
     $id = isset($params['id']) ? $params['id'] : 'my_caruosel';
     $interval = isset($params['interval']) ? $params['interval'] : 3000;
     $class_slide = isset($params['class_slide']) ? $params['class_slide'] : '';
@@ -196,22 +206,11 @@ if (!function_exists('caruosel')) {
     $class_div = isset($params['class_div']) ? $params['class_div'] : $type == 'hiden_images' ? 'div_carusel_hiden' : 'div_carusel';
     $hidden_images_title = isset($params['hidden_images_title']) ? $params['hidden_images_title'] : 'Pasa el puntero para ver y ocultar el contenido...';
     ?>
-    <?php if ($type == 'hiden_images') { ?>
-      <script>
-        $(function () {
-          $('.<?php echo $class_div; ?>').hide();
-          $('.show_images').css('cursor', 'pointer');
-          $('.show_images').mouseenter(function () {
-            $('.<?php echo $class_div; ?>:hidden').fadeIn();
-          });
-          $('.show_images').click(function () {
-            $('.<?php echo $class_div; ?>').fadeToggle();
-          });
-          $('.div_carusel_hiden').mouseleave(function () {
-            $('.<?php echo $class_div; ?>').fadeOut();
-          });
-        });
-      </script>
+    <?php
+    if ($type == 'hiden_images') {
+      asset_tag(MC_JS, MCU_HE . 'carousel');
+      script_onready("my_ci_carousel('$class_div');");
+      ?>
       <div class="show_images <?php echo $class_slide; ?>"><br><center><span class="icon icon-info"></span><?php echo $hidden_images_title; ?></center><br></div>
     <?php } ?>
     <div class="<?php echo $class_div; ?>">
@@ -221,7 +220,7 @@ if (!function_exists('caruosel')) {
           <?php
           for ($i = 0; $i < count($elements); $i++) {
             ?>
-            <li data-target="#<?php echo $id; ?>" data-slide-to="<?php echo $i; ?>" class="<?php echo $selected == $i ? 'active' : ''; ?>"></li>
+            <li data-target="#<?php echo $id; ?>" data-slide-to="<?php echo $i; ?>" class="<?php echo $index == $i ? 'active' : ''; ?>"></li>
             <?php
           }
           ?>
@@ -237,7 +236,7 @@ if (!function_exists('caruosel')) {
                 ?>
                 <div class="<?php
                 echo $class_slide . ' ';
-                echo $i == $selected ? 'active' : '';
+                echo $i == $index ? 'active' : '';
                 ?> item">
                   <center><img  class="img-rounded <?php echo $class_images; ?>" src="<?php echo base_url(); ?>assets/images/<?php echo $value; ?>"></center>
                 </div>
@@ -250,7 +249,7 @@ if (!function_exists('caruosel')) {
                 ?>
                 <div class="<?php
                 echo $class_slide . ' ';
-                echo $i == $selected ? 'active' : '';
+                echo $i == $index ? 'active' : '';
                 ?> item">
                   <h2 class="<?php echo $class_basic_title; ?>"><?php echo $key; ?></h2>
                   <div class="carousel-caption">
@@ -286,18 +285,35 @@ if (!function_exists('coverflow')) {
    * 
    * @param array $elements Es el arreglo de imagenes en formato AM
    * 
+   * @param array $params Es el arreglo de parametros, su KEY indica el parametro y su VALUE el valor del parametro,
+   * esto de la siguiente manera:
+   * 
+   * int <b>MCP_I</b> Es el indice de la imagen a mostrar inicialmente.
+   *
+   * int <b>'density'</b> Indica que tantas imagenes seran mostradas a los costados.
+   * 
+   * int <b>'inner_offset'</b> Indica la distancia entre las imagenes.
+   * 
+   * float <b>'inner_scale'</b> Indica el porcentaje de tamaño que adquieren las imagenes de los costados con respecto a
+   * la imagen central en porcentaje.
+   * 
+   * string <b>'on_confirm'</b> Función JavaScript a llamar cuando se da click a la imagen central.
+   * 
+   * string <b>MCP_CE</b> Extensión común para todas las imagenes.
+   * 
    * @autor Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 29/12/2014
    */
   function coverflow($elements, $params = '') {
     $elements = am($elements);
-    $index = isset($params['index']) ? $params['index'] : (int) (count($elements) / 2);
+    $index = isset($params[MCP_I]) ? $params[MCP_I] : (int) (count($elements) / 2);
     $density = isset($params['density']) ? $params['density'] : 2;
     $innerOffset = isset($params['inner_offset']) ? $params['inner_offset'] : 50;
     $innerScale = isset($params['inner_scale']) ? $params['inner_scale'] : .5;
     $on_confirm = isset($params['on_confirm']) ? $params['on_confirm'] : 'coverflow_confirm';
+    $common_extension = isset($params[MCP_CE]) ? '.' . $params[MCP_CE] : '';
 
-    load_assets(array('js' => array(
+    load_assets(array(MC_JS => array(
         'default/jquery' => array(
           'jquery.coverflow',
           'jquery.interpolate',
@@ -311,7 +327,7 @@ if (!function_exists('coverflow')) {
       <div id="view-coverflow">
         <?php
         foreach ($elements as $value)
-          echo '<img class="cover" src="' . base_url_images(array(MCP_OR => true)) . $value . '"/>';
+          echo '<img class="cover" src="' . base_url_images(array(MCP_OR => true)) . $value . $common_extension . '"/>';
         ?>
       </div>
     </center>
@@ -393,14 +409,16 @@ if (!function_exists('script_onready')) {
    * @param string $script Es el script a ejecutar cuando la página carge
    * 
    * @author Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
+   * @date 2015/01/06
    */
   function script_onready($script) {
     ?>
     <script>
-      $(function () {<?php echo $script; ?>
+      $(function () {
+    <?php echo $script; ?>
       });
     </script>
     <?php
   }
 
-}
+}  
