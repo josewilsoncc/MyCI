@@ -64,6 +64,16 @@
       </div>
     </div>
     
+    <div class="col-lg-4">
+      <div class="list-group">
+        <a href="#" class="list-group-item active">
+          Tablas
+        </a>
+        <a href="<?php echo base_url(); ?>demo/table/generate_simple_table" class="list-group-item">Tabla simple con arreglos</a>
+        <a href="<?php echo base_url(); ?>demo/table/generate_simple_table_puntero" class="list-group-item">Tabla simple con punteros</a>
+      </div>
+    </div>
+    
   </div>
   
 

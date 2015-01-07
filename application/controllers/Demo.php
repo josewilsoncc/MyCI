@@ -30,12 +30,12 @@ class Demo extends CI_Controller {
         break;
       case 'show_message':
         $this->load->view('layout', array(
-          'content' => 'demo/show_message',
-          'mensaje' => 'Bienvenido al aplicativo, este mensaje debe desaparecer en 3 segundos',
-          'mensaje_correcto' => 'Ejemplo de un mensaje correcto',
-          'mensaje_informativo' => 'Ejemplo de un mensaje informativo',
-          'mensaje_advertencia' => 'Ejemplo de un mensaje de advertencia',
-          'mensaje_error' => 'Ejemplo de un mensaje de error'
+         'content' => 'demo/show_message',
+         'mensaje' => 'Bienvenido al aplicativo, este mensaje debe desaparecer en 3 segundos',
+         'mensaje_correcto' => 'Ejemplo de un mensaje correcto',
+         'mensaje_informativo' => 'Ejemplo de un mensaje informativo',
+         'mensaje_advertencia' => 'Ejemplo de un mensaje de advertencia',
+         'mensaje_error' => 'Ejemplo de un mensaje de error'
         ));
         break;
       case 'carousel_hiden_images':
@@ -66,18 +66,18 @@ class Demo extends CI_Controller {
    */
   public function limit($start = 0, $end = 5) {
     $query = $this->basic_model->limit('usuarios', $start, $end, 'cedula', array(
-      'select' => 'cencos, fc_desc_sucursal(cencos) descencos, cedula, pro_personal_nombre(cedula) nombre, codusu',
-      'where' => array('estado' => 'A')
+     'select' => 'cencos, fc_desc_sucursal(cencos) descencos, cedula, pro_personal_nombre(cedula) nombre, codusu',
+     'where' => array('estado' => 'A')
     ));
 
     $this->load->view('layout', array(
-      'content' => 'demo/limit',
-      'query' => $query
+     'content' => 'demo/limit',
+     'query' => $query
     ));
   }
-  
+
   public function report_graphic($tipo_grafico = '') {
-    $this->load->view('layout', array('content' => 'demo/report_graphic', 'tipo_grafico'=>$tipo_grafico));
+    $this->load->view('layout', array('content' => 'demo/report_graphic', 'tipo_grafico' => $tipo_grafico));
   }
 
   /*
@@ -91,6 +91,7 @@ class Demo extends CI_Controller {
    * @author Alvar Javier Vanegas Ochoa, alvarovanegas18@gmail.com
    * @date 2015/01/05
    */
+
   public function pintar_grafica($tipo_grafico = '') {
     switch ($tipo_grafico) {
       case 'bar3d':
@@ -194,6 +195,41 @@ class Demo extends CI_Controller {
         echo json_encode($jsondata);
         break;
     }
+  }
+
+  public function table($tipo_tabla) {
+    $this->load->helper('table');
+    $this->load->database('conexion_alvaro');
+
+    switch ($tipo_tabla) {
+      case 'generate_simple_table':
+        $this->db->select('first 10 codigo, nombre');
+        $this->db->from('sucursales');
+        $query = $this->db->get();
+
+        //$parametros['class_table'] = '';
+        $parametros['caption'] = 'tabla simple con arreglos';
+        $titulos_columnas = array('CODIGO', 'NOMBRE');
+        $tabla = generate_simple_table($query->result(), $titulos_columnas, $parametros);
+
+        break;
+      case 'generate_simple_table_puntero':
+        
+        $puntero = (object) array();
+        $puntero->titulos = array('codigo', 'nombre', 'valor');
+        
+        $puntero->datos_1 = array('1','armenia',10);
+        $puntero->datos_2 = array('2','manizales',20);
+        $puntero->datos_3 = array('3','quindio',30);
+        $puntero->datos_3 = array('alvaro','alis','bobi');
+        
+        //$parametros['class_table'] = '';
+        $parametros['caption'] = 'tabla simple con puntero';
+        $tabla = generate_simple_table($puntero,'', $parametros,true);
+        break;
+    }
+    $this->load->view('layout', array('content' => 'demo/table', 'tabla' => $tabla));
+    //anchor("detalle_incidencia/index/$datos->codigo", 'VER', array('title' => 'Ver detalle', 'target' => '_blank'))
   }
 
 }

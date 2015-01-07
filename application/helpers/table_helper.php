@@ -1,0 +1,67 @@
+<?php
+
+/*
+ * Este Helper es el encargado de crear tablas html de forma dinamica con ayuda de la libreria table de CI.
+ * 
+ * @author Alvaro Javier Vanegas Ochoaa <alvarovanegas18@gmail.com>
+ * @date 2015/01/08
+ */
+
+if (!function_exists('generate_simple_table')) {
+
+  /**
+   * Genera una tabla simple la cual solo lista de una forma sencilla los datos en una tabla <table>
+   * @param [array] $array_result: un arreglo el cual puede ser de dos tipos
+   * 
+   * array() : un arreglo normal
+   * $puntero->? : un puntero
+   *  
+   * @param [array] $titles : especifica los titulos o el header que tendra la tabla al momento de generarla
+   * @param [array] $params : un arreglo de parametros opcionales, sus incides son:
+   * 
+   * $params['class_table'] : recibe un string indicando clases css para el tag <table> 
+   * $params['caption']     : un subtitulo al comienzo de la tabla
+   * 
+   * @return string         : devuelve el html resultante de una tabla
+   */
+  function generate_simple_table($array_result, $titles = '', $params = '', $active_puntero = false) {
+    $ci = & get_instance();
+    $ci->load->library('table');
+
+    $params['class_table'] = isset($params['class_table']) ? $params['class_table'] : 'table-striped table-bordered table-hover';
+    $params['caption'] = isset($params['caption']) ? $params['caption'] : '';
+
+    $ci->table->set_caption($params['caption']);
+
+    //arreglo
+    if ($active_puntero === false) {
+      $ci->table->set_heading($titles);
+      $tamano = count($titles);
+    } else {
+      //puntero
+      $array_result = (array) $array_result;
+      $ci->table->set_heading($array_result['titulos']);
+      $tamano = count($array_result['titulos']);
+      unset($array_result['titulos']);
+    }
+    
+    foreach ($array_result as $datos) {
+        reset($datos);
+        $temporal = array();
+        for ($i = 0; $i < $tamano; $i++) {
+          $elemento = current($datos);
+          $temporal[$i] = $elemento;
+          next($datos);
+        }
+        $ci->table->add_row($temporal);
+      }
+
+    $plantilla = array(
+     'table_open' => '<table class= "table table-responsive ' . $params['class_table'] . '">'
+    );
+    $ci->table->set_template($plantilla);
+    $tabla_generada = $ci->table->generate();
+    return $tabla_generada;
+  }
+
+}
