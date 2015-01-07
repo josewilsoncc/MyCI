@@ -56,5 +56,9 @@ class Demo extends CI_Controller {
       'query' => $query
     ));
   }
+  
+  public function report_graphic() {
+    $this->load->view('layout', array('content' => 'demo/report_graphic'));
+  }
 
 }
