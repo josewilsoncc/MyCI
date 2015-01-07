@@ -46,7 +46,7 @@ $ci->load->model(array(
  * 
  * Prefijos de las constantes:
  * 
- * 'MC_' Constante basica de My CI: Son constantes para ser usadas frecuentemente por el usuario de MY CI.
+ * 'MC_' Constante básica de My CI: Son constantes para ser usadas frecuentemente por el usuario de MY CI.
  * 
  * 'MCP_' Constante de posición de parametro: Son constantes que representan la posición de un parametro en un arreglo,
  * son usadas como KEY en un array de parametros.
@@ -56,6 +56,12 @@ $ci->load->model(array(
  * 'MCU_' Constante de URI Interna: Establecen o contienen rutas por defecto a nivel de desarrollo interno.
  * 
  * @author Jose Wilson Capera Castaño - josewilsoncc@hotmail.com
+ */
+
+/*
+ | -------------------------------------------------------------------
+ |  MC: Constantes básicas de My CI
+ | -------------------------------------------------------------------
  */
 
 /**
@@ -84,12 +90,38 @@ define('MC_LESS', 'less');
  */
 define('MC_MNOR', 5000);
 
+/*
+ | -------------------------------------------------------------------
+ |  MCP: Constantes de posición de parametro
+ | -------------------------------------------------------------------
+ */
+
 /**
  * Solo retorno:
  * Representa el parametro de solo retorno
- * @cosnt Only Return (My CI Param)
+ * @cosnt Only Return (My CI Param position)
  */
 define('MCP_OR', 'only_return');
+
+/**
+ * Extensión común:
+ * Representa el parametro que define una extension comun (jpg, png, html, ico, etc).
+ * @cosnt Common Extension (My CI Param position)
+ */
+define('MCP_CE', 'common_extension');
+
+/**
+ * Indice:
+ * Representa el parametro que define un indice
+ * @cosnt Index (My CI Param position)
+ */
+define('MCP_I', 'index');
+
+/*
+ | -------------------------------------------------------------------
+ |  MCI: Constantes Internas
+ | -------------------------------------------------------------------
+ */
 
 /**
  * Ruta:
@@ -120,6 +152,12 @@ define('MCI_RWBU', 'route_without_base_url');
  * @const Route Without Base Url _ False
  */
 define('MCI_RWBU_F', 'false:route_without_base_url');
+
+/*
+ | -------------------------------------------------------------------
+ |  MCU: Constantes de URI Internas
+ | -------------------------------------------------------------------
+ */
 
 /**
  * URI Elements Helper:
