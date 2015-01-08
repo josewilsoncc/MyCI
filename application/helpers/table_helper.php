@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Este Helper es el encargado de crear tablas html de forma dinamica con ayuda de la libreria table de CI.
  * 
@@ -7,6 +8,7 @@
  */
 
 if (!function_exists('generate_simple_table')) {
+
   /**
    * Genera una tabla simple la cual solo lista de una forma sencilla los datos en una tabla <table>
    * @param [array] $array_result: un arreglo el cual puede ser de dos tipos
@@ -21,7 +23,7 @@ if (!function_exists('generate_simple_table')) {
    * 
    * $params['class_table'] : recibe un string indicando clases css para el tag <table> 
    * $params['caption']     : un subtitulo al comienzo de la tabla
-   * $params['is_puntero']  : determina si el parametro $array_result es un arreglo o un puntero, por defecto es un arreglo = false
+   * $params['is_puntero']  : determina si el parametro $array_result es un arreglo o un puntero, por defecto es un arreglo 'false'
    * 
    * @return string         : devuelve el html resultante de una tabla
    */
