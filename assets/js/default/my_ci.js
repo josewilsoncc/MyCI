@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
   messages_control();
 });
 
@@ -8,7 +8,7 @@ $(function () {
 function messages_control() {
   $(".show_message").hide();
   $(".show_message").fadeIn(500);
-  setInterval(function () {
+  setInterval(function() {
     $(".auto_hide").hide(1000);
   }, 3500);
 }
@@ -25,9 +25,7 @@ function messages_control() {
  */
 
 function percentage_dimension(percent, is_width) {
-  is_width = is_width !== undefined? is_width : true;
-  var total = document.body ?
-          (is_width ? document.body.clientWidth : document.body.clientHeight) :
-          (is_width ? window.innerWidth : window.innerHeight);
+  is_width = is_width !== undefined ? is_width : true;
+  var total = (is_width ? window.innerWidth : window.innerHeight);
   return (percent * total) / 100;
 }
