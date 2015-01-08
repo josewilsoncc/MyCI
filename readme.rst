@@ -2,8 +2,10 @@
 ¿Que es My CI?
 ###################
 
-My CI es CodeIgniter en su ultima versión (3.0) con una serie de helpers, librerias, assets, configuraciones y otros
-elementos extras, que le dan un nuevo sabor, todo esto sin alterar el núcleo del framework.
+My CI fue creado el 19 de diciembre del 2014, es una adaptación de CodeIgniter en su versión mas reciente con una serie
+de helpers, librerias, assets, configuraciones y otros elementos extras, que le dan un nuevo sabor, todo esto sin
+alterar el núcleo del framework, esta pensado en la constante actualización sin alteraciones dramáticas de los proyectos
+desarrollados en el.
 
 *******************
 Información

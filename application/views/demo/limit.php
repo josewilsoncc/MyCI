@@ -11,5 +11,5 @@ show_message("Prueba cambiando la URI por localhost/my_ci/demo/limit/12/21 en tu
     <?php } ?>
   </ul>
 </center>
-<?php paginator('demo/limit/', 120, 5); ?>
+<?php paginator('demo/main/limit/', 120, 5); ?>
 <?php footer('<b>Realizado por:</b><br>Jose Wilson Capera Castaño - josewilsoncc@hotmail.com<br>Estefania Alzate Daza - teflon28799@gmail.com'); ?>
