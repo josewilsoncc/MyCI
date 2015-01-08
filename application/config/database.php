@@ -135,28 +135,5 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-$db['conexion_alvaro'] = array(
-	'dsn'	=> '',
-	'hostname' => 'v4',
-	'username' => 'sjimenez',
-	'password' => 'steven92',
-	'database' => 'ibg',
-	'dbdriver' => 'odbc',
-	'dbprefix' => '',
-	'pconnect' => TRUE,
-	'db_debug' => TRUE,
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'autoinit' => TRUE,
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
-
 /* End of file database.php */
 /* Location: ./application/config/database.php */
