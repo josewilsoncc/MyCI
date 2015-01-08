@@ -201,12 +201,13 @@ class Demo extends CI_Controller {
     $this->load->helper('table');
     $this->load->database('conexion_alvaro');
 
+    //consulta en la base de datos
+    $this->db->select('first 10 codigo, nombre, direccion, telefonos,feccrea, horacre, usrmodi, tipo_nomina');
+    $this->db->from('sucursales');
+    $query = $this->db->get();
+
     switch ($tipo_tabla) {
       case 'generate_simple_table':
-        $this->db->select('first 10 codigo, nombre, direccion, telefonos,feccrea, horacre, usrmodi, tipo_nomina');
-        $this->db->from('sucursales');
-        $query = $this->db->get();
-
         //$parametros['class_table'] = '';
         $parametros['caption'] = 'tabla simple con arreglos';
         $titulos_columnas = array('Codigo', 'Nombre', 'Direccion', 'Telefono', 'Fecha creacion', 'Hora creacion', 'Usuario Edicion', 'Tipo de Nomina');
@@ -214,22 +215,15 @@ class Demo extends CI_Controller {
         break;
 
       case 'generate_simple_table_puntero':
-        $this->db->select('first 10 codigo, nombre, direccion, telefonos,feccrea, horacre, usrmodi, tipo_nomina');
-        $this->db->from('sucursales');
-        $query = $this->db->get();
-
         $puntero = (object) array();
         foreach ($query->result() as $datos) {
           $key = 'key_' . $datos->codigo;
-          //$puntero->$key = array($datos->codigo, $datos->nombre, $datos->direccion, $datos->telefonos, $datos->feccrea, $datos->horacre, $datos->usrmodi, $datos->tipo_nomina);
-        $puntero->$key = array($datos->codigo, $datos->nombre, $datos->direccion, $datos->telefonos, $datos->feccrea, $datos->horacre, $datos->usrmodi, $datos->tipo_nomina);
-        
+          $puntero->$key = array($datos->codigo, $datos->nombre, $datos->direccion, $datos->telefonos, $datos->feccrea, $datos->horacre, $datos->usrmodi, $datos->tipo_nomina);
         }
         $puntero->titulos = array('Codigo', 'Nombre', 'Direccion', 'Telefono', 'Fecha creacion', 'Hora creacion', 'Usuario Edicion', 'Tipo de Nomina');
-
-        //$parametros['class_table'] = '';
         $parametros['caption'] = 'tabla simple con puntero';
-        $tabla = generate_simple_table($puntero, '', $parametros, true);
+        $parametros['is_puntero'] = true;
+        $tabla = generate_simple_table($puntero, '', $parametros);
         break;
     }
     $this->load->view('layout', array('content' => 'demo/table', 'tabla' => $tabla));

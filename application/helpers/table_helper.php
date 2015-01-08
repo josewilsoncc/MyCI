@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Este Helper es el encargado de crear tablas html de forma dinamica con ayuda de la libreria table de CI.
  * 
@@ -8,7 +7,6 @@
  */
 
 if (!function_exists('generate_simple_table')) {
-
   /**
    * Genera una tabla simple la cual solo lista de una forma sencilla los datos en una tabla <table>
    * @param [array] $array_result: un arreglo el cual puede ser de dos tipos
@@ -18,25 +16,27 @@ if (!function_exists('generate_simple_table')) {
    * $puntero->datos = 'correcto';
    * $puntero->datos->otro_puntero = 'incorrecto';
    *  
-   * @param [array] $titles : especifica los titulos o el header que tendra la tabla al momento de generarla
+   * @param [array] $titles : especifica los titulos o el header que tendra la tabla al momento de generarla, se ingresa vacio cuando se usa el puntero
    * @param [array] $params : un arreglo de parametros opcionales, sus incides son:
    * 
    * $params['class_table'] : recibe un string indicando clases css para el tag <table> 
    * $params['caption']     : un subtitulo al comienzo de la tabla
+   * $params['is_puntero']  : determina si el parametro $array_result es un arreglo o un puntero, por defecto es un arreglo = false
    * 
    * @return string         : devuelve el html resultante de una tabla
    */
-  function generate_simple_table($array_result, $titles = '', $params = '', $active_puntero = false) {
+  function generate_simple_table($array_result, $titles = '', $params = '') {
     $ci = & get_instance();
     $ci->load->library('table');
 
     $params['class_table'] = isset($params['class_table']) ? $params['class_table'] : 'table-striped table-bordered table-hover';
     $params['caption'] = isset($params['caption']) ? $params['caption'] : '';
+    $params['is_puntero'] = isset($params['is_puntero']) ? $params['is_puntero'] : false;
 
     $ci->table->set_caption($params['caption']);
 
     //cuando recibe un arreglo
-    if ($active_puntero === false) {
+    if (!$params['is_puntero']) {
       $ci->table->set_heading($titles);
       $tamano = count($titles);
     } else {
@@ -57,7 +57,7 @@ if (!function_exists('generate_simple_table')) {
       }
       $ci->table->add_row($temporal);
     }
-
+    //plantilla por defecto
     $plantilla = array(
      'table_open' => '<table class= "table table-responsive ' . $params['class_table'] . '">'
     );
