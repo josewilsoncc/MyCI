@@ -14,7 +14,9 @@ if (!function_exists('generate_simple_table')) {
    * @param [array] $array_result: un arreglo el cual puede ser de dos tipos
    * 
    * array() : un arreglo normal
-   * $puntero->? : un puntero
+   * $puntero->? : un puntero pero solo tiene la capacidad de recibir un elemento ejemplo
+   * $puntero->datos = 'correcto';
+   * $puntero->datos->otro_puntero = 'incorrecto';
    *  
    * @param [array] $titles : especifica los titulos o el header que tendra la tabla al momento de generarla
    * @param [array] $params : un arreglo de parametros opcionales, sus incides son:
@@ -33,28 +35,28 @@ if (!function_exists('generate_simple_table')) {
 
     $ci->table->set_caption($params['caption']);
 
-    //arreglo
+    //cuando recibe un arreglo
     if ($active_puntero === false) {
       $ci->table->set_heading($titles);
       $tamano = count($titles);
     } else {
-      //puntero
+      //cuando recibe un puntero
       $array_result = (array) $array_result;
       $ci->table->set_heading($array_result['titulos']);
       $tamano = count($array_result['titulos']);
       unset($array_result['titulos']);
     }
-    
+
     foreach ($array_result as $datos) {
-        reset($datos);
-        $temporal = array();
-        for ($i = 0; $i < $tamano; $i++) {
-          $elemento = current($datos);
-          $temporal[$i] = $elemento;
-          next($datos);
-        }
-        $ci->table->add_row($temporal);
+      reset($datos);
+      $temporal = array();
+      for ($i = 0; $i < $tamano; $i++) {
+        $elemento = current($datos);
+        $temporal[$i] = $elemento;
+        next($datos);
       }
+      $ci->table->add_row($temporal);
+    }
 
     $plantilla = array(
      'table_open' => '<table class= "table table-responsive ' . $params['class_table'] . '">'
