@@ -451,39 +451,39 @@ function  pyramidChart3D(chartData, parametros) {
  */
 function selector_metodo(nombre_metodo) {
   switch (nombre_metodo) {
-    case 'bar3d':
-      ejecuta_grafica(bar3d, base_url() + 'demo/report/bar3d', {titulo: 'grafica 2015', capa_grafica: 'mi_capa'});
+    case 'bar_3d':
+      ejecuta_grafica(bar3d, base_url() + 'demo/report/bar_3d', {titulo: 'grafica 2015', capa_grafica: 'mi_capa'});
       break;
 
-    case 'barClustered':
-      ejecuta_grafica(barClustered, base_url() + 'demo/report/barClustered', {titulo_columna_1: 'ingresos', titulo_columna_2: 'Gastos', capa_grafica: 'mi_capa'});
+    case 'bar_clustered':
+      ejecuta_grafica(barClustered, base_url() + 'demo/report/bar_clustered', {titulo_columna_1: 'ingresos', titulo_columna_2: 'Gastos', capa_grafica: 'mi_capa'});
       break;
 
-    case 'columns3d':
-      ejecuta_grafica(columns3d, base_url() + 'demo/report/columns3d', {titulo_eje_y: 'incidencias 2015', capa_grafica: 'mi_capa'});
+    case 'columns_3d':
+      ejecuta_grafica(columns3d, base_url() + 'demo/report/columns_3d', {titulo_eje_y: 'incidencias 2015', capa_grafica: 'mi_capa'});
       break;
 
-    case 'columnAndLineMix':
-      ejecuta_grafica(columnAndLineMix, base_url() + 'demo/report/columnAndLineMix', {titulo_valor_1: 'ingresos', titulo_valor_2: 'Gastos', capa_grafica: 'mi_capa'});
+    case 'column_and_line_mix':
+      ejecuta_grafica(columnAndLineMix, base_url() + 'demo/report/column_and_line_mix', {titulo_valor_1: 'ingresos', titulo_valor_2: 'Gastos', capa_grafica: 'mi_capa'});
       break;
-    case 'columnCylinders':
-      ejecuta_grafica(columnCylinders, base_url() + 'demo/report/columnCylinders', {capa_grafica: 'mi_capa'});
-      break;
-
-    case 'columnSimple':
-      ejecuta_grafica(columnSimple, base_url() + 'demo/report/columnSimple', {capa_grafica: 'mi_capa'});
+    case 'column_cylinders':
+      ejecuta_grafica(columnCylinders, base_url() + 'demo/report/column_cylinders', {capa_grafica: 'mi_capa'});
       break;
 
-    case 'pie3D':
-      ejecuta_grafica(pie3D, base_url() + 'demo/report/pie3D', {capa_grafica: 'mi_capa'});
+    case 'column_simple':
+      ejecuta_grafica(columnSimple, base_url() + 'demo/report/column_simple', {capa_grafica: 'mi_capa'});
       break;
 
-    case 'pieDonut3D':
-      ejecuta_grafica(pieDonut3D, base_url() + 'demo/report/pieDonut3D', {titulo: 'problemas en las sucursales', tamano_titulo: 20, capa_grafica: 'mi_capa'});
+    case 'pie_3D':
+      ejecuta_grafica(pie3D, base_url() + 'demo/report/pie_3D', {capa_grafica: 'mi_capa'});
       break;
 
-    case 'pyramidChart3D':
-      ejecuta_grafica(pyramidChart3D, base_url() + 'demo/report/pyramidChart3D', {capa_grafica: 'mi_capa'});
+    case 'pie_donut_3D':
+      ejecuta_grafica(pieDonut3D, base_url() + 'demo/report/pie_donut_3D', {titulo: 'problemas en las sucursales', tamano_titulo: 20, capa_grafica: 'mi_capa'});
+      break;
+
+    case 'pyramid_chart_3D':
+      ejecuta_grafica(pyramidChart3D, base_url() + 'demo/report/pyramid_chart_3D', {capa_grafica: 'mi_capa'});
       break;
   }
 }
