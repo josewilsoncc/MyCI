@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * Este demo sera movido a una carpeta y restructurado.
+ */
 /**
  * Este controlador es el encargado de hacer funcionar los demos de manera correcta, este controlador sera removido
  * automaticamente con al ejecutar el archivo 'remove_demo.exe', asi como todas las vistas y scrips ligados netamente a
