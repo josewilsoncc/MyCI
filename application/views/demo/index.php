@@ -7,7 +7,7 @@
         <a href="#" class="list-group-item active">
           Base de datos
         </a>
-        <a href="<?php echo base_url(); ?>demo/limit" class="list-group-item">Limit simulado (para informix)</a>
+        <a href="<?php echo base_url(); ?>demo/main/limit" class="list-group-item">Limit simulado (para informix)</a>
         <a href="#" class="list-group-item">Autentificación generica (Documentación pendiente)</a>
       </div>
     </div>
@@ -18,7 +18,7 @@
           Elementos
         </a>
         <a href="#" class="list-group-item">Footer (Coming Soon)</a>
-        <a href="<?php echo base_url(); ?>demo/limit" class="list-group-item">Paginador</a>
+        <a href="<?php echo base_url(); ?>demo/main/limit" class="list-group-item">Paginador</a>
       </div>
     </div>
     
@@ -27,10 +27,10 @@
         <a href="#" class="list-group-item active">
           Galerías de imagenes
         </a>
-        <a href="<?php echo base_url(); ?>demo/simple_demo/carousel_basic" class="list-group-item">Carrusel Basic</a>
-        <a href="<?php echo base_url(); ?>demo/simple_demo/carousel_hiden_images" class="list-group-item">Carrusel Hiden Images</a>
-        <a href="<?php echo base_url(); ?>demo/simple_demo/carousel" class="list-group-item">Carrusel Standar</a>
-        <a href="<?php echo base_url(); ?>demo/simple_demo/coverflow" class="list-group-item">Coverflow</a>
+        <a href="<?php echo base_url(); ?>demo/main/simple_demo/carousel_basic" class="list-group-item">Carrusel Basic</a>
+        <a href="<?php echo base_url(); ?>demo/main/simple_demo/carousel_hiden_images" class="list-group-item">Carrusel Hiden Images</a>
+        <a href="<?php echo base_url(); ?>demo/main/simple_demo/carousel" class="list-group-item">Carrusel Standar</a>
+        <a href="<?php echo base_url(); ?>demo/main/simple_demo/coverflow" class="list-group-item">Coverflow</a>
       </div>
     </div>
   </div>
@@ -41,9 +41,9 @@
         <a href="#" class="list-group-item active">
           Notificaciones
         </a>
-        <a href="<?php echo base_url(); ?>demo/simple_demo/alertify" class="list-group-item">Alertify</a>
-        <a href="<?php echo base_url(); ?>demo/simple_demo/show_message" class="list-group-item">Show Message</a>
-        <a href="<?php echo base_url(); ?>demo/simple_demo/toastr" class="list-group-item">Toastr</a>
+        <a href="<?php echo base_url(); ?>demo/main/simple_demo/alertify" class="list-group-item">Alertify</a>
+        <a href="<?php echo base_url(); ?>demo/main/simple_demo/show_message" class="list-group-item">Show Message</a>
+        <a href="<?php echo base_url(); ?>demo/main/simple_demo/toastr" class="list-group-item">Toastr</a>
       </div>
     </div>
     
