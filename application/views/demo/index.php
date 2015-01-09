@@ -50,7 +50,7 @@
     <div class="col-lg-4">
       <div class="list-group">
         <a href="#" class="list-group-item active">
-          Reportes Graficos
+          Reportes Graficos (Ajax)
         </a>
         <a href="<?php echo base_url(); ?>demo/report/index/bar_3d" class="list-group-item"> Bar 3D</a>
         <a href="<?php echo base_url(); ?>demo/report/index/bar_clustered" class="list-group-item"> Bar Clustered</a>
