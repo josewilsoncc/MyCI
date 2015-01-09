@@ -13,7 +13,7 @@ class Basic_model extends CI_Model {
   }
 
   /**
-   * Esta función sirve para simular un limit
+   * Esta función sirve para simular un limit en sistemas que carecen de el como informix en sus antigüas versiones
    * 
    * @param string $tables Es la tabla o tablas de las cuales se desea consultar.
    * 
