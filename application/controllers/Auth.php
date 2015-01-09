@@ -33,7 +33,7 @@ class Auth extends CI_Controller {
    */
 
   public function log_in() {
-    $this->load->model('auth_model');
+    $this->load->model('default/auth_model');
 
     /*
      * Reglas de validación por defecto, pueden ser modificadas a su gusto
