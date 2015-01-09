@@ -204,9 +204,13 @@ class Report extends CI_Controller {
     echo json_encode($jsondata);
   }
 
+  public function celda_personalizada($value, $parametros) {
+    $parametros['data'] = 100;
+    return $parametros;
+  }
+
   public function table($tipo_tabla) {
     $this->load->helper('table');
-
     /* //consulta en la base de datos, este es el arreglo que se debe mandar al metodo generate_simple_table.
       $this->load->database('mi_conexion');
       $this->db->select('first 10 codigo, nombre, direccion, telefonos,feccrea, horacre, usrmodi, tipo_nomina');
@@ -214,21 +218,26 @@ class Report extends CI_Controller {
       $query = $this->db->get();
       $arreglo_datos = $query->result(); */
 
+    $celda_amarilla = array('class' => 'warning', 'title' => 'celda roja');
+    $celda_verde = array('class' => 'success', 'title' => 'celda verde');
+    $celda_roja = array('class' => 'danger', 'title' => 'celda roja');
+
     switch ($tipo_tabla) {
       case 'generate_simple_table':
         //inicio datos simulados
-        $celda_personalizada = array('data' => 'N', 'class' => 'danger', 'title' => 'unica celda personalizada');
         $arreglo_datos = array(
-         array(28, 'La dorada', 'CRA 4A #12-50', '968573604', '2003-09-01', '11:50:20', 'yidarraga', 'D'),
-         array(6, 'Cali 3', 'CRA 10A #56-50', '7478956', '2003-10-10', '12:50:21', 'yidarraga', 'D'),
-         array(34, 'Palmira', 'CALL 29 # 26-36', '922726886-27266879', '2009-01-01', '11:50:22', 'hfg', 'N'),
-         array(13, 'Tulua', 'CRA 27 #01-50', '3128214578', '2003-10-21', '07:10:58', 'ncruz', 'D'),
-         array(14, 'Ibague', 'CALLE 15 # 3-62', '7474529', '2003-09-22', '13:45:32', 'Sistema', $celda_personalizada)
+         array(celda_personalizada('50', $celda_roja), 'La dorada', 'CRA 4A #12-50', celda_personalizada('968573604', $celda_verde), '2003-09-01', '11:50:20', celda_personalizada('yidarraga', $celda_amarilla), 'D'),
+         array(celda_personalizada(12, $celda_roja), 'Cali 3', 'CRA 10A #56-50', celda_personalizada('7478956', $celda_verde), '2003-10-10', '12:50:21', celda_personalizada('yidarraga', $celda_amarilla), 'D'),
+         array(celda_personalizada(34, $celda_roja), 'Palmira', 'CALL 29 # 26-36', celda_personalizada('78945-87865', $celda_verde), '2009-01-01', '11:50:22', celda_personalizada('hfg', $celda_amarilla), 'N'),
+         array(celda_personalizada(13, $celda_roja), 'Tulua', 'CRA 27 #01-50', celda_personalizada('3128214578', $celda_verde), '2003-10-21', '07:10:58', celda_personalizada('ncruz', $celda_amarilla), 'D')
         );
         //fin datos simulados
         //$parametros['class_table'] = '';
         $parametros['caption'] = 'tabla simple con arreglos';
-        $titulos_columnas = array('Codigo', 'Nombre', 'Direccion', 'Telefono', 'Fecha creacion', 'Hora creacion', 'Usuario Edicion', 'Tipo de Nomina');
+        $titulos_columnas = array(celda_personalizada('Codigo', $celda_roja), celda_personalizada('Nombre', $celda_verde), celda_personalizada('Direccion', $celda_amarilla),
+         celda_personalizada('Telefono', $celda_verde), celda_personalizada('Fecha Creacion', $celda_roja), celda_personalizada('Hora creacion', $celda_verde),
+         celda_personalizada('Usuario Edicion', $celda_amarilla), celda_personalizada('Tipo de Nomina', $celda_roja)); // la celda personalizada es opcional
+
         $tabla = generate_simple_table($arreglo_datos, $titulos_columnas, $parametros);
         break;
 
@@ -248,7 +257,8 @@ class Report extends CI_Controller {
         $puntero = (object) array();
         foreach ($arreglo_datos as $datos) {
           $key = 'key_' . $datos->codigo;
-          $puntero->$key = array($datos->codigo, $datos->nombre, $datos->direccion, $datos->telefonos, $datos->feccrea, $datos->horacre, $datos->usrmodi, $datos->tipo_nomina);
+          $puntero->$key = array(celda_personalizada($datos->codigo, $celda_roja), celda_personalizada('Nombre', $celda_verde), $datos->direccion, celda_personalizada($datos->telefonos, $celda_amarilla),
+           celda_personalizada($datos->feccrea, $celda_roja), celda_personalizada($datos->horacre, $celda_verde), $datos->usrmodi, celda_personalizada($datos->tipo_nomina, $celda_amarilla));
         }
         $puntero->titulos = array('Codigo', 'Nombre', 'Direccion', 'Telefono', 'Fecha creacion', 'Hora creacion', 'Usuario Edicion', 'Tipo de Nomina');
         $parametros['caption'] = 'tabla simple con puntero';
