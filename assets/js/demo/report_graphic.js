@@ -7,20 +7,19 @@ $(document).on('ready', function() {
     $(capa_grafica).css({'width': ancho, 'height': alto});
   });
 });
-
 /**
  * ejecuta una peticion ajax que devuelve un arreglo en formato json el cual se encarga de pintar 
  * una grafica segun sus parametros
  * @param {function} funcion: el nombre sin comillas de la grafica a utilizar, se escribe sin comillas porque
  * hace referencia a un metodo.
  * @param {string} url:  la url del controlador y su respectivo metodo
- * @param {array} parametros:  un array personalizado que permite cambiar algunos valores de la grafica
+ * @param {string} capa_grafi:  el id  del div donde se pintara la grafica, se ingresa sin el #.
  * los indices del arreglo se especifican en la documetacion de cada metodo a llamar
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2015/01/05
  */
-function ejecuta_grafica(funcion, url, parametros) {
-  capa_grafica = '#' + parametros['capa_grafica']; // se guarda el nombre de la capa en una variable global para usarla cuando la ventana cambie de resolucion.
+function ejecuta_grafica(funcion, url, capa_grafi) {
+  capa_grafica = '#' + capa_grafi;// se guarda el nombre de la capa en una variable global para usarla cuando la ventana cambie de resolucion.
   $.ajax({
     url: url,
     type: 'post',
@@ -28,25 +27,29 @@ function ejecuta_grafica(funcion, url, parametros) {
     success: function(data) {
       var ancho = percentage_dimension(80, true);
       var alto = percentage_dimension(80, false);
-      $('#' + parametros['capa_grafica']).css({'width': ancho, 'height': alto});
-      funcion(data, parametros);
+      $(capa_grafica).css({'width': ancho, 'height': alto});
+      funcion(data[0], data[1], capa_grafi);
     },
     error: function(data) {
-      $('#' + parametros['capa_grafica']).html('<p class="lead text-danger text-center">Ocurrio un error al generar la grafica, intentelo nuevamente.</p>');
+      $(capa_grafica).html('<p class="lead text-danger text-center">Ocurrio un error al generar la grafica, intentelo nuevamente.</p>');
     }
   });
 }
+
 /**
- * genera una grafica de barras en 3D de forma horizontal, con el eje Y de 'concepto' y eje X de 'valor'
+ * NOTA: los metodos graficos comparten los mismos parametros los cuales son los sigueientes:
  * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
  * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
- * los indices del arreglo son:
- * parametros['titulo'] =  el titulo que se encuentra en el eje X
- * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
+ * los indices del arreglo estan especificados en la documentacion del metodo que lo llama:
+ * @param {string} capa_grafica:    el id del div donde se pintara la grafica.
+ ________________________________________________________________________________________________________*/
+
+/**
+ * genera una grafica de barras en 3D de forma horizontal, con el eje Y de 'concepto' y eje X de 'valor'
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2014/12/23
  */
-function bar3d(chartData, parametros) {
+function bar3d(chartData, parametros, capa_grafica) {
   var titulo = parametros['titulo'];
   chart = new AmCharts.AmSerialChart();
   chart.dataProvider = chartData;
@@ -83,21 +86,15 @@ function bar3d(chartData, parametros) {
   chart.addGraph(graph);
   chart.creditsPosition = "top-right";
   // WRITE
-  chart.write(parametros['capa_grafica']);
+  chart.write(capa_grafica);
 }
 
 /**
  * genera una grafica de barras en 3D de forma horizontal, comparando valor x y valor y entre un grupo de 2 columnas
- * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
- * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
- * los indices del arreglo son:
- * parametros['titulo_columna_1'] =  el titulo de la primera barra estadistica del grupo
- * parametros['titulo_columna_2'] =  el titulo de la segunda barra estadistica del grupo
- * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2014/12/23
  */
-function barClustered(chartData, parametros) {
+function barClustered(chartData, parametros, capa_grafica) {
   chart = new AmCharts.AmSerialChart();
   chart.dataProvider = chartData;
   chart.categoryField = "nombre_eje_y";
@@ -144,20 +141,15 @@ function barClustered(chartData, parametros) {
   chart.addLegend(legend);
   chart.creditsPosition = "top-right";
   // WRITE
-  chart.write(parametros['capa_grafica']);
+  chart.write(capa_grafica);
 }
 
 /**
  * genera una grafica de barras en forma vertical con una linea comparativa, comparando valor x y valor y 
- * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
- * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
- * los indices del arreglo son:
- * parametros['titulo_eje_y'] =  el titulo del eje Y
- * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2015/01/06
  */
-function columns3d(chartData, parametros) {
+function columns3d(chartData, parametros, capa_grafica) {
   // SERIAL CHART
   chart = new AmCharts.AmSerialChart();
   chart.dataProvider = chartData;
@@ -193,21 +185,15 @@ function columns3d(chartData, parametros) {
   chart.addChartCursor(chartCursor);
   chart.creditsPosition = "top-right";
   // WRITE
-  chart.write(parametros['capa_grafica']);
+  chart.write(capa_grafica);
 }
 
 /**
  * genera una grafica de barras en forma vertical con una linea comparativa, comparando valor x y valor y 
- * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
- * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
- * los indices del arreglo son:
- * parametros['titulo_valor_1'] =  el titulo de la barra vertical
- * parametros['titulo_valor_2'] =  el titulo de la linea comparativa
- * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2015/01/06
  */
-function columnAndLineMix(chartData, parametros) {
+function columnAndLineMix(chartData, parametros, capa_grapich) {
   // SERIAL CHART  
   chart = new AmCharts.AmSerialChart();
   //chart.pathToImages = "../amcharts/images/";
@@ -257,19 +243,15 @@ function columnAndLineMix(chartData, parametros) {
   legend.useGraphSettings = true;
   chart.addLegend(legend);
   // WRITE
-  chart.write(parametros['capa_grafica']);
+  chart.write(capa_grapich);
 }
 
 /**
  * genera una grafica de barras ne forma cilindrica , comparando valor x y valor y 
- * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
- * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
- * los indices del arreglo son:
- * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2015/01/06
  */
-function columnCylinders(chartData, parametros) {
+function columnCylinders(chartData, parametros, capa_grafica) {
   // SERIAL CHART
   chart = new AmCharts.AmSerialChart();
   chart.dataProvider = chartData;
@@ -311,19 +293,15 @@ function columnCylinders(chartData, parametros) {
   chart.addChartCursor(chartCursor);
   chart.creditsPosition = "top-right";
   // WRITE
-  chart.write(parametros['capa_grafica']);
+  chart.write(capa_grafica);
 }
 
 /**
  * genera una grafica de barras simple , comparando valor x y valor y 
- * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
- * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
- * los indices del arreglo son:
- * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2015/01/07
  */
-function columnSimple(chartData, parametros) {
+function columnSimple(chartData, parametros, capa_grafica) {
   // SERIAL CHART
   chart = new AmCharts.AmSerialChart();
   chart.dataProvider = chartData;
@@ -352,19 +330,15 @@ function columnSimple(chartData, parametros) {
   chartCursor.categoryBalloonEnabled = false;
   chart.addChartCursor(chartCursor);
   chart.creditsPosition = "top-right";
-  chart.write(parametros['capa_grafica']);
+  chart.write(capa_grafica);
 }
 
 /**
  * genera una grafica de pastel en 3D
- * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
- * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
- * los indices del arreglo son:
- * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2015/01/07
  */
-function pie3D(chartData, parametros) {
+function pie3D(chartData, parametros, capa_grafica) {
   // PIE CHART
   chart = new AmCharts.AmPieChart();
   chart.dataProvider = chartData;
@@ -378,21 +352,15 @@ function pie3D(chartData, parametros) {
   chart.depth3D = 15;
   chart.angle = 30;
   // WRITE
-  chart.write(parametros['capa_grafica']);
+  chart.write(capa_grafica);
 }
 
 /**
  * genera una grafica de pastel tipo dona, 
- * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
- * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
- * los indices del arreglo son:
- * parametros['titulo'] =  el titulo o cabezera de la grafica
- * parametros['tamano_titulo'] =  el tamaÃ±o en px de la letra de titulo
- * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2015/01/08
  */
-function pieDonut3D(chartData, parametros) {
+function pieDonut3D(chartData, parametros, capa_grafica) {
 // PIE CHART
   chart = new AmCharts.AmPieChart();
   // title of the chart
@@ -410,20 +378,15 @@ function pieDonut3D(chartData, parametros) {
   chart.depth3D = 10;
   chart.angle = 15;
   // WRITE                                 
-  chart.write(parametros['capa_grafica']);
+  chart.write(capa_grafica);
 }
-
 
 /**
  * genera una grafica de piramide en 3D, 
- * @param {JSON} chartData: el arreglo en formato JSON que se encarga de pintar la grafica
- * @param {array} parametros: un array personalizado que permite cambiar algunos valores de la grafica
- * los indices del arreglo son:
- * parametros['capa_grafica'] =  el id del div donde se pintara la grafica
  * @autor Alvaro javier vanegas ochoa, alvarovanegas18@gmail.com
  * @date 2015/01/08
  */
-function  pyramidChart3D(chartData, parametros) {
+function  pyramidChart3D(chartData, parametros, capa_grafica) {
   chart = new AmCharts.AmFunnelChart();
   chart.rotate = true;
   chart.titleField = "titulo";
@@ -441,7 +404,7 @@ function  pyramidChart3D(chartData, parametros) {
   chart.outlineAlpha = 1;
   chart.outlineThickness = 2;
   chart.outlineColor = "#FFFFFF";
-  chart.write(parametros['capa_grafica']);
+  chart.write(capa_grafica);
 }
 
 /**
@@ -452,38 +415,38 @@ function  pyramidChart3D(chartData, parametros) {
 function selector_metodo(nombre_metodo) {
   switch (nombre_metodo) {
     case 'bar_3d':
-      ejecuta_grafica(bar3d, base_url() + 'demo/report/bar_3d', {titulo: 'grafica 2015', capa_grafica: 'mi_capa'});
+      ejecuta_grafica(bar3d, base_url() + 'demo/report/bar_3d', 'mi_capa');
       break;
 
     case 'bar_clustered':
-      ejecuta_grafica(barClustered, base_url() + 'demo/report/bar_clustered', {titulo_columna_1: 'ingresos', titulo_columna_2: 'Gastos', capa_grafica: 'mi_capa'});
+      ejecuta_grafica(barClustered, base_url() + 'demo/report/bar_clustered', 'mi_capa');
       break;
 
     case 'columns_3d':
-      ejecuta_grafica(columns3d, base_url() + 'demo/report/columns_3d', {titulo_eje_y: 'incidencias 2015', capa_grafica: 'mi_capa'});
+      ejecuta_grafica(columns3d, base_url() + 'demo/report/columns_3d', 'mi_capa');
       break;
 
     case 'column_and_line_mix':
-      ejecuta_grafica(columnAndLineMix, base_url() + 'demo/report/column_and_line_mix', {titulo_valor_1: 'ingresos', titulo_valor_2: 'Gastos', capa_grafica: 'mi_capa'});
+      ejecuta_grafica(columnAndLineMix, base_url() + 'demo/report/column_and_line_mix', 'mi_capa');
       break;
     case 'column_cylinders':
-      ejecuta_grafica(columnCylinders, base_url() + 'demo/report/column_cylinders', {capa_grafica: 'mi_capa'});
+      ejecuta_grafica(columnCylinders, base_url() + 'demo/report/column_cylinders', 'mi_capa');
       break;
 
     case 'column_simple':
-      ejecuta_grafica(columnSimple, base_url() + 'demo/report/column_simple', {capa_grafica: 'mi_capa'});
+      ejecuta_grafica(columnSimple, base_url() + 'demo/report/column_simple', 'mi_capa');
       break;
 
     case 'pie_3D':
-      ejecuta_grafica(pie3D, base_url() + 'demo/report/pie_3D', {capa_grafica: 'mi_capa'});
+      ejecuta_grafica(pie3D, base_url() + 'demo/report/pie_3D', 'mi_capa');
       break;
 
     case 'pie_donut_3D':
-      ejecuta_grafica(pieDonut3D, base_url() + 'demo/report/pie_donut_3D', {titulo: 'problemas en las sucursales', tamano_titulo: 20, capa_grafica: 'mi_capa'});
+      ejecuta_grafica(pieDonut3D, base_url() + 'demo/report/pie_donut_3D', 'mi_capa');
       break;
 
     case 'pyramid_chart_3D':
-      ejecuta_grafica(pyramidChart3D, base_url() + 'demo/report/pyramid_chart_3D', {capa_grafica: 'mi_capa'});
+      ejecuta_grafica(pyramidChart3D, base_url() + 'demo/report/pyramid_chart_3D', 'mi_capa');
       break;
   }
 }
