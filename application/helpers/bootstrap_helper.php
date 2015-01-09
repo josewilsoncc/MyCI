@@ -37,7 +37,7 @@ $ci->load->helper(array(
 
 //Carga de Models de My CI
 $ci->load->model(array(
-  'basic_model'
+  'default/basic_model'
 ));
 
 /*

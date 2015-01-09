@@ -1,8 +1,8 @@
 ###################
-¿Que es My CI?
+Acerca de My CI
 ###################
 
-My CI fue creado el 19 de diciembre del 2014, es una adaptación de CodeIgniter en su versión mas reciente con una serie
+My CI nació el 19 de diciembre del 2014 en github, es una adaptación de CodeIgniter en su versión mas reciente con una serie
 de helpers, librerias, assets, configuraciones y otros elementos extras, que le dan un nuevo sabor, todo esto sin
 alterar el núcleo del framework, esta pensado en la constante actualización sin alteraciones dramáticas de los proyectos
 desarrollados en el.
