@@ -52,15 +52,15 @@
         <a href="#" class="list-group-item active">
           Reportes Graficos
         </a>
-        <a href="<?php echo base_url(); ?>demo/report/index/bar_3d" class="list-group-item"> Bar 3d</a>
+        <a href="<?php echo base_url(); ?>demo/report/index/bar_3d" class="list-group-item"> Bar 3D</a>
         <a href="<?php echo base_url(); ?>demo/report/index/bar_clustered" class="list-group-item"> Bar Clustered</a>
-        <a href="<?php echo base_url(); ?>demo/report/index/columns_3d" class="list-group-item"> Columns 3d</a>
         <a href="<?php echo base_url(); ?>demo/report/index/column_and_line_mix" class="list-group-item"> Column And Line Mix</a>
+        <a href="<?php echo base_url(); ?>demo/report/index/columns_3d" class="list-group-item"> Columns 3D</a>
         <a href="<?php echo base_url(); ?>demo/report/index/column_cylinders" class="list-group-item"> Column Cylinders</a>
         <a href="<?php echo base_url(); ?>demo/report/index/column_simple" class="list-group-item"> Column Simple</a>
-        <a href="<?php echo base_url(); ?>demo/report/index/pie_3D" class="list-group-item"> Pie 3D</a>
-        <a href="<?php echo base_url(); ?>demo/report/index/pie_donut_3D" class="list-group-item"> Pie Donut 3D</a>
-        <a href="<?php echo base_url(); ?>demo/report/index/pyramid_chart_3D" class="list-group-item"> Pyramid Chart 3D</a>
+        <a href="<?php echo base_url(); ?>demo/report/index/pie_3d" class="list-group-item"> Pie 3D</a>
+        <a href="<?php echo base_url(); ?>demo/report/index/pie_donut_3d" class="list-group-item"> Pie Donut 3D</a>
+        <a href="<?php echo base_url(); ?>demo/report/index/pyramid_chart_3d" class="list-group-item"> Pyramid Chart 3D</a>
       </div>
     </div>
     

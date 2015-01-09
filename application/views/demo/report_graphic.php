@@ -8,12 +8,14 @@ load_assets(array(
    'pie',
    'radar',
    'serial',
-   'xy'
+   'xy',
+   'report_graphic'
   )
  )
 ));
 
-script_onready("selector_metodo('$tipo_grafico')");
+script_onready("graphic_type($tipo_grafico, '$tipo_grafico')");
+
 asset_tag(MC_JS, 'demo/report_graphic');
 ?>
 <div class = "container">
