@@ -204,11 +204,6 @@ class Report extends CI_Controller {
     echo json_encode($jsondata);
   }
 
-  public function celda_personalizada($value, $parametros) {
-    $parametros['data'] = 100;
-    return $parametros;
-  }
-
   public function table($tipo_tabla) {
     $this->load->helper('table');
     /* //consulta en la base de datos, este es el arreglo que se debe mandar al metodo generate_simple_table.
@@ -232,6 +227,7 @@ class Report extends CI_Controller {
          array(celda_personalizada(13, $celda_roja), 'Tulua', 'CRA 27 #01-50', celda_personalizada('3128214578', $celda_verde), '2003-10-21', '07:10:58', celda_personalizada('ncruz', $celda_amarilla), 'D')
         );
         //fin datos simulados
+        
         //$parametros['class_table'] = '';
         $parametros['caption'] = 'tabla simple con arreglos';
         $titulos_columnas = array(celda_personalizada('Codigo', $celda_roja), celda_personalizada('Nombre', $celda_verde), celda_personalizada('Direccion', $celda_amarilla),
