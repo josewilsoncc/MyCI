@@ -59,7 +59,7 @@ if (!function_exists('validate_date')) {
    * 
    * validateDate('Tue, 27 Feb 2012 12:12:12 +0200', DateTime::RSS); # false
    * 
-   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @autor Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 2014/11/26
    * @note Requiere los CSS bootstrap y text_style.
    */
@@ -80,7 +80,7 @@ if (!function_exists('generate_random_string')) {
    * @param string $characters Son los caracteres que puede contener el string generado, por defecto numeros, letras
    * mayusculas y minusculas.
    * 
-   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @autor Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 2014/11/26
    */
   function generate_random_string($length = 10, $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {
@@ -101,7 +101,7 @@ if (!function_exists('unserialized')) {
    * @param string $searched_key Es el nombre del elemento en el formulario del que se desea obtener el valor.
    * @return string El valor del elemento indicado, false si este no existe.
    * 
-   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
+   * @autor Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 2014/12/10
    */
   function unserialized($data, $searched_key) {
@@ -115,6 +115,12 @@ if (!function_exists('unserialized')) {
 
 if (!function_exists('is_login')) {
 
+  /**
+   * Verifica si un usuario esta logeado o no.
+   * @return boolean Retorna TRUE si el usuario esta logeado en el sistema, false de lo contrario.
+   * @author Jose Wilson Capera Castaño <josewilsoncc@gmail.com>
+   * @date 2014/12/24
+   */
   function is_login() {
     $ci = & get_instance();
     return $ci->session->userdata('is_logued_in');
@@ -124,6 +130,12 @@ if (!function_exists('is_login')) {
 
 if (!function_exists('is_admin')) {
 
+  /**
+   * Verifica si un usuario es administrador o no.
+   * @return boolean Retorna TRUE si el usuario es administrador del sistema, false de lo contrario.
+   * @author Jose Wilson Capera Castaño <josewilsoncc@gmail.com>
+   * @date 2014/12/24
+   */
   function is_admin() {
     $ci = & get_instance();
     return $ci->session->userdata('admin');
@@ -133,6 +145,11 @@ if (!function_exists('is_admin')) {
 
 if (!function_exists('only_admin')) {
 
+  /**
+   * Verifica si un usuario es administrador y si no lo es, redirecciona al usuario a la raiz del proyecto.
+   * @author Jose Wilson Capera Castaño josewilsoncc@gmail.com
+   * @date 2014/12/24
+   */
   function only_admin() {
     if (!is_admin())
       redirect(base_url());
