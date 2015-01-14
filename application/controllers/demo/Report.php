@@ -205,13 +205,16 @@ class Report extends CI_Controller {
   }
 
   public function table($tipo_tabla) {
-    $this->load->helper('table');
-    /* //consulta en la base de datos, este es el arreglo que se debe mandar al metodo generate_simple_table.
-      $this->load->database('mi_conexion');
-      $this->db->select('first 10 codigo, nombre, direccion, telefonos,feccrea, horacre, usrmodi, tipo_nomina');
-      $this->db->from('sucursales');
-      $query = $this->db->get();
-      $arreglo_datos = $query->result(); */
+    $this->load->helper('default/table');
+    /*
+     * Para consultas en la base de datos se puede usar este arreglo que se debe mandar al metodo generate_simple_table.
+     * 
+     * $this->load->database('mi_conexion');
+     * $this->db->select('first 10 codigo, nombre, direccion, telefonos,feccrea, horacre, usrmodi, tipo_nomina');
+     * $this->db->from('sucursales');
+     * $query = $this->db->get();
+     * $arreglo_datos = $query->result();
+     */
 
     $celda_amarilla = array('class' => 'warning', 'title' => 'celda roja');
     $celda_verde = array('class' => 'success', 'title' => 'celda verde');
