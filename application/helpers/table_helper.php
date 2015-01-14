@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Este Helper es el encargado de crear tablas html de forma dinamica con ayuda de la libreria table de CI.
  * 
@@ -66,6 +65,21 @@ if (!function_exists('generate_simple_table')) {
     $ci->table->set_template($plantilla);
     $tabla_generada = $ci->table->generate();
     return $tabla_generada;
+  }
+
+}
+
+if (!function_exists('celda_personalizada')) {
+  /**
+   * Metodo que agrega un elemento en un arreglo de atributos los cuales son tag o atributos html.
+   * el indice agregado es 'data' el cual es el que toma CI para darle valor a la celda.
+   * @param type $value : el elemento que se agregara al arreglo de atributos html
+   * @param array $parametros : un arreglo de atributos html
+   * @return type array : devuelve un arreglo con el nuevo elemento agregado.
+   */
+  function celda_personalizada($value, $parametros) {
+    $parametros['data'] = $value;
+    return $parametros;
   }
 
 }
