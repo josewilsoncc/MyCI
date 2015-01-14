@@ -30,9 +30,9 @@ $ci->load->driver(array(
 
 //Carga de Helpers de My CI
 $ci->load->helper(array(
-  'assets',
-  'essential',
-  'elements'
+  'default/assets',
+  'default/essential',
+  'default/elements'
 ));
 
 //Carga de Models de My CI
