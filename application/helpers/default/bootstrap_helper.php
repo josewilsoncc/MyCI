@@ -117,6 +117,13 @@ define('MCP_CE', 'common_extension');
  */
 define('MCP_I', 'index');
 
+/**
+ * Tipo:
+ * Representa el parametro que define un tipo
+ * @cosnt Type (My CI Param position)
+ */
+define('MCP_TYPE', 'type');
+
 /*
  | -------------------------------------------------------------------
  |  MCI: Constantes Internas
