@@ -27,7 +27,7 @@ if (!function_exists('asset_tag')) {
    * 
    * boolean <b>$url_variant</b> debe ponerse en true si la url varia del directorio assets/js
    * 
-   * string/boolean <b>$only_return</b> [developers] Funciona de la siguiente manera:
+   * string/boolean <b>MCP_OR</b> [developers] Funciona de la siguiente manera:
    * <br><br>+Si es TRUE el resultado sera retornado.
    * <br><br>+Si es FALSE el resultado sera impreso con un echo de manera automatica. (predeterminada)
    * <br><br>+si es MCI_R solamente retornara la ruta de la tag.
@@ -145,7 +145,7 @@ if (!function_exists('assets_controller')) {
    * <i>my_ci/assets/css/home/help.css</i>
    * <i>my_ci/assets/less/home/help.less</i>
    * 
-   * boolean <b>$only_return</b> si es true el resultado será retornado en lugar de ser impreso con un echo de manera
+   * boolean <b>MCP_OR</b> si es true el resultado será retornado en lugar de ser impreso con un echo de manera
    * automatica.
    * 
    * @return string/html código html para cumplir la funcion.

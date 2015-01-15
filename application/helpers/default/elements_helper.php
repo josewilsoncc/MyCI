@@ -54,7 +54,7 @@ if (!function_exists('show_message')) {
    * 
    * @param array $params Son los parametros opcionales como:
    * 
-   * string <b>'type'</b> Es el tipo de mensaje, define color estandar y si no se especifica define el icono. Los
+   * string <b>MCP_TYPE</b> Es el tipo de mensaje, define color estandar y si no se especifica define el icono. Los
    * posibles tipos son:
    * 
    * <i>danger</i>: Mensaje de error importante.<br>
@@ -62,7 +62,7 @@ if (!function_exists('show_message')) {
    * <i>info</i>: Mensaje que informativo aunque no es tan importante.<br>
    * <i>success</i> :Mensaje de accion importante ejecutada correctamente.
    * 
-   * string <b>$icon</b> Es el id de iconmoon del icono a usar, el cual reemplaza el icono por defecto.
+   * string <b>'icon'</b> Es el id de iconmoon del icono a usar, el cual reemplaza el icono por defecto.
    * 
    * @autor Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 12/12/2014
