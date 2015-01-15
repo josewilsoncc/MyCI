@@ -127,12 +127,14 @@ if (!function_exists('load_assets')) {
 
 }
 
-if (!function_exists('assets_controller')) {
+if (!function_exists('autoloading_assets')) {
 
   /**
-   * Incluye un archivo javascritp, css o less de un controlador, debe llamarse asi: asset_controller("mi_controlador");
    * 
-   * @param string $controller Es el controlador del que se requiere el JavaScript, CSS o Less.
+   * <b>[Developer]</b> Incluye los archivos JavaScript, CSS o Less con base en los 3 primeros segmentos de la URI, debe
+   * llamarse asi: autoloading_assets($mi_uri);
+   * 
+   * @param string $route_view Es la uri a analizar para realizar la carga automatica assets (JavaScript, CSS o Less).
    * 
    * @param array $params Son los parametros opcionales como:
    * 
@@ -152,34 +154,48 @@ if (!function_exists('assets_controller')) {
    * 
    * @author Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
    * @date 16/11/2014
-   * @update 02/01/2015
+   * @update 15/01/2015
    */
-  function assets_controller($controller, $params = '') {
+  function autoloading_assets($route_view, $params = '') {
     $file = isset($params['file']) ? $params['file'] : 'general';
     $only_return = isset($params[MCP_OR]) ? $params[MCP_OR] : false;
-    $and_method = isset($params['and_method']) ? $params['and_method'] : false;
-    $uri_segments = explode('/', $controller);
+    $debug = isset($params[MCP_DEBUG]) ? $params[MCP_DEBUG] : false;
+
+    $exit_debug = '';
+
+    $exit_debug.= $debug ? '<B>Full route_view: ' . $route_view . '</b>' : '';
+
+    $route_segments = explode('/', $route_view);
     $html = '';
 
-    if (count($uri_segments) >= 1) {
-      $uri_asset = $uri_segments[0] . '/' . $file;
-      if (file_exists(asset_tag(MC_JS, $uri_asset, array(MCP_OR => MCI_RWBU))))
-        $html .= asset_tag(MC_JS, $uri_asset);
-      if (file_exists(asset_tag(MC_CSS, $uri_asset, array(MCP_OR => MCI_RWBU))))
-        $html .= asset_tag(MC_CSS, $uri_asset);
-      if (file_exists(asset_tag(MC_LESS, $uri_asset, array(MCP_OR => MCI_RWBU))))
-        $html .= asset_tag(MC_LESS, $uri_asset);
+    for ($i = 0; $i < count($route_segments); $i++) {
+      $route = '';
+      for ($j = 0; $j <= $i; $j++) {
+        if ($j === 0)
+          $route.=$route_segments[$j];
+        else
+          $route.='/' . $route_segments[$j];
+      }
+      $route_asset_array[] = $route;
+      $route_asset_array[] = $route . '/' . $file;
     }
 
-    if (count($uri_segments) >= 2) {
-      $uri_asset = $uri_segments[0] . '/' . $uri_segments[1];
-      if (file_exists(asset_tag(MC_JS, $uri_asset, array(MCP_OR => MCI_RWBU))))
-        $html .= asset_tag(MC_JS, $uri_asset);
-      if (file_exists(asset_tag(MC_CSS, $uri_asset, array(MCP_OR => MCI_RWBU))))
-        $html .= asset_tag(MC_CSS, $uri_asset);
-      if (file_exists(asset_tag(MC_LESS, $uri_asset, array(MCP_OR => MCI_RWBU))))
-        $html .= asset_tag(MC_LESS, $uri_asset);
+    foreach ($route_asset_array as $route_asset) {
+      $exit_debug .= $debug ? '<br>Load assets: "' . $route_asset . '" -> ' : '';
+      if (file_exists(asset_tag(MC_JS, $route_asset, array(MCP_OR => MCI_RWBU)))) {
+        $html .= asset_tag(MC_JS, $route_asset);
+        $exit_debug .= $debug ? 'ok' : '';
+      } else
+        $exit_debug .= $debug ? 'fail' : '';
+      if (file_exists(asset_tag(MC_CSS, $route_asset, array(MCP_OR => MCI_RWBU))))
+        $html .= asset_tag(MC_CSS, $route_asset);
+      if (file_exists(asset_tag(MC_LESS, $route_asset, array(MCP_OR => MCI_RWBU))))
+        $html .= asset_tag(MC_LESS, $route_asset);
     }
+
+    $ci = & get_instance();
+    $ci->session->set_userdata('console', $exit_debug);
+
     if ($only_return)
       return $html;
     else
@@ -241,7 +257,7 @@ if (!function_exists('am')) {
             $return_routes[] = $start ?
                 $route . $pattern . $separator . $routes :
                 $route . $separator . $pattern . $separator . $routes;
-          else{
+          else {
             $return_routes[] = $start ?
                 $route . $routes :
                 $route . $separator . $routes;

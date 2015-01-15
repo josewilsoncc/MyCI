@@ -8,7 +8,7 @@
  * esta clase solo se encargara de detallar como se deben construir los arreglos en JSON de parte del servidor para posteriormente ser devueltos a las funciones encargadas de 
  * pintar el grafico
  * 
- * @author Alvar Javier Vanegas Ochoa, alvarovanegas18@gmail.com
+ * @author Alvaro Javier Vanegas Ochoa <alvarovanegas18@gmail.com>
  * @date 2015/01/05
  */
 class Report extends CI_Controller {
@@ -18,11 +18,13 @@ class Report extends CI_Controller {
   }
 
   public function index($tipo_grafico = '') {
-    $this->load->view('layout', array('content' => 'demo/report_graphic', 'tipo_grafico' => $tipo_grafico));
+    $this->load->view('layout', array('content' => 'demo/report/report_graphic', 'tipo_grafico' => $tipo_grafico));
   }
 
   /**
-   * genera una grafica de barras en 3D de forma horizontal, con el eje Y de 'concepto' y eje X de 'valor'
+   * [Ajax]
+   * Genera una grafica de barras en 3D de forma horizontal, con el eje Y de 'concepto' y eje X de 'valor'
+   * 
    * @param string  nombre_eje_y  :es el nombre que llevaran los elementos pintados en el eje Y
    * @param int valor             :es el valor que posee el eje Y
    * @param string titulo         :el titulo que se encuentra en el eje X
@@ -41,7 +43,9 @@ class Report extends CI_Controller {
   }
 
   /**
-   * genera una grafica de barras en 3D de forma horizontal, comparando valor x y valor y entre un grupo de 2 columnas
+   * [Ajax]
+   * Genera una grafica de barras en 3D de forma horizontal, comparando valor x y valor y entre un grupo de 2 columnas
+   * 
    * @param string nombre_eje_y  :es el nombre que llevaran los elementos pintados en el eje Y
    * @param int valor_1          :es el primer valor que posee el eje Y en su grupo
    * @param int valor_2          :es el segundo valor que posee el eje Y en su grupo
@@ -62,7 +66,9 @@ class Report extends CI_Controller {
   }
 
   /**
-   * genera una grafica de barras en forma vertical con una linea comparativa, comparando valor x y valor y
+   * [Ajax]
+   * Genera una grafica de barras en forma vertical con una linea comparativa, comparando valor x y valor y
+   * 
    * @param string nombre_eje_x  :es el nombre que llevaran los elementos pintados en el eje X
    * @param int  valor           :es el valor que posee el eje X
    * @param string color         :es un color que tendra la columna especificada
@@ -84,7 +90,9 @@ class Report extends CI_Controller {
   }
 
   /**
-   * genera una grafica de barras en forma vertical con una linea comparativa, comparando valor x y valor y 
+   * [Ajax]
+   * Genera una grafica de barras en forma vertical con una linea comparativa, comparando valor x y valor y 
+   * 
    * @param string nombre_eje_x  :es el nombre que llevaran los elementos pintados en el eje X
    * @param int valor_1          :es el valor que posee el eje X en su barra
    * @param int valor_2          :es el valor que posee el eje X en su linea
@@ -103,7 +111,8 @@ class Report extends CI_Controller {
   }
 
   /**
-   * genera una grafica de barras ne forma cilindrica , comparando valor x y valor y 
+   * [Ajax]
+   * Genera una grafica de barras ne forma cilindrica , comparando valor x y valor y 
    * @param string nombre_eje_x  :es el nombre que llevaran los elementos pintados en el eje X
    * @param int valor            :es el valor que posee el eje X en su columna cilindrica
    * @param string color         :es un color que tendra la columna cilindricaa especificada
@@ -125,7 +134,9 @@ class Report extends CI_Controller {
   }
 
   /**
-   * genera una grafica de barras simple , comparando valor x y valor y 
+   * [Ajax]
+   * Genera una grafica de barras simple , comparando valor X y valor Y
+   * 
    * @param string nombre_eje_x  :es el nombre que llevaran los elementos pintados en el eje X
    * @param int valor            :es el valor que posee el eje X
    */
@@ -146,7 +157,9 @@ class Report extends CI_Controller {
   }
 
   /**
-   *  genera una grafica de pastel en 3D
+   * [Ajax]
+   * Genera una grafica de pastel en 3D
+   * 
    * @param string nombre  :es el nombre de un grupo que se encontrara en la grafica de torta
    * @param int $valor     :es el valor que tendra el grupo especificado
    */
@@ -166,7 +179,9 @@ class Report extends CI_Controller {
   }
 
   /**
-   * genera una grafica de pastel tipo dona,
+   * [Ajax]
+   * Genera una grafica de pastel tipo dona
+   * 
    * @param string nombre  :es el nombre de un grupo que se encontrara en la grafica de torta en 3D
    * @param int $valor     :es el valor que tendra el grupo especificado
    */
@@ -186,7 +201,9 @@ class Report extends CI_Controller {
   }
 
   /**
-   * genera una grafica de piramide en 3D,
+   * [Ajax]
+   * Genera una grafica de piramide en 3D
+   * 
    * @param string titulo  :es el titulo de un grupo que se encontrara en la grafica de piramide
    * @param int valor      :es el valor que tendra el grupo especificado
    */
@@ -265,7 +282,7 @@ class Report extends CI_Controller {
         $tabla = generate_simple_table($puntero, '', $parametros);
         break;
     }
-    $this->load->view('layout', array('content' => 'demo/table', 'tabla' => $tabla));
+    $this->load->view('layout', array('content' => 'demo/report/table', 'tabla' => $tabla));
   }
 
 }
