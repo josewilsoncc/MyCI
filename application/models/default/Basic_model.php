@@ -62,8 +62,8 @@ class Basic_model extends CI_Model {
     $this->load->database($database);
 
     $this->db->select('count(' . $unique . ' ' . $id . ') as total');
-    $this->db->from($tables);
     $this->db->where($where);
+    $this->db->from($tables);
     $query = $this->db->get();
     $total = $query->row();
     $total = $total->total;
@@ -78,8 +78,8 @@ class Basic_model extends CI_Model {
 
       $first = !$surpassed_half ? $end : ($total - $start);
       $this->db->select('first ' . $first . ' ' . $select);
-      $this->db->from($tables);
       $this->db->where($where);
+      $this->db->from($tables);
       $this->db->order_by($order_by, $surpassed_half ? 'DESC' : 'ASC');
 
       $query = $this->db->get();
