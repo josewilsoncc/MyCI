@@ -1,6 +1,6 @@
 <?php
 coverflow(array(
-  'demo/coverflow' => array(
+  'demo/main/coverflow' => array(
     'attic',
     'aurora',
     'barbecue',

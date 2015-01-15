@@ -1,9 +1,9 @@
 <?php
 $elements_images = array(
-  'demo/carousel/5.jpg',
-  'demo/carousel/6.jpg',
-  'demo/carousel/8.jpg',
-  'demo/carousel/haceb.jpg'
+  'demo/main/carousel/5.jpg',
+  'demo/main/carousel/6.jpg',
+  'demo/main/carousel/8.jpg',
+  'demo/main/carousel/haceb.jpg'
 );
 caruosel($elements_images, array(
   'id' => 'a',

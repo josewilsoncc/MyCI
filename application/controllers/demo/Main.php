@@ -20,7 +20,7 @@ class Main extends CI_Controller {
   }
 
   public function index() {
-    $this->load->view('layout', array('content' => 'demo/index'));
+    $this->load->view('layout', array('content' => 'demo/main/index'));
   }
 
   /**
@@ -30,11 +30,11 @@ class Main extends CI_Controller {
   public function simple_demo($demo) {
     switch ($demo) {
       case 'alertify':
-        $this->load->view('layout', array('content' => 'demo/alertify'));
+        $this->load->view('layout', array('content' => 'demo/main/alertify'));
         break;
       case 'show_message':
         $this->load->view('layout', array(
-         'content' => 'demo/show_message',
+         'content' => 'demo/main/show_message',
          'mensaje' => 'Bienvenido al aplicativo, este mensaje debe desaparecer en 3 segundos',
          'mensaje_correcto' => 'Ejemplo de un mensaje correcto',
          'mensaje_informativo' => 'Ejemplo de un mensaje informativo',
@@ -43,19 +43,19 @@ class Main extends CI_Controller {
         ));
         break;
       case 'carousel_hiden_images':
-        $this->load->view('layout', array('content' => 'demo/carousel_hiden_images'));
+        $this->load->view('layout', array('content' => 'demo/main/carousel_hiden_images'));
         break;
       case 'carousel':
-        $this->load->view('layout', array('content' => 'demo/carousel'));
+        $this->load->view('layout', array('content' => 'demo/main/carousel'));
         break;
       case 'carousel_basic':
-        $this->load->view('layout', array('content' => 'demo/carousel_basic'));
+        $this->load->view('layout', array('content' => 'demo/main/carousel_basic'));
         break;
       case 'toastr':
-        $this->load->view('layout', array('content' => 'demo/toastr'));
+        $this->load->view('layout', array('content' => 'demo/main/toastr'));
         break;
       case 'coverflow':
-        $this->load->view('layout', array('content' => 'demo/coverflow'));
+        $this->load->view('layout', array('content' => 'demo/main/coverflow'));
         break;
     }
   }
@@ -75,7 +75,7 @@ class Main extends CI_Controller {
     ));
 
     $this->load->view('layout', array(
-     'content' => 'demo/limit',
+     'content' => 'demo/main/limit',
      'query' => $query
     ));
   }

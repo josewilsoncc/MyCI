@@ -124,6 +124,13 @@ define('MCP_I', 'index');
  */
 define('MCP_TYPE', 'type');
 
+/**
+ * Depurar:
+ * Representa el parametro que define si se depura
+ * @cosnt Debug (My CI Param position)
+ */
+define('MCP_DEBUG', 'debug');
+
 /*
  | -------------------------------------------------------------------
  |  MCI: Constantes Internas

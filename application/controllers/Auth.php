@@ -38,16 +38,16 @@ class Auth extends CI_Controller {
     /*
      * Reglas de validación por defecto, pueden ser modificadas a su gusto
      */
-    $this->form_validation->set_rules('username', 'Usuario', 'required|alpha_numeric|min_length[2]|max_length[150]|xss_clean');
-    $this->form_validation->set_rules('password', 'Contraseña', 'required|alpha_numeric_spaces|min_length[5]|max_length[20]|xss_clean');
+    $this->form_validation->set_rules('username', 'Usuario', 'required|alpha_numeric|min_length[2]|max_length[150]');
+    $this->form_validation->set_rules('password', 'Contraseña', 'required|alpha_numeric_spaces|min_length[5]|max_length[20]');
 
     //Verificando si las reglas no se cumplen
     if (!$this->form_validation->run()) {
       $this->session->set_flashdata('error', validation_errors());
       redirect('auth/index');
     } else {
-      $username = $this->input->post('username');
-      $password = $this->input->post('password');
+      $username = $this->input->post('username', true);
+      $password = $this->input->post('password', true);
 
       $check_user = $this->auth_model->attempt('usuarios', array(
         'select' => 'cencos, fc_desc_sucursal(cencos) descencos, cedula, pro_personal_nombre(cedula) nombre, codusu',
