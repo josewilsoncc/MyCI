@@ -22,11 +22,10 @@ if (!function_exists('reload_page')) {
 if (!function_exists('base_url_js')) {
 
   /**
-   * Incluye la funcion 'base_url()' en javascript, debe llamarse asi:
-   * base_url_js();
+   * Incluye la funcion 'base_url()' en javascript, debe llamarse asi base_url_js();
    * 
-   * @param boolean $include_index Indica si se incluye o no el index.php
-   * en la URL base.
+   * @param boolean $include_index Indica si se incluye o no el index.php en la URL base.
+   * 
    * @return string/html código html para cumplir la funcion.
    * 
    * @autor Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>

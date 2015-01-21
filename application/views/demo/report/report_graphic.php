@@ -17,6 +17,8 @@ load_assets(array(
 script_onready("graphic_type($tipo_grafico, '$tipo_grafico')");
 
 asset_tag(MC_JS, 'demo/report_graphic');
+
+show_message("Estos elementos se encuentran en fase de desarrollo, aun no están optimizados para su uso.", array(MCP_TYPE=>'warning'));
 ?>
 <div class = "container">
   <div class = "row">

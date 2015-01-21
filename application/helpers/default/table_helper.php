@@ -9,22 +9,26 @@
 if (!function_exists('generate_simple_table')) {
 
   /**
-   * Genera una tabla simple la cual solo lista de una forma sencilla los datos en una tabla <table>
-   * @param [array] $array_result: un arreglo el cual puede ser de dos tipos
+   * Genera una tabla que lista de una forma sencilla los datos.
    * 
-   * array() : un arreglo normal
-   * $puntero->? : un puntero pero solo tiene la capacidad de recibir un elemento ejemplo
+   * @param array $array_result: contiene la información a mostrar en la tabla, es el 'result()' de un Query Builder o
+   * si no puede enviarse usando punteros, por ejemplo:
+   * 
+   * $puntero->? : un puntero pero solo tiene la capacidad de recibir un elemento ejemplo:
    * $puntero->datos = 'correcto';
    * $puntero->datos->otro_puntero = 'incorrecto';
    *  
-   * @param [array] $titles : especifica los titulos o el header que tendra la tabla al momento de generarla, se ingresa vacio cuando se usa el puntero
+   * @param [array] $titles : especifica los titulos o el header que tendra la tabla al momento de generarla, se ingresa
+   * vacio cuando se usa el puntero
    * @param [array] $params : un arreglo de parametros opcionales, sus incides son:
    * 
    * $params['class_table'] : recibe un string indicando clases css para el tag <table> 
    * $params['caption']     : un subtitulo al comienzo de la tabla
-   * $params['is_puntero']  : determina si el parametro $array_result es un arreglo o un puntero, por defecto es un arreglo 'false'
+   * $params['is_puntero']  : determina si el parametro $array_result es un arreglo o un puntero, por defecto es un
+   * arreglo 'false'
    * 
-   * @return string         : devuelve el html resultante de una tabla
+   * @return string HTML resultante de una tabla
+   * @deprecated Debe de optimizarse el codigo para su uso publico.
    */
   function generate_simple_table($array_result, $titles = '', $params = '') {
     $ci = & get_instance();
