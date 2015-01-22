@@ -6,10 +6,10 @@ MyCI es instalado en cinco pasos:
 
 #. Descomprima el paquete preferiblemente en la ruta que cumple la función
    de *localhost*.
-#. Cambie el nombre de la carpeta *my_ci* por un nombre apropiado para su
+#. Cambie el nombre de la carpeta *MyCI* por un nombre apropiado para su
    proyecto.
 #. En el archivo .htaccess tambien modifique la tercer linea donde dice
-   *my_ci* por el nombre que elegío para su carpeta.
+   *MyCI* por el nombre que elegío para su carpeta.
 #. Abra el archivo application/config/config.php con su IDE preferido
    y cambie la base URL si es necesario. Si tiene intención de utilizar
    el cifrado o sesiones, establezca la clave de cifrado (Requiere la
