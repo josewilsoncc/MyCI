@@ -39,11 +39,13 @@ class Basic_model extends CI_Model {
    *  'contraseña'=>$password
    * )
    * 
-   * boolean <b>$unique</b> Indica si los calculos deben de realizarse sobre valores unicos, false por defecto.
+   * boolean <b>'unique'</b> Indica si los calculos deben de realizarse sobre valores unicos, false por defecto.
    * 
-   * string <b>$database</b> Indica la conexión de la base de datos a utilizar, 'default' por defecto.
+   * string <b>'database'</b> Indica la conexión de la base de datos a utilizar, 'default' por defecto.
    * 
-   * string <b>$order_by</b> Indica el criterio de orden, si no se especifica se ordenara por el campo indicado como id.
+   * string <b>'order_by'</b> Indica el criterio de orden, si no se especifica se ordenara por el campo indicado como id.
+   * 
+   * boolean <b>'asc'</b> Indica si consulta a realizar es ascendente (ASC) o desendente (DESC), TRUE por defecto.
    * 
    * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @autor Estefania Alzate Daza, teflon28799@gmail.com
@@ -58,6 +60,7 @@ class Basic_model extends CI_Model {
     $unique = isset($params['unique']) && $params['unique'] ? 'unique' : '';
     $database = isset($params['database']) ? $params['database'] : 'default';
     $order_by = isset($params['order_by']) ? $params['order_by'] : $id;
+    $asc = isset($params['asc']) ? $params['asc'] : TRUE;
 
     $this->load->database($database);
 
@@ -80,7 +83,11 @@ class Basic_model extends CI_Model {
       $this->db->select('first ' . $first . ' ' . $select);
       $this->db->where($where);
       $this->db->from($tables);
-      $this->db->order_by($order_by, $surpassed_half ? 'DESC' : 'ASC');
+
+      $this->db->order_by($order_by, $surpassed_half ?
+              ($asc ? 'DESC' : 'ASC') :
+              ($asc ? 'ASC' : 'DESC')
+      );
 
       $query = $this->db->get();
 
