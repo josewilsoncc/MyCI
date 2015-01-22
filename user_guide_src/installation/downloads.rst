@@ -12,6 +12,6 @@ GitHub
 
 `Git <http://git-scm.com/about>`_ es un sistema de control de versiones distribuido.
 
-El acceso publico Git esta disponible en `GitHub <https://github.com/josewilsoncc/MyCI/>`_.
-Tenga en cuenta que si bien no se escatiman esfuerzos para mantener esta base de codigo funcional,
-no se puede dar garantia alguna del codigo tomado de la rama *develop* del proyecto.
+El acceso público Git está disponible en `GitHub <https://github.com/josewilsoncc/MyCI/>`_.
+Tenga en cuenta que si bien no se escatiman esfuerzos para mantener esta base de código funcional,
+no se puede dar garantía alguna del código tomado de la rama *develop* del proyecto.

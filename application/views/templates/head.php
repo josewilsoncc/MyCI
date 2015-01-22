@@ -15,13 +15,12 @@
   <!--[endif]-->
 
   <?php
-  
   base_url_js();
 
   /*
    * Cargar assets del proyecto
    */
-  
+
   load_assets(array(
     MC_CSS => array(
       'default' => array(
@@ -41,8 +40,8 @@
       'default/basic'
     ),
     MC_JS => array(
-      'default'=>array(
-        'jquery'=>array(
+      'default' => array(
+        'jquery' => array(
           'jquery.min',
           'jquery-ui.min'
         ),
