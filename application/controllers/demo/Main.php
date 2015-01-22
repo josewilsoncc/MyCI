@@ -34,12 +34,12 @@ class Main extends CI_Controller {
         break;
       case 'show_message':
         $this->load->view('layout', array(
-         'content' => 'demo/main/show_message',
-         'mensaje' => 'Bienvenido al aplicativo, este mensaje debe desaparecer en 3 segundos',
-         'mensaje_correcto' => 'Ejemplo de un mensaje correcto',
-         'mensaje_informativo' => 'Ejemplo de un mensaje informativo',
-         'mensaje_advertencia' => 'Ejemplo de un mensaje de advertencia',
-         'mensaje_error' => 'Ejemplo de un mensaje de error'
+          'content' => 'demo/main/show_message',
+          'mensaje' => 'Bienvenido al aplicativo, este mensaje debe desaparecer en 3 segundos',
+          'mensaje_correcto' => 'Ejemplo de un mensaje correcto',
+          'mensaje_informativo' => 'Ejemplo de un mensaje informativo',
+          'mensaje_advertencia' => 'Ejemplo de un mensaje de advertencia',
+          'mensaje_error' => 'Ejemplo de un mensaje de error'
         ));
         break;
       case 'carousel_hiden_images':
@@ -70,13 +70,14 @@ class Main extends CI_Controller {
    */
   public function limit($start = 0, $end = 5) {
     $query = $this->basic_model->limit('usuarios', $start, $end, 'cedula', array(
-     'select' => 'cencos, fc_desc_sucursal(cencos) descencos, cedula, pro_personal_nombre(cedula) nombre, codusu',
-     'where' => array('estado' => 'A')
+      'select' => 'cencos, fc_desc_sucursal(cencos) descencos, cedula, pro_personal_nombre(cedula) nombre, codusu',
+      'where' => array('estado' => 'A')
     ));
 
     $this->load->view('layout', array(
-     'content' => 'demo/main/limit',
-     'query' => $query
+      'content' => 'demo/main/limit',
+      'query' => $query,
+      'total' => $this->basic_model->count('usuarios', 'cedula', array('where'=>array('estado' => 'A')))
     ));
   }
 

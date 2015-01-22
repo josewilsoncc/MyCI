@@ -119,15 +119,15 @@ class Basic_model extends CI_Model {
   /**
    * Permite obtener el total de tuplas bajo un criterio.
    * 
+   * @param string $tables Son las tablas sobre las que se realiza la consulta
+   * 
    * @param array $params Son los parametros como:
    * 
-   * array <b>$where</b> contiene todos las condiciones que se deben de cumplir para un inicio de sesión exitoso.
-   * Ejemplo:
+   * array <b>$where</b> contiene todos las condiciones que se deben de cumplir. Ejemplo:
    * 
    * array(
    *  'estado'=>'A',
-   *  'codusu'=>$username
-   *  'contraseña'=>$password
+   *  'edad'=>$edad
    * )
    * 
    * boolean <b>$unique</b> Indica si los calculos deben de realizarse sobre valores unicos, false por defecto.
