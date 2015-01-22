@@ -8,52 +8,39 @@ MyCI es instalado en cinco pasos:
    de *localhost*.
 #. Cambie el nombre de la carpeta *MyCI* por un nombre apropiado para su
    proyecto.
-#. En el archivo .htaccess tambien modifique la tercer linea donde dice
-   *MyCI* por el nombre que elegío para su carpeta.
+#. En el archivo .htaccess también modifique la tercera línea donde dice
+   *MyCI* por el nombre elegido para su carpeta.
 #. Abra el archivo application/config/config.php con su IDE preferido
    y cambie la base URL si es necesario. Si tiene intención de utilizar
    el cifrado o sesiones, establezca la clave de cifrado (Requiere la
-   extesión *Mcrypt*).
+   extensión *Mcrypt*).
 #. Si va a usar base de datos, abra el archivo application/config/database.php
    con un IDE y configura su base de datos.
 
-Si usted desea aumentar la seguridad al ocultar la ubicación de sus archivos
-de CodeIgniter puede cambiar el nombre del sistema y carpetas de aplicaciones
-a algo más privado. Si lo hace cambiar su nombre, debe abrir el archivo principal
-index.php y establezca el system_path $ y $ application_folder variables al
-principio del archivo con el nuevo nombre elegido.
+Si usted desea aumentar la seguridad ocultando la ubicación de sus archivos
+de MyCI puede cambiar el nombre de las carpetas *system* y *application*
+por uno personalizado y más discreto. Si lo decide cambiar los nombres, debe
+abrir el archivo index.php principal y establecer las variables $system_path y
+$application_folder al principio del archivo con el nuevo nombre elegido.
 
-If you wish to increase security by hiding the location of your
-CodeIgniter files you can rename the system and application folders to
-something more private. If you do rename them, you must open your main
-index.php file and set the $system_path and $application_folder
-variables at the top of the file with the new name you've chosen.
+Para tener una mejor seguridad, tanto la carpeta *system* como *application*
+deben estar por encima de la raíz del sitio web, de tal manera que no se pueda
+acceder directamente a través de un navegador. Por defecto, los archivos htaccess
+son incluidos en cada carpeta para ayudar a prevenir el acceso directo, pero lo
+mejor es eliminar por completo los directorios del acceso público en caso de que
+haya cambios en la configuración del servidor o no funcione correctamente los
+archivos *htaccess* en el servidor.
 
-For the best security, both the system and any application folders
-should be placed above web root so that they are not directly accessible
-via a browser. By default, .htaccess files are included in each folder
-to help prevent direct access, but it is best to remove them from public
-access entirely in case the web server configuration changes or doesn't
-abide by the .htaccess.
+Una medida de seguridad adicional para tomar en entornos de producción es
+deshabilitar el informe de errores de PHP y cualquier otra funcionalidad solamente
+de desarrollo. En MyCI, esto se puede hacer mediante el establecimiento del entorno,
+que se describe con más detalle en la página <../general/security>`.
 
-If you would like to keep your views public it is also possible to move
-the views folder out of your application folder.
+¡Y puff eso es todo!
 
-After moving them, open your main index.php file and set the
-$system_path, $application_folder and $view_folder variables,
-preferably with a full path, e.g. '/www/MyUser/system'.
-
-One additional measure to take in production environments is to disable
-PHP error reporting and any other development-only functionality. In
-CodeIgniter, this can be done by setting the ENVIRONMENT constant, which
-is more fully described on the :doc:`security
-page <../general/security>`.
-
-That's it!
-
-If you're new to CodeIgniter, please read the :doc:`Getting
-Started <../overview/getting_started>` section of the User Guide
-to begin learning how to build dynamic PHP applications. Enjoy!
+Si eres nuevo en MyCI, por favor lead la sección :doc:`Getting
+Started `<../overview/getting_started>` de la guía de usuario
+para empezar a aprender cómo construir aplicaciones PHP dinámicas. 
 
 .. toctree::
 	:hidden:

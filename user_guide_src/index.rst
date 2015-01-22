@@ -7,6 +7,8 @@
 My CI - Guía de usuario
 #######################
 
+   |MyCI logo medio|
+
 - :doc:`Acuerdo de licencia <license>`
 - :doc:`Registro de Cambios <changelog>`
 
@@ -39,3 +41,5 @@ Instalación
 	:titlesonly:
 
 	installation/index
+
+.. |MyCI logo medio| image:: _static/logo_medio.png
