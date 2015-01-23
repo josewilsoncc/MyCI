@@ -30,8 +30,8 @@
         ),
         'icons',
         'alertify' => array(
-          'alertify.core',
-          'alertify.bootstrap'
+          'alertify.min',
+          'themes/default.min'
         ),
         'toastr.min'
       )
