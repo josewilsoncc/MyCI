@@ -2,11 +2,11 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 5.2.4 or newer
+ * An open source application development framework for PHP
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014, British Columbia Institute of Technology
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
  * @since	Version 1.0.0
@@ -99,19 +99,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-/*
-|--------------------------------------------------------------------------
-| Conexiones a base de datos
-|--------------------------------------------------------------------------
-|
-| Aqui van todas las conexiones de la base de datos, asi como la 'default'
-| o como cualquier otra conexión.
-|
-| Nota: la conexión 'default' debe ser la más usada en el proyecto.
-|
-*/
-
-//ejemplo de conexión obdc:
 $db['default'] = array(
 	'dsn'	=> 'ifxproduc',
 	'hostname' => 'ifxproduc',
@@ -120,7 +107,7 @@ $db['default'] = array(
 	'database' => 'produccion',
 	'dbdriver' => 'odbc',
 	'dbprefix' => '',
-	'pconnect' => TRUE,
+	'pconnect' => FALSE,
 	'db_debug' => TRUE,
 	'cache_on' => FALSE,
 	'cachedir' => '',
@@ -134,6 +121,3 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-
-/* End of file database.php */
-/* Location: ./application/config/database.php */

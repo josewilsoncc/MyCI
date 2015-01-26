@@ -2,11 +2,11 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 5.2.4 or newer
+ * An open source application development framework for PHP
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014, British Columbia Institute of Technology
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
  * @since	Version 1.0.0
@@ -50,11 +50,7 @@ $lang['imglib_rotate_unsupported'] = 'Parece que la rotación de imágenes no es
 $lang['imglib_libpath_invalid'] = 'La ruta a la librería de imagen no es correcta. Por favor, configura la ruta correcta en las preferencias de imagen.';
 $lang['imglib_image_process_failed'] = 'Ha fallado el tratamiento de la imagen. Por favor, verifica que el servidor soporta el protocolo elegido y que la ruta a la librería de imagen es correcta.';
 $lang['imglib_rotation_angle_required'] = 'Se requiere un ángulo de rotación para rotar la imagen.';
-$lang['imglib_writing_failed_gif'] = 'Imagen GIF.';
 $lang['imglib_invalid_path'] = 'La ruta a la imagen no es correcta.';
 $lang['imglib_copy_failed'] = 'La rutina de copia de imagen ha fallado.';
 $lang['imglib_missing_font'] = 'No se ha podido encontrar una fuente para su uso.';
 $lang['imglib_save_failed'] = 'No se ha podido guardar la imagen. Por favor, asegúrate de que la imagen y la carpeta son escribibles.';
-
-/* End of file imglib_lang.php */
-/* Location: ./application/language/spanish/imglib_lang.php */
