@@ -2,11 +2,11 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 5.2.4 or newer
+ * An open source application development framework for PHP
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014, British Columbia Institute of Technology
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
  * @since	Version 1.0.0
@@ -37,11 +37,22 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['terabyte_abbr'] = 'TB';
-$lang['gigabyte_abbr'] = 'GB';
-$lang['megabyte_abbr'] = 'MB';
-$lang['kilobyte_abbr'] = 'KB';
-$lang['bytes'] = 'Bytes';
-
-/* End of file number_lang.php */
-/* Location: ./application/language/spanish/number_lang.php */
+$lang['ut_test_name']		= 'Nombre del test';
+$lang['ut_test_datatype']	= 'Tipo de datos del test';
+$lang['ut_res_datatype']	= 'Tipo de datos esperado';
+$lang['ut_result']			= 'Resultado';
+$lang['ut_undefined']		= 'Nombre del test indefinido';
+$lang['ut_file']			= 'Nombre del archivo';
+$lang['ut_line']			= 'Número de línea';
+$lang['ut_passed']			= 'Correcto';
+$lang['ut_failed']			= 'Fallido';
+$lang['ut_boolean']			= 'Booleano';
+$lang['ut_integer']			= 'Entero';
+$lang['ut_float']			= 'Coma flotante';
+$lang['ut_double']			= 'Coma flotante'; // can be the same as float
+$lang['ut_string']			= 'Cadena';
+$lang['ut_array']			= 'Array';
+$lang['ut_object']			= 'Objeto';
+$lang['ut_resource']		= 'Recurso';
+$lang['ut_null']			= 'Nulo';
+$lang['ut_notes']			= 'Notas';
