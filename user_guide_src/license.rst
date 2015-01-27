@@ -2,9 +2,9 @@
 La Licencia MIT (MIT)
 #####################
 
-*****************************************************
-Copyright (c) 2014 - 2015, Jose Wilson Capera Castaño
-*****************************************************
+**********************************************************
+Copyright (c) 2014 - 2015, Jose Wilson Capera Castaño, IBG
+**********************************************************
 
 Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia
 de este software y archivos de documentación asociada (el "Software"), para
