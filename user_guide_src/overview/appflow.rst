@@ -1,23 +1,26 @@
-######################
-Application Flow Chart
-######################
+##################################
+Diagrama de flujo de la aplicación
+##################################
 
-The following graphic illustrates how data flows throughout the system:
+El siguiente gráfico ilustra cómo fluyen de datos en todo el sistema:
 
 |CodeIgniter application flow|
 
-#. The index.php serves as the front controller, initializing the base
-   resources needed to run CodeIgniter.
-#. The Router examines the HTTP request to determine what should be done
-   with it.
-#. If a cache file exists, it is sent directly to the browser, bypassing
-   the normal system execution.
-#. Security. Before the application controller is loaded, the HTTP
-   request and any user submitted data is filtered for security.
-#. The Controller loads the model, core libraries, helpers, and any
-   other resources needed to process the specific request.
-#. The finalized View is rendered then sent to the web browser to be
-   seen. If caching is enabled, the view is cached first so that on
-   subsequent requests it can be served.
+#. El index.php sirve como el controlador frontal, inicializar los
+   recursos básicos necesarios para ejecutar MyCI.
+#. El router examina la petición HTTP para determinar lo que debe
+   hacerse con ella.
+#. Si existe un archivo de caché, se envía directamente al navegador,
+   sin pasar por la ejecución normal del sistema.
+#. Seguridad. Antes de que se cargue el controlador de la aplicación,
+   la petición HTTP y los datos enviados por los usuarios se filtra
+   por seguridad.
+#. El controlador carga el modelo, las Librerias del nucleo, los
+   Helpers, y todos los demás recursos necesarios para procesar la
+   solicitud específica.
+#. Finalizado la vista es renderizada para enviarse al navegador web
+   para ser presentada. Si la caché está habilitada, la vista se
+   almacena en ella primero para que en las solicitudes posteriores
+   se pueda servir.
 
 .. |CodeIgniter application flow| image:: ../images/appflowchart.gif

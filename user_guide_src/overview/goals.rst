@@ -1,32 +1,32 @@
-##############################
-Design and Architectural Goals
-##############################
+##################################
+Diseño y Objetivos de arquitectura
+##################################
 
-Our goal for CodeIgniter is maximum performance, capability, and
-flexibility in the smallest, lightest possible package.
+Nuestra meta para MyCI es el máximo rendimiento, capacidad y flexibilidad
+en un paquete lo mas ligero posible, pero incluyendo todo lo necesario.
 
-To meet this goal we are committed to benchmarking, re-factoring, and
-simplifying at every step of the development process, rejecting anything
-that doesn't further the stated objective.
+Para cumplir con este objetivo estamos comprometidos con la evaluación
+comparativa, re-factoring, y la simplificación en cada paso del proceso
+de desarrollo y el rechazo de cualquier cosa que no vaya de la mano con
+el objetivo establecido.
 
-From a technical and architectural standpoint, CodeIgniter was created
-with the following objectives:
+Desde un punto de vista técnico y arquitectónico, MyCI se creó con los
+siguientes objetivos:
 
--  **Dynamic Instantiation.** In CodeIgniter, components are loaded and
-   routines executed only when requested, rather than globally. No
-   assumptions are made by the system regarding what may be needed
-   beyond the minimal core resources, so the system is very light-weight
-   by default. The events, as triggered by the HTTP request, and the
-   controllers and views you design will determine what is invoked.
--  **Loose Coupling.** Coupling is the degree to which components of a
-   system rely on each other. The less components depend on each other
-   the more reusable and flexible the system becomes. Our goal was a
-   very loosely coupled system.
--  **Component Singularity.** Singularity is the degree to which
-   components have a narrowly focused purpose. In CodeIgniter, each
-   class and its functions are highly autonomous in order to allow
-   maximum usefulness.
+-  **Dinámica de instancias.** En MyCI, los componentes del nucleo se
+   cargan y las rutinas solo se ejecutan cuando se les solicite, en lugar
+   de a nivel global. No se hacen suposiciones por el sistema en cuanto
+   a lo que puede ser necesario más allá de los recursos minimos básicos,
+   por lo que el sistema es muy ligero por defecto.
+-  **Acoplamiento.** El acoplamiento es el grado en que los componentes
+   de un sistema dependen unos de otros. Menos componentes dependen unos
+   de otros, es más reutilizable y flexible. Nuestro objetivo es un
+   sistema débilmente acoplado.
+-  **Singularidad de componentes.** Singularidad es el grado en que los
+   componentes tienen un propósito estrictamente enfocado. En MyCI,
+   cada clase y sus funciones son muy autónomos con el fin de
+   permitir la máxima utilidad.
 
-CodeIgniter is a dynamically instantiated, loosely coupled system with
-high component singularity. It strives for simplicity, flexibility, and
-high performance in a small footprint package.
+MyCI es un sistema instanciado dinámicamente, débilmente acoplado con
+singularidad de componentes. Se esfuerza en mantener la simplicidad,
+flexibilidad y el alto rendimiento en un paquete pequeño.
