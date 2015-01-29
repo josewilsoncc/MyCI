@@ -9,4 +9,4 @@ información incluso si ha cerrado el aplicativo previamente.
 
 Para utilizar la memoria de los ultimos 10 comando utilizados
 puede hacerlo precionando la tecla **Ctrl** y un numero entre
-0 y 9. Siendo 0 el comando mas recientemente usado.
+**0** y **9**. Siendo **0** el comando mas recientemente usado.
