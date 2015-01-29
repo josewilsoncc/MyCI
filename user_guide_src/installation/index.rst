@@ -34,13 +34,13 @@ archivos *htaccess* en el servidor.
 Una medida de seguridad adicional para tomar en entornos de producción es
 deshabilitar el informe de errores de PHP y cualquier otra funcionalidad solamente
 de desarrollo. En MyCI, esto se puede hacer mediante el establecimiento del entorno,
-que se describe con más detalle en la página <../general/security>`.
+que se describe con más detalle en la :doc:`página de seguridad <../general/security>`.
 
 ¡Y puff eso es todo!
 
-Si eres nuevo en MyCI, por favor lead la sección :doc:`Getting
-Started `<../overview/getting_started>` de la guía de usuario
-para empezar a aprender cómo construir aplicaciones PHP dinámicas. 
+Si eres nuevo en MyCI, por favor lead la sección :doc:`Empezando con MyCI
+<../overview/getting_started>` de la guía de usuario para empezar a aprender cómo
+construir aplicaciones PHP dinámicas.
 
 .. toctree::
 	:hidden:
