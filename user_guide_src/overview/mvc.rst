@@ -11,7 +11,7 @@ código PHP.
 -  El **Modelo** representa las estructuras de datos. Normalmente las
    clases del modelo contendrán las funciones que le ayudan a recuperar,
    insertar y actualizar la información en su base de datos.
--  La ** Vista ** es la información que se presenta a un usuario. Una
+-  La **Vista** es la información que se presenta a un usuario. Una
    vista será normalmente una página web, pero en MyCI, una vista también
    puede ser un fragmento de la página como un encabezado o pie de página.
    También puede ser un RSS
