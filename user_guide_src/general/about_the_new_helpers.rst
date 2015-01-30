@@ -39,6 +39,6 @@ un código que va de la mano con los estándares.
 Essential Helper
 ****************
 
-Brinda funciones lógicas esenciales, dichas funciones retornan algun valor
-para ser usado tanto en el desarrollo común, como en el desarrollo del
+Brinda funciones lógicas esenciales, dichas funciones suelen retornan algun
+valor para ser usado tanto en el desarrollo común, como en el desarrollo del
 Framework.
