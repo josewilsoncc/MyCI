@@ -61,3 +61,14 @@ Tutorial
 	:titlesonly:
 
 	tutorial/index
+
+***************
+Temas generales
+***************
+
+.. toctree::
+	:includehidden:
+	:maxdepth: 2
+	:titlesonly:
+
+	general/index
