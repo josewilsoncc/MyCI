@@ -3,9 +3,9 @@ La convención AM
 ################
 
 AM (Automatic Mode), es una convención creada por Jose Capera,
-para facilitar el envio de información estructurada a través
+para facilitar el envío de información estructurada a través
 de un arreglo, para ser usada recursivamente y con base en su
-estructura producir un resultado deseado. Por ejemplo el metodo
+estructura producir un resultado deseado. Por ejemplo el método
 **load_assets** del *Helper Assets* utiliza dicha convención,
 veamos::
 
