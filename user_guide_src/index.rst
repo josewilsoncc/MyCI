@@ -41,3 +41,34 @@ Instalación
 	:titlesonly:
 
 	installation/index
+
+**********
+Empenzando
+**********
+.. toctree::
+	:includehidden:
+	:maxdepth: 2
+	:titlesonly:
+
+	overview/index
+
+********
+Tutorial
+********
+.. toctree::
+	:includehidden:
+	:maxdepth: 2
+	:titlesonly:
+
+	tutorial/index
+
+***************
+Temas generales
+***************
+
+.. toctree::
+	:includehidden:
+	:maxdepth: 2
+	:titlesonly:
+
+	general/index
