@@ -167,9 +167,9 @@ if (!function_exists('close_session')) {
    * boolean <b>$redirect</b> Indica si se redirecciona o no, TRUE por defecto.
    * 
    * string <b>$url_redirect</b> Es la url a redireccionar, base_url por defecto.
-   * 
+   *
+   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com* 
    * @autor Alvaro Javier Vanegas Ochoa, alvarovanegas18@gmail.com
-   * @autor Jose Wilson Capera Castaño, josewilsoncc@hotmail.com
    * @date 2014/12/24
    */
   function close_session($params = '') {
