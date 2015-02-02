@@ -6,11 +6,14 @@ if (!function_exists('robot_email')) {
     $host = isset($params['host']) ? $params['host'] : '';
     $user = isset($params['user']) ? $params['user'] : '';
     $pass = isset($params['pass']) ? $params['pass'] : '';
+    
     $from_email = isset($params['from_email']) ? $params['from_email'] : '';
     $from_name = isset($params['from_name']) ? $params['from_name'] : '';
     $to_email = isset($params['to_email']) ? $params['to_email'] : '';
+    
     $cc_email = isset($params['cc_email']) ? $params['cc_email'] : FALSE;
     $bcc_email = isset($params['bcc_email']) ? $params['bcc_email'] : FALSE;
+    
     $subject = isset($params['subject']) ? $params['subject'] : '';
     $message = isset($params['message']) ? $params['message'] : '';
     
