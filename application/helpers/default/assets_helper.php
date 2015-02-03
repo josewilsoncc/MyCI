@@ -153,8 +153,8 @@ if (!function_exists('autoloading_assets')) {
    * @return string/html código html para cumplir la funcion.
    * 
    * @author Jose Wilson Capera Castaño <josewilsoncc@hotmail.com>
-   * @date 16/11/2014
-   * @update 15/01/2015
+   * @date 2014/11/16
+   * @update 2015/01/15
    */
   function autoloading_assets($route_view, $params = '') {
     $file = isset($params['file']) ? $params['file'] : 'general';
