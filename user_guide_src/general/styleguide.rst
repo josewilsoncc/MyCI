@@ -220,7 +220,7 @@ Las palabras clave **TRUE**, **FALSE**, y **NULL** van siempre en mayuscula.
 Operadores lógicos
 ==================
 
-El uso del ``||`` operador de comparacion "o" no es recomendable,
+El uso del ``||`` operador de comparación "o" no es recomendable,
 ya que su calidad de salida en algunos dispositivos es baja
 (luce como el numero 11, por ejemplo). ``&&`` es preferible a ``AND``
 aunque ambos son validos, y un espacio siempre debe preceder y seguir a ``!``.
@@ -239,9 +239,8 @@ aunque ambos son validos, y un espacio siempre debe preceder y seguir a ``!``.
 	if ( ! $foo)
 	if ( ! is_array($foo))
 	
-
-Comparing Return Values and Typecasting
-=======================================
+Comparación de los valores de retorno y la conversión de tipos
+==============================================================
 
 Some PHP functions return FALSE on failure, but may also have a valid
 return value of "" or 0, which would evaluate to FALSE in loose
@@ -250,16 +249,23 @@ return values in conditionals to ensure the return value is indeed what
 you expect, and not a value that has an equivalent loose-type
 evaluation.
 
-Use the same stringency in returning and checking your own variables.
-Use **===** and **!==** as necessary.
+Algunas funciones de PHP retornan FALSE en caso de error, pero también
+pueden tener un valor de retorno de "" o 0, que dan como resultado
+FALSE en comparaciones sueltas. Sea explícito al comparar el tipo de
+variable cuando se utilizan estos valores de retorno en los condicionales
+para garantizar el valor de retorno es de hecho lo que usted espera, y no
+un valor que tiene una evaluación floja tipo equivalentede.
 
-**INCORRECT**::
+Utilice la misma restricción en el retorno y el control de sus propias
+variables. Utilice ** === ** y **! == ** Según sea necesario.
 
-	// If 'foo' is at the beginning of the string, strpos will return a 0,
-	// resulting in this conditional evaluating as TRUE
+**INCORRECTO**::
+  
+  // Si 'foo' se encuentra al principio de la cadena, strpos retornará un 0,
+  // El resultante en este condicional es evaluado como TRUE
 	if (strpos($str, 'foo') == FALSE)
 
-**CORRECT**::
+**CORRECTO**::
 
 	if (strpos($str, 'foo') === FALSE)
 
@@ -267,7 +273,7 @@ Use **===** and **!==** as necessary.
 
 	function build_string($str = "")
 	{
-		if ($str == "")	// uh-oh!  What if FALSE or the integer 0 is passed as an argument?
+		if ($str == "")	// oh-oh!  Si es FALSE o el numero 0 se cumple la condición?
 		{
 
 		}
