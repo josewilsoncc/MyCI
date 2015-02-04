@@ -273,7 +273,7 @@ variables. Utilice ** === ** y **! == ** Según sea necesario.
 
 	function build_string($str = "")
 	{
-		if ($str == "")	// oh-oh!  Si es FALSE o el numero 0 se cumple la condición?
+		if ($str == "")	// Oh-oh!  Si es FALSE o el numero 0 se cumple la condición?
 		{
 
 		}
@@ -290,65 +290,57 @@ variables. Utilice ** === ** y **! == ** Según sea necesario.
 	}
 
 
-See also information regarding `typecasting
-<http://php.net/manual/en/language.types.type-juggling.php#language.types.typecasting>`_,
-which can be quite useful. Typecasting has a slightly different effect
-which may be desirable. When casting a variable as a string, for
-instance, NULL and boolean FALSE variables become empty strings, 0 (and
-other numbers) become strings of digits, and boolean TRUE becomes "1"::
+Depurando
+=========
 
-	$str = (string) $str; // cast $str as a string
+No deje el código de depuración, incluso cuando comentada.
+Las cosas tales como ``var_dump()``, ``print_r()``, ``die()``/``exit()``
+no debe ser incluido en el código a menos que sirva para un propósito
+específico que no sea la depuración .
 
-Debugging Code
+Espacios en blanco en Archivos
+==============================
+
+No puede haber espacios en blanco antes de la etiqueta de apertura de PHP
+o despues de la etiqueta PHP cierre. La salida se almacenan temporalmente,
+por lo que los espacios en blanco en los archivos puede causar que antes de
+MyCI emite su contenido, se produzcan a errores y a su vez impidiendo
+a MyCI enviar cabeceras adecuadas.
+
+compatibilidad
 ==============
 
-Do not leave debugging code in your submissions, even when commented out.
-Things such as ``var_dump()``, ``print_r()``, ``die()``/``exit()`` should not be included
-in your code unless it serves a specific purpose other than debugging.
+MyCI recomienda PHP 5.4 o posterior para ser utilizado, pero debe ser compatible
+con PHP 5.2.4.
 
-Whitespace in Files
-===================
+Además, no use las funciones de PHP que requieren bibliotecas no predeterminadas
+que se instalarán a menos que su código contenga un método alternativo cuando dicha
+función no está disponible.
 
-No whitespace can precede the opening PHP tag or follow the closing PHP
-tag. Output is buffered, so whitespace in your files can cause output to
-begin before CodeIgniter outputs its content, leading to errors and an
-inability for CodeIgniter to send proper headers.
+Un Archivo por clase
+====================
 
-Compatibility
-=============
+Utilice archivos separados para cada clase, a menos que las clases están
+*estrechamente relacionados*. Un ejemplo de un archivo MyCI que contiene
+varias clases es el archivo de biblioteca XMLRPC.
 
-CodeIgniter recommends PHP 5.4 or newer to be used, but it should be
-compatible with PHP 5.2.4. Your code must either be compatible with this
-requirement, provide a suitable fallback, or be an optional feature that
-dies quietly without affecting a user's application.
+El espacio en blanco
+====================
 
-Additionally, do not use PHP functions that require non-default libraries
-to be installed unless your code contains an alternative method when the
-function is not available.
+Utilice el tabulador para indentar el código, y no la barra espadora.
+Esto puede parecer una cosa pequeña, pero utilizando tabs en lugar de
+espacios en blanco permite al desarrollador los niveles de indentación
+que ellos prefieren. Y como beneficio adicional, se traduce en archivos
+(ligeramente) más compactos, almacenar un carácter tab en lugar de,
+digamos, cuatro espacios.
 
-One File per Class
-==================
+saltos de línea
+===============
 
-Use separate files for each class, unless the classes are *closely related*.
-An example of a CodeIgniter file that contains multiple classes is the 
-Xmlrpc library file.
-
-Whitespace
-==========
-
-Use tabs for whitespace in your code, not spaces. This may seem like a
-small thing, but using tabs instead of whitespace allows the developer
-looking at your code to have indentation at levels that they prefer and
-customize in whatever application they use. And as a side benefit, it
-results in (slightly) more compact files, storing one tab character
-versus, say, four space characters.
-
-Line Breaks
-===========
-
-Files must be saved with Unix line breaks. This is more of an issue for
-developers who work in Windows, but in any case ensure that your text
-editor is setup to save files with Unix line breaks.
+Los archivos deben ser guardados con saltos de línea Unix. Esto es más
+de un problema para los desarrolladores que trabajan en Windows, pero en
+cualquier caso, se debe garantizar que su IDE está configurado para
+guardar archivos con saltos de línea Unix.
 
 Code Indenting
 ==============
@@ -356,6 +348,12 @@ Code Indenting
 Use Allman style indenting. With the exception of Class declarations,
 braces are always placed on a line by themselves, and indented at the
 same level as the control statement that "owns" them.
+
+Indentación del código
+======================
+
+Utilice indentación estilo Allman. Con la excepción de las declaraciones
+de clase, ejemplos:
 
 **INCORRECT**::
 
@@ -468,7 +466,7 @@ functions and increase readability.
 Localized Text
 ==============
 
-CodeIgniter libraries should take advantage of corresponding language files
+MyCI libraries should take advantage of corresponding language files
 whenever possible.
 
 **INCORRECT**::
