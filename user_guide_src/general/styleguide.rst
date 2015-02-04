@@ -342,20 +342,13 @@ de un problema para los desarrolladores que trabajan en Windows, pero en
 cualquier caso, se debe garantizar que su IDE está configurado para
 guardar archivos con saltos de línea Unix.
 
-Code Indenting
-==============
-
-Use Allman style indenting. With the exception of Class declarations,
-braces are always placed on a line by themselves, and indented at the
-same level as the control statement that "owns" them.
-
 Indentación del código
 ======================
 
 Utilice indentación estilo Allman. Con la excepción de las declaraciones
 de clase, ejemplos:
 
-**INCORRECT**::
+**INCORRECTO**::
 
 	function foo($bar) {
 		// ...
@@ -386,7 +379,7 @@ de clase, ejemplos:
 		// ...
 	}
 
-**CORRECT**::
+**CORRECTO**::
 
 	function foo($bar)
 	{
@@ -424,183 +417,95 @@ de clase, ejemplos:
 		// ...
 	}
 
-Bracket and Parenthetic Spacing
-===============================
+Espaciado de corchetes y parentesis
+===================================
 
-In general, parenthesis and brackets should not use any additional
-spaces. The exception is that a space should always follow PHP control
-structures that accept arguments with parenthesis (declare, do-while,
-elseif, for, foreach, if, switch, while), to help distinguish them from
-functions and increase readability.
+En general, los paréntesis y corchetes no deben utilizar espacios
+adicionales. La excepción esun espacio debe seguir siempre las
+estructuras de control de PHP que aceptan argumentos con paréntesis
+(declare, do-while, elseif, for, foreach, if, switch, while),
+para ayudar a distinguirlos de funciones y aumentar la legibilidad.
 
-**INCORRECT**::
+**INCORRECTO**::
 
 	$arr[ $foo ] = 'foo';
 
-**CORRECT**::
+**CORRECTO**::
 
-	$arr[$foo] = 'foo'; // no spaces around array keys
+	$arr[$foo] = 'foo'; //Sin espacios alrededor de los corchetes
 
-**INCORRECT**::
+**INCORRECTO**::
 
 	function foo ( $bar )
 	{
 
 	}
 
-**CORRECT**::
+**CORRECTO**::
 
-	function foo($bar) // no spaces around parenthesis in function declarations
+	function foo($bar) //No hay espacios alrededor de paréntesis en la declaración de funciones
 	{
 
 	}
 
-**INCORRECT**::
+**INCORRECTO**::
 
 	foreach( $query->result() as $row )
 
-**CORRECT**::
+**CORRECTO**::
 
 	foreach ($query->result() as $row) // single space following PHP control structures, but not in interior parenthesis
 
-Localized Text
-==============
+Métodos y variables privadas
+============================
 
-MyCI libraries should take advantage of corresponding language files
-whenever possible.
-
-**INCORRECT**::
-
-	return "Invalid Selection";
-
-**CORRECT**::
-
-	return $this->lang->line('invalid_selection');
-
-Private Methods and Variables
-=============================
-
-Methods and variables that are only accessed internally,
-such as utility and helper functions that your public methods use for
-code abstraction, should be prefixed with an underscore.
+Métodos y variables que sólo son accedidos internamente, tales como
+funciones de utilidad y ayuda, que sus métodos públicos utilizan para
+el código de la abstracción, deben ir precedidos por un guión bajo.
 
 ::
 
 	public function convert_text()
 	private function _convert_text()
 
-PHP Errors
-==========
+Etiquetas cortas de PHP
+=======================
 
-Code must run error free and not rely on warnings and notices to be
-hidden to meet this requirement. For instance, never access a variable
-that you did not set yourself (such as ``$_POST`` array keys) without first
-checking to see that it ``isset()``.
+Utilice siempre las etiquetas completas de apertura de PHP, en caso
+de que un servidor no tiene habilitado *short_open_tag*.
 
-Make sure that your dev environment has error reporting enabled
-for ALL users, and that display_errors is enabled in the PHP
-environment. You can check this setting with::
-
-	if (ini_get('display_errors') == 1)
-	{
-		exit "Enabled";
-	}
-
-On some servers where *display_errors* is disabled, and you do not have
-the ability to change this in the php.ini, you can often enable it with::
-
-	ini_set('display_errors', 1);
-
-.. note:: Setting the `display_errors
-	<http://php.net/manual/en/errorfunc.configuration.php#ini.display-errors>`_
-	setting with ``ini_set()`` at runtime is not identical to having
-	it enabled in the PHP environment. Namely, it will not have any
-	effect if the script has fatal errors.
-
-Short Open Tags
-===============
-
-Always use full PHP opening tags, in case a server does not have
-*short_open_tag* enabled.
-
-**INCORRECT**::
+**INCORRECTO**::
 
 	<? echo $foo; ?>
 
 	<?=$foo?>
 
-**CORRECT**::
+**CORRECTO**::
 
 	<?php echo $foo; ?>
 
 .. note:: PHP 5.4 will always have the **<?=** tag available.
 
-One Statement Per Line
+Una declaración por línea
 ======================
 
-Never combine statements on one line.
+Nunca combine declaraciones en una línea.
 
-**INCORRECT**::
+**INCORRECTO**::
 
 	$foo = 'this'; $bar = 'that'; $bat = str_replace($foo, $bar, $bag);
 
-**CORRECT**::
+**CORRECTO**::
 
 	$foo = 'this';
 	$bar = 'that';
 	$bat = str_replace($foo, $bar, $bag);
 
-Strings
-=======
-
-Always use single quoted strings unless you need variables parsed, and
-in cases where you do need variables parsed, use braces to prevent
-greedy token parsing. You may also use double-quoted strings if the
-string contains single quotes, so you do not have to use escape
-characters.
-
-**INCORRECT**::
-
-	"My String"					// no variable parsing, so no use for double quotes
-	"My string $foo"				// needs braces
-	'SELECT foo FROM bar WHERE baz = \'bag\''	// ugly
-
-**CORRECT**::
-
-	'My String'
-	"My string {$foo}"
-	"SELECT foo FROM bar WHERE baz = 'bag'"
-
-SQL Queries
-===========
-
-SQL keywords are always capitalized: SELECT, INSERT, UPDATE, WHERE,
-AS, JOIN, ON, IN, etc.
-
-Break up long queries into multiple lines for legibility, preferably
-breaking for each clause.
-
-**INCORRECT**::
-
-	// keywords are lowercase and query is too long for
-	// a single line (... indicates continuation of line)
-	$query = $this->db->query("select foo, bar, baz, foofoo, foobar as raboof, foobaz from exp_pre_email_addresses
-	...where foo != 'oof' and baz != 'zab' order by foobaz limit 5, 100");
-
-**CORRECT**::
-
-	$query = $this->db->query("SELECT foo, bar, baz, foofoo, foobar AS raboof, foobaz
-					FROM exp_pre_email_addresses
-					WHERE foo != 'oof'
-					AND baz != 'zab'
-					ORDER BY foobaz
-					LIMIT 5, 100");
-
-Default Function Arguments
-==========================
-
-Whenever appropriate, provide function argument defaults, which helps
-prevent PHP errors with mistaken calls and provides common fallback
-values which can save a few lines of code. Example::
+Argumentos por defecto de función
+=================================
+Siempre que sea apropiado, proporcionar valores por defecto de los
+argumentos de la función, que ayudan a evitar errores de PHP con
+llamadas erroneas y proporciona valores de retorno comunes que pueden
+ahorrar unas pocas líneas de código. ejemplo::
 
 	function foo($bar = '', $baz = FALSE)
