@@ -242,13 +242,6 @@ aunque ambos son validos, y un espacio siempre debe preceder y seguir a ``!``.
 Comparación de los valores de retorno y la conversión de tipos
 ==============================================================
 
-Some PHP functions return FALSE on failure, but may also have a valid
-return value of "" or 0, which would evaluate to FALSE in loose
-comparisons. Be explicit by comparing the variable type when using these
-return values in conditionals to ensure the return value is indeed what
-you expect, and not a value that has an equivalent loose-type
-evaluation.
-
 Algunas funciones de PHP retornan FALSE en caso de error, pero también
 pueden tener un valor de retorno de "" o 0, que dan como resultado
 FALSE en comparaciones sueltas. Sea explícito al comparar el tipo de
